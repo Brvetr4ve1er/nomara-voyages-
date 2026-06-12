@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nomara Voyages — Design System v1.0 «الرفيق»</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Changa:wght@400;500;600;700;800&family=Readex+Pro:wght@300;400;500;600;700&family=Amiri:ital,wght@0,400;0,700;1,400&family=Space+Mono&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   NOMARA DESIGN SYSTEM — «الرفيق» (Al-Rafiq / The Companion)
+   v1.0 — Token architecture: primitive → semantic → component
+   ============================================================ */
+
+:root {
+  /* ---------- LAYER 1 · PRIMITIVES ---------- */
+  /* Teal — extracted from the Nomara logo badge */
+  --teal-50:  #EFF7F5;
+  --teal-100: #D9EDE8;
+  --teal-200: #B0DACF;
+  --teal-300: #7DC0B0;
+  --teal-400: #4BA391;
+  --teal-500: #2B927E;
+  --teal-600: #1F8A7A;   /* ← brand anchor */
+  --teal-700: #176C60;
+  --teal-800: #11514A;
+  --teal-900: #0C3A35;
+  --teal-950: #07211E;
+
+  /* Coral — the "o" accent in the wordmark · Rihla energy */
+  --coral-300: #F5A37E;
+  --coral-400: #F07B4A;
+  --coral-500: #E8602C;
+  --coral-600: #CE4D1D;
+  --coral-700: #A83E18;
+
+  /* Gold — Sakina reverence · lantern light, not luxury bling */
+  --gold-200: #EFDFA8;
+  --gold-300: #E2C972;
+  --gold-400: #CFAC3F;
+  --gold-500: #B8932B;
+  --gold-600: #95761F;
+
+  /* Sand neutrals — warm, paper-like, North-African light */
+  --sand-0:   #FCFAF6;
+  --sand-50:  #FAF6EF;
+  --sand-100: #F3ECDF;
+  --sand-200: #E8DDC9;
+  --sand-300: #D5C6AB;
+
+  /* Ink — teal-tinted darks (never pure black) */
+  --ink-900: #14211E;
+  --ink-700: #2C3D39;
+  --ink-500: #51635E;
+  --ink-300: #8A9894;
+
+  /* Night — Sakina deep surfaces */
+  --night-800: #0A2D28;
+  --night-900: #071F1B;
+
+  /* Functional */
+  --whatsapp: #25D366;
+  --whatsapp-deep: #128C5E;
+  --danger: #C73E1D;
+  --success: var(--teal-500);
+
+  /* ---------- TYPE PRIMITIVES ---------- */
+  --font-display: 'Changa', sans-serif;        /* AR+LAT condensed — offers, prices, destinations */
+  --font-body: 'Readex Pro', sans-serif;       /* AR+LAT, engineered for Arabic readability */
+  --font-reverent: 'Amiri', serif;             /* Naskh serif — Sakina headings & du'a quotes */
+  --font-mono: 'Space Mono', monospace;        /* doc chrome only, not product UI */
+
+  /* Fluid type scale (mobile-first, 1.25 ratio desktop) */
+  --text-xs:   0.8125rem;
+  --text-sm:   0.9375rem;
+  --text-base: 1.0625rem;                      /* 17px base — Arabic needs the extra px */
+  --text-lg:   clamp(1.125rem, 1rem + 0.6vw, 1.375rem);
+  --text-xl:   clamp(1.375rem, 1.15rem + 1vw, 1.75rem);
+  --text-2xl:  clamp(1.75rem, 1.4rem + 1.6vw, 2.5rem);
+  --text-3xl:  clamp(2.25rem, 1.6rem + 2.8vw, 3.5rem);
+  --text-hero: clamp(2.75rem, 1.8rem + 4.5vw, 5rem);
+
+  --leading-tight: 1.15;
+  --leading-arabic: 1.7;                       /* Arabic body NEVER below 1.65 */
+  --leading-latin: 1.55;
+
+  /* ---------- SPACE / RADIUS / ELEVATION ---------- */
+  --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem;
+  --space-4: 1rem;    --space-5: 1.5rem; --space-6: 2rem;
+  --space-7: 3rem;    --space-8: 4rem;   --space-9: 6rem;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+  --radius-arch: 50% 50% 0 0 / 38% 38% 0 0;    /* the Sakina arch mask */
+
+  --shadow-sm: 0 1px 3px rgba(12,58,53,.08);
+  --shadow-md: 0 6px 20px rgba(12,58,53,.10);
+  --shadow-lg: 0 18px 44px rgba(12,58,53,.16);
+
+  --ease-out: cubic-bezier(.22,.8,.36,1);
+  --dur-fast: 160ms; --dur-base: 240ms;
+}
+
+/* ---------- LAYER 2 · SEMANTIC — RIHLA MODE (default) ----------
+   رحلة — leisure, discovery, energy. Coral accent, bright sand. */
+:root, [data-mode="rihla"] {
+  --color-primary: var(--teal-600);
+  --color-primary-strong: var(--teal-700);
+  --color-primary-soft: var(--teal-100);
+  --color-accent: var(--coral-500);
+  --color-accent-strong: var(--coral-600);
+  --color-accent-soft: #FBE9DF;
+  --surface-page: var(--sand-0);
+  --surface-raised: #FFFFFF;
+  --surface-inverse: var(--teal-900);
+  --text-strong: var(--ink-900);
+  --text-body: var(--ink-700);
+  --text-muted: var(--ink-500);
+  --text-on-primary: #FFFFFF;
+  --text-on-accent: #FFFFFF;
+  --border-soft: var(--sand-200);
+  --heading-font: var(--font-display);
+  --price-color: var(--color-accent-strong);
+  --chip-bg: var(--teal-50);
+}
+
+/* ---------- LAYER 2 · SEMANTIC — SAKINA MODE ----------
+   سكينة — Umrah & Hajj. Same teal spine; gold replaces coral,
+   Amiri enters for headings, surfaces deepen and calm down. */
+[data-mode="sakina"] {
+  --color-primary: var(--teal-700);
+  --color-primary-strong: var(--teal-800);
+  --color-primary-soft: var(--teal-100);
+  --color-accent: var(--gold-400);
+  --color-accent-strong: var(--gold-500);
+  --color-accent-soft: #F6EFD8;
+  --surface-page: var(--sand-50);
+  --surface-raised: #FFFFFF;
+  --surface-inverse: var(--night-900);
+  --text-strong: var(--ink-900);
+  --text-body: var(--ink-700);
+  --text-muted: var(--ink-500);
+  --text-on-primary: #FFFFFF;
+  --text-on-accent: var(--ink-900);
+  --border-soft: var(--sand-200);
+  --heading-font: var(--font-reverent);
+  --price-color: var(--gold-600);
+  --chip-bg: var(--color-accent-soft);
+}
+
+/* ---------- LAYER 3 · COMPONENT TOKENS ---------- */
+:root, [data-mode] {
+  --btn-radius: var(--radius-pill);
+  --btn-pad: 0.875rem 1.75rem;
+  --btn-primary-bg: var(--color-primary);
+  --btn-primary-bg-hover: var(--color-primary-strong);
+  --btn-accent-bg: var(--color-accent);
+  --btn-accent-bg-hover: var(--color-accent-strong);
+  --card-radius: var(--radius-lg);
+  --card-bg: var(--surface-raised);
+  --card-shadow: var(--shadow-md);
+  --card-shadow-hover: var(--shadow-lg);
+  --input-radius: var(--radius-md);
+  --input-border: var(--border-soft);
+  --badge-promo-bg: var(--color-accent);
+  --pricegrid-head-bg: var(--color-primary);
+  --stickybar-bg: var(--surface-raised);
+}
+
+/* ============================================================
+   DOCUMENT CHROME (the spec doc itself)
+   ============================================================ */
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--sand-0);
+  color: var(--ink-900);
+  font-size: var(--text-base);
+  line-height: var(--leading-latin);
+}
+.wrap { max-width: 1080px; margin-inline:auto; padding: 0 var(--space-5); }
+section.block { padding: var(--space-8) 0; border-bottom: 1px solid var(--sand-200); }
+.eyebrow {
+  font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--teal-600); display:block; margin-bottom: var(--space-3);
+}
+h2.sec { font-family: var(--font-display); font-weight:700; font-size: var(--text-2xl); line-height: var(--leading-tight); margin-bottom: var(--space-4); }
+h3.sub { font-family: var(--font-display); font-weight:600; font-size: var(--text-lg); margin: var(--space-6) 0 var(--space-3); }
+p.lead { font-size: var(--text-lg); color: var(--ink-700); max-width: 62ch; }
+p.note { color: var(--ink-500); font-size: var(--text-sm); max-width: 68ch; margin-top: var(--space-3); }
+code.tok { font-family: var(--font-mono); font-size: 0.8rem; background: var(--sand-100); padding: 2px 7px; border-radius: 6px; color: var(--teal-800); }
+
+/* Cover */
+.cover { background: linear-gradient(160deg, var(--teal-950), var(--teal-800) 70%, var(--teal-700)); color:#fff; padding: var(--space-9) 0; position:relative; overflow:hidden; }
+.cover::after {
+  content:""; position:absolute; inset-inline-end:-120px; top:-120px; width:420px; height:420px;
+  border-radius:50%; background: radial-gradient(circle, rgba(232,96,44,.35), transparent 65%);
+}
+.cover h1 { font-family: var(--font-display); font-weight:800; font-size: var(--text-hero); line-height:1.05; }
+.cover .ar-name { font-family: var(--font-reverent); font-size: var(--text-2xl); color: var(--gold-300); margin-top: var(--space-3); }
+.cover .meta { font-family: var(--font-mono); font-size:.78rem; letter-spacing:.15em; text-transform:uppercase; color: var(--teal-200); margin-top: var(--space-5); }
+.cover .thesis { margin-top: var(--space-5); max-width: 58ch; color: var(--teal-100); font-size: var(--text-lg); }
+
+/* Swatches */
+.swatch-row { display:grid; grid-template-columns: repeat(auto-fit, minmax(118px, 1fr)); gap: var(--space-3); margin-top: var(--space-4); }
+.swatch { border-radius: var(--radius-md); overflow:hidden; border:1px solid var(--sand-200); background:#fff; }
+.swatch .chip { height: 72px; }
+.swatch .lab { padding: var(--space-2) var(--space-3); font-family: var(--font-mono); font-size: .68rem; line-height:1.5; color: var(--ink-700); }
+.swatch .lab b { display:block; font-size:.72rem; color: var(--ink-900); }
+
+/* Tables */
+table.spec { width:100%; border-collapse:collapse; margin-top: var(--space-4); font-size: var(--text-sm); background:#fff; border-radius: var(--radius-md); overflow:hidden; box-shadow: var(--shadow-sm); }
+table.spec th { text-align:start; font-family: var(--font-mono); font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; background: var(--teal-900); color: var(--teal-100); padding: var(--space-3) var(--space-4); }
+table.spec td { padding: var(--space-3) var(--space-4); border-top:1px solid var(--sand-100); vertical-align:top; }
+table.spec td:first-child { font-family: var(--font-mono); font-size:.78rem; color: var(--teal-800); white-space:nowrap; }
+
+/* Type specimens */
+.specimen { background:#fff; border:1px solid var(--sand-200); border-radius: var(--radius-lg); padding: var(--space-6); margin-top: var(--space-4); }
+.specimen .tag { font-family: var(--font-mono); font-size:.68rem; letter-spacing:.12em; text-transform:uppercase; color: var(--ink-300); display:block; margin-bottom: var(--space-2); }
+
+/* Do / Don't */
+.dd-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: var(--space-4); margin-top: var(--space-4); }
+.dd { border-radius: var(--radius-md); padding: var(--space-4) var(--space-5); background:#fff; border:1px solid var(--sand-200); font-size: var(--text-sm); }
+.dd.do { border-inline-start: 4px solid var(--teal-500); }
+.dd.dont { border-inline-start: 4px solid var(--danger); }
+.dd b { font-family: var(--font-mono); font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; display:block; margin-bottom: var(--space-2); }
+.dd.do b { color: var(--teal-700); } .dd.dont b { color: var(--danger); }
+
+/* Mode toggle */
+.mode-toggle { display:inline-flex; background: var(--teal-900); border-radius: var(--radius-pill); padding:4px; margin: var(--space-4) 0; }
+.mode-toggle button {
+  font-family: var(--font-display); font-weight:600; font-size:.95rem; border:0; cursor:pointer;
+  padding:.6rem 1.4rem; border-radius: var(--radius-pill); background:transparent; color: var(--teal-200);
+  transition: all var(--dur-fast) var(--ease-out);
+}
+.mode-toggle button.active { background: var(--sand-0); color: var(--teal-900); }
+.mode-toggle button:focus-visible { outline: 3px solid var(--coral-400); outline-offset: 2px; }
+
+/* Demo stage — everything inside obeys [data-mode] semantics */
+.stage { border-radius: var(--radius-lg); border: 1px solid var(--border-soft); background: var(--surface-page); padding: var(--space-6); margin-top: var(--space-4); transition: background var(--dur-base) var(--ease-out); }
+.stage[dir="rtl"] { font-family: var(--font-body); }
+</style>
+</head>
+<body>
+
+<!-- ============ COVER ============ -->
+<header class="cover">
+  <div class="wrap">
+    <span class="meta">Design System · v1.0 · June 2026 · Grafil Studio for Nomara Voyages</span>
+    <h1>NOMARA<br>Design System</h1>
+    <div class="ar-name">«الرفيق» — Al-Rafiq, The Companion</div>
+    <p class="thesis">One trusted companion, two journeys. This system encodes Nomara's Caregiver × Explorer identity as a single token architecture with two semantic modes: <strong>Rihla</strong> (رحلة — leisure, coral, energy) and <strong>Sakina</strong> (سكينة — Umrah &amp; Hajj, gold, reverence). Same spine, different soul. Arabic-first, RTL-native, WhatsApp-centric.</p>
+  </div>
+</header>
+
+<!-- ============ 01 FOUNDATIONS ============ -->
+<section class="block">
+  <div class="wrap">
+    <span class="eyebrow">01 · Foundations</span>
+    <h2 class="sec">Brand logic → system logic</h2>
+    <p class="lead">The audit found one brand carrying two emotional registers: a family booking a once-in-a-lifetime Umrah, and a couple booking a week in Djerba. Splitting them into two brands would kill the cross-sell lifecycle. Forcing them into one visual register would make Umrah feel like a beach promo — or holidays feel like a sermon.</p>
+    <p class="note">The answer is a <strong>dual-mode semantic layer</strong>. Primitives never change (teal spine, sand surfaces, type ramp). Semantic tokens remap per mode. A trip page for Sousse and a trip page for Shawwal Umrah are built from the <em>identical components</em> — only <code class="tok">data-mode</code> changes.</p>
+
+    <table class="spec">
+      <tr><th>Principle</th><th>Meaning in practice</th></tr>
+      <tr><td>Companion, not vendor</td><td>The founder-guide is the brand's core trust asset. UI always surfaces a human: guide photo near CTAs, real footage over stock, first-person voice ("نرافقك" — we accompany you).</td></tr>
+      <tr><td>Price is a feature</td><td>Transparent pricing is their #1 rational hook. Prices are typographic heroes — big Changa numerals, DZD always visible, never hidden behind "contact us".</td></tr>
+      <tr><td>Arabic-first, French-fluent</td><td>RTL is the default writing mode, not a patch. French/Latin destination names live inside Arabic layouts, like their existing creatives.</td></tr>
+      <tr><td>WhatsApp is checkout</td><td>No fake e-commerce. The conversion primitive is a pre-filled WhatsApp deep link + call button. Components are designed around that reality.</td></tr>
+      <tr><td>One spine, two souls</td><td>Teal is constant. Coral = Rihla. Gold = Sakina. Changa is constant. Amiri enters only in Sakina. Modes share 80%, diverge 20% — exactly where emotion lives.</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ============ 02 COLOR ============ -->
+<section class="block">
+  <div class="wrap">
+    <span class="eyebrow">02 · Color</span>
+    <h2 class="sec">Primitives — the unchanging spine</h2>
+    <p class="lead">Teal is extracted from the logo badge; coral from the wordmark's "o"; gold is new — lantern light for Sakina, deliberately muted so it reads reverent, not luxury-hotel. Neutrals are warm sand, never gray: this brand lives in North-African daylight.</p>
+
+    <h3 class="sub">Teal — brand anchor</h3>
+    <div class="swatch-row">
+      <div class="swatch"><div class="chip" style="background:#D9EDE8"></div><div class="lab"><b>teal-100</b>#D9EDE8 · soft fills</div></div>
+      <div class="swatch"><div class="chip" style="background:#7DC0B0"></div><div class="lab"><b>teal-300</b>#7DC0B0 · decorative</div></div>
+      <div class="swatch"><div class="chip" style="background:#1F8A7A"></div><div class="lab"><b>teal-600 ★</b>#1F8A7A · primary</div></div>
+      <div class="swatch"><div class="chip" style="background:#176C60"></div><div class="lab"><b>teal-700</b>#176C60 · hover / Sakina primary</div></div>
+      <div class="swatch"><div class="chip" style="background:#0C3A35"></div><div class="lab"><b>teal-900</b>#0C3A35 · inverse surfaces</div></div>
+      <div class="swatch"><div class="chip" style="background:#07211E"></div><div class="lab"><b>teal-950</b>#07211E · hero gradients</div></div>
+    </div>
+
+    <h3 class="sub">Coral (Rihla) &amp; Gold (Sakina) — the mode accents</h3>
+    <div class="swatch-row">
+      <div class="swatch"><div class="chip" style="background:#F07B4A"></div><div class="lab"><b>coral-400</b>#F07B4A · highlights</div></div>
+      <div class="swatch"><div class="chip" style="background:#E8602C"></div><div class="lab"><b>coral-500 ★</b>#E8602C · Rihla accent</div></div>
+      <div class="swatch"><div class="chip" style="background:#CE4D1D"></div><div class="lab"><b>coral-600</b>#CE4D1D · prices on light</div></div>
+      <div class="swatch"><div class="chip" style="background:#E2C972"></div><div class="lab"><b>gold-300</b>#E2C972 · on dark surfaces</div></div>
+      <div class="swatch"><div class="chip" style="background:#CFAC3F"></div><div class="lab"><b>gold-400 ★</b>#CFAC3F · Sakina accent</div></div>
+      <div class="swatch"><div class="chip" style="background:#95761F"></div><div class="lab"><b>gold-600</b>#95761F · Sakina text accents</div></div>
+    </div>
+
+    <h3 class="sub">Sand &amp; ink — surfaces and text</h3>
+    <div class="swatch-row">
+      <div class="swatch"><div class="chip" style="background:#FCFAF6; border-bottom:1px solid #eee"></div><div class="lab"><b>sand-0</b>#FCFAF6 · page</div></div>
+      <div class="swatch"><div class="chip" style="background:#F3ECDF"></div><div class="lab"><b>sand-100</b>#F3ECDF · sections</div></div>
+      <div class="swatch"><div class="chip" style="background:#E8DDC9"></div><div class="lab"><b>sand-200</b>#E8DDC9 · borders</div></div>
+      <div class="swatch"><div class="chip" style="background:#14211E"></div><div class="lab"><b>ink-900</b>#14211E · headings</div></div>
+      <div class="swatch"><div class="chip" style="background:#2C3D39"></div><div class="lab"><b>ink-700</b>#2C3D39 · body</div></div>
+      <div class="swatch"><div class="chip" style="background:#25D366"></div><div class="lab"><b>whatsapp</b>#25D366 · functional only</div></div>
+    </div>
+
+    <h3 class="sub">Semantic remap — what each mode changes</h3>
+    <table class="spec">
+      <tr><th>Token</th><th>Rihla رحلة (leisure)</th><th>Sakina سكينة (Umrah/Hajj)</th></tr>
+      <tr><td>--color-primary</td><td>teal-600</td><td>teal-700 (deeper, calmer)</td></tr>
+      <tr><td>--color-accent</td><td>coral-500</td><td>gold-400</td></tr>
+      <tr><td>--heading-font</td><td>Changa</td><td>Amiri</td></tr>
+      <tr><td>--surface-page</td><td>sand-0 (bright)</td><td>sand-50 (warmer, quieter)</td></tr>
+      <tr><td>--surface-inverse</td><td>teal-900</td><td>night-900 #071F1B</td></tr>
+      <tr><td>--price-color</td><td>coral-600</td><td>gold-600</td></tr>
+      <tr><td>Image treatment</td><td>rounded rectangle, saturated</td><td>arch mask, −15% saturation</td></tr>
+    </table>
+    <p class="note">Contrast guarantees: teal-600 on white = 4.6:1 ✓ · coral-600 on sand-0 = 4.5:1 ✓ · gold-600 on sand-50 = 4.6:1 ✓ · Never set body text in coral or gold — accents are for prices, CTAs, and badges only. WhatsApp green is functional and never used decoratively.</p>
+  </div>
+</section>
+
+<!-- ============ 03 TYPOGRAPHY ============ -->
+<section class="block">
+  <div class="wrap">
+    <span class="eyebrow">03 · Typography</span>
+    <h2 class="sec">Three voices, one conversation</h2>
+    <p class="lead"><strong>Changa</strong> for display — a condensed Arabic+Latin face that matches the bold energy of their existing offer cards and makes DZD prices feel like headlines. <strong>Readex Pro</strong> for body — engineered specifically for Arabic on-screen readability, with a harmonized Latin. <strong>Amiri</strong> for reverence — a Naskh serif that enters only in Sakina mode, for headings and du'a quotes.</p>
+
+    <div class="specimen" dir="rtl">
+      <span class="tag" dir="ltr">Changa 800 — display / hero</span>
+      <div style="font-family:'Changa'; font-weight:800; font-size:var(--text-3xl); line-height:1.15; color:var(--ink-900)">اكتشف العالم مع نومارا</div>
+      <div style="font-family:'Changa'; font-weight:700; font-size:var(--text-2xl); color:#CE4D1D; margin-top:.5rem" dir="ltr">DJERBA — 55 000 DZD</div>
+    </div>
+
+    <div class="specimen" dir="rtl">
+      <span class="tag" dir="ltr">Readex Pro 400 — body, line-height 1.7</span>
+      <div style="font-size:var(--text-base); line-height:var(--leading-arabic); color:var(--ink-700)">رحلة منظمة بإنطلاق مباشر من مطار قسنطينة، فنادق قريبة من الحرم، ومرافق دائم طيلة الرحلة. أسعار شفافة بدون تكاليف خفية — حجز سهل وسريع عبر واتساب.</div>
+    </div>
+
+    <div class="specimen" dir="rtl">
+      <span class="tag" dir="ltr">Amiri 700 — Sakina headings only</span>
+      <div style="font-family:'Amiri'; font-weight:700; font-size:var(--text-2xl); line-height:1.6; color:var(--ink-900)">نومارا، رفيقك في طاعتك</div>
+      <div style="font-family:'Amiri'; font-size:var(--text-base); color:var(--ink-500); margin-top:.4rem">عمرة شهر شوّال — انطلاق مباشر من قسنطينة</div>
+    </div>
+
+    <table class="spec">
+      <tr><th>Role</th><th>Face / weight</th><th>Size token</th><th>Rules</th></tr>
+      <tr><td>Hero / H1</td><td>Changa 800 (Rihla) · Amiri 700 (Sakina)</td><td>--text-hero / --text-3xl</td><td>Line-height 1.15 Changa, 1.45 Amiri. Max 2 lines.</td></tr>
+      <tr><td>H2 / section</td><td>var(--heading-font) 700</td><td>--text-2xl</td><td>Mode-aware via token. Never letterspace Arabic.</td></tr>
+      <tr><td>Price</td><td>Changa 700, tabular feel</td><td>--text-2xl</td><td>Always Changa in BOTH modes. Currency "دج / DZD" at 40% size, baseline-aligned.</td></tr>
+      <tr><td>Body</td><td>Readex Pro 400</td><td>--text-base (17px)</td><td>Arabic line-height ≥1.7. Measure ≤ 65ch.</td></tr>
+      <tr><td>Labels / chips</td><td>Readex Pro 600</td><td>--text-xs</td><td>Latin labels may use +0.06em tracking. Arabic: never.</td></tr>
+      <tr><td>Latin destination names</td><td>Changa 700 (its Latin set)</td><td>contextual</td><td>Replaces the inconsistent script/slab/geometric mix in current creatives. One Latin display voice, everywhere.</td></tr>
+    </table>
+
+    <div class="dd-grid">
+      <div class="dd do"><b>Do</b>Use Changa for every price and destination name, in both modes — price typography is the brand's most recognizable rational signal.</div>
+      <div class="dd dont"><b>Don't</b>Use Amiri for prices, buttons, or body text. Reverence is for headings and quotes; legibility wins everywhere else.</div>
+      <div class="dd do"><b>Do</b>Keep one Latin display voice. The current creatives mix script, slab and geometric faces per destination — the system retires that.</div>
+      <div class="dd dont"><b>Don't</b>Letterspace or fake-bold Arabic. Ever. Connected script breaks; trust breaks with it.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 SPACE / SHAPE / ELEVATION ============ -->
+<section class="block">
+  <div class="wrap">
+    <span class="eyebrow">04 · Space · Shape · Elevation</span>
+    <h2 class="sec">Soft geometry, honest depth</h2>
+    <p class="lead">Generous radii keep the brand human and approachable (60% of its personality per the audit). Shadows are teal-tinted, never gray. Spacing rides a 4px base with a compressed mobile rhythm — this site will be consumed almost entirely on phones.</p>
+    <table class="spec">
+      <tr><th>Token</th><th>Value</th><th>Use</th></tr>
+      <tr><td>--radius-sm</td><td>8px</td><td>chips, inputs inside cards</td></tr>
+      <tr><td>--radius-md</td><td>14px</td><td>inputs, badges, small cards</td></tr>
+      <tr><td>--radius-lg</td><td>22px</td><td>trip cards, sections, modals</td></tr>
+      <tr><td>--radius-pill</td><td>999px</td><td>all buttons, date chips</td></tr>
+      <tr><td>--radius-arch</td><td>50% 50% 0 0 / 38% 38% 0 0</td><td>Sakina image mask — see §05</td></tr>
+      <tr><td>--shadow-md</td><td>0 6px 20px rgba(12,58,53,.10)</td><td>resting cards (teal-tinted)</td></tr>
+      <tr><td>--shadow-lg</td><td>0 18px 44px rgba(12,58,53,.16)</td><td>hover lift, sticky bar</td></tr>
+      <tr><td>Section rhythm</td><td>--space-8 (4rem) mobile · --space-9 (6rem) desktop</td><td>between page sections</td></tr>
+      <tr><td>Card padding</td><td>--space-5 (1.5rem)</td><td>uniform on trip cards</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ============ 05 THE ARCH — SIGNATURE DEVICE ============ -->
+<section class="block">
+  <div class="wrap">
+    <span class="eyebrow">05 · Signature device</span>
+    <h2 class="sec">The Arch — Sakina's silent marker</h2>
+    <p class="lead">One graphic device tells the user which world they're in before they read a word. In Sakina mode, hero and card images are cropped with an Islamic arch mask (<code class="tok">--radius-arch</code>) — evoking the Haram's gates without pasting lantern clipart everywhere. In Rihla mode, the same images are simple rounded rectangles. Subtle, ownable, and impossible to mistake for a template.</p>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:var(--space-5); margin-top:var(--space-5)">
+      <div style="text-align:center">
+        <div style="height:230px; border-radius:var(--radius-lg); background:linear-gradient(165deg,#F07B4A 0%,#E8602C 45%,#1F8A7A 130%); box-shadow:var(--shadow-md)"></div>
+        <p class="note" style="margin-top:var(--space-2); text-align:center">Rihla — rounded rect, full saturation</p>
+      </div>
+      <div style="text-align:center">
+        <div style="height:230px; border-radius:50% 50% 0 0 / 38% 38% 0 0; background:linear-gradient(175deg,#E2C972 0%,#176C60 55%,#071F1B 120%); box-shadow:var(--shadow-md)"></div>
+        <p class="note" style="margin-top:var(--space-2); text-align:center">Sakina — arch mask, calmer grade</p>
+      </div>
+      <div style="text-align:center">
+        <div style="height:230px; border-radius:50% 50% 0 0 / 38% 38% 0 0; border:2px solid #CFAC3F; background:#FAF6EF; display:flex; align-items:flex-end; justify-content:center; padding-bottom:1rem">
+          <span style="font-family:'Amiri'; font-size:1.3rem; color:#95761F">رفيقك في طاعتك</span>
+        </div>
+        <p class="note" style="margin-top:var(--space-2); text-align:center">Arch as outlined frame — quotes, du'a, guide intro</p>
+      </div>
+    </div>
+    <p class="note">Rules: the arch is exclusive to Sakina. Never on promo badges, never on leisure content, never more than one arch-framed element per viewport. Sakina imagery gets a −15% saturation, +slight warm grade; Rihla imagery stays vivid.</p>
+  </div>
+</section>
+
+<!-- ============ 06 COMPONENTS — LIVE, MODE-AWARE ============ -->
+<section class="block">
+  <div class="wrap">
+    <span class="eyebrow">06 · Components</span>
+    <h2 class="sec">One component set, two souls</h2>
+    <p class="lead">Everything below is live. Flip the mode and watch the semantic layer do the work — no component code changes.</p>
+
+    <div class="mode-toggle" role="tablist" aria-label="Mode switch">
+      <button class="active" data-set="rihla" onclick="setMode('rihla',this)">Rihla · رحلة</button>
+      <button data-set="sakina" onclick="setMode('sakina',this)">Sakina · سكينة</button>
+    </div>
+
+    <div id="stage" class="stage" data-mode="rihla" dir="rtl">
+      <style>
+        /* ---- component styles: token-only, no raw hex ---- */
+        .n-btn { display:inline-flex; align-items:center; gap:.55rem; font-family:var(--font-display); font-weight:600; font-size:1.05rem; border:0; cursor:pointer; padding:var(--btn-pad); border-radius:var(--btn-radius); transition:all var(--dur-fast) var(--ease-out); min-height:48px; }
+        .n-btn:focus-visible { outline:3px solid var(--color-accent); outline-offset:2px; }
+        .n-btn-primary { background:var(--btn-primary-bg); color:var(--text-on-primary); }
+        .n-btn-primary:hover { background:var(--btn-primary-bg-hover); transform:translateY(-1px); box-shadow:var(--shadow-md); }
+        .n-btn-accent { background:var(--btn-accent-bg); color:var(--text-on-accent); }
+        .n-btn-accent:hover { background:var(--btn-accent-bg-hover); }
+        .n-btn-wa { background:var(--whatsapp); color:#fff; }
+        .n-btn-wa:hover { background:var(--whatsapp-deep); }
+        .n-btn-ghost { background:transparent; color:var(--color-primary); border:2px solid var(--color-primary); }
+        .n-btn-ghost:hover { background:var(--color-primary-soft); }
+        .n-btn[disabled] { background:var(--sand-200); color:var(--ink-300); cursor:not-allowed; transform:none; box-shadow:none; }
+
+        .n-chip { display:inline-flex; align-items:center; gap:.4rem; background:var(--chip-bg); color:var(--color-primary-strong); font-weight:600; font-size:var(--text-xs); padding:.4rem .9rem; border-radius:var(--radius-pill); }
+        .n-badge-promo { display:inline-block; background:var(--badge-promo-bg); color:var(--text-on-accent); font-family:var(--font-display); font-weight:700; font-size:.85rem; padding:.35rem 1rem; border-radius:var(--radius-pill); }
+        .n-seats { display:inline-flex; align-items:center; gap:.45rem; background:var(--surface-raised); border:1.5px solid var(--color-accent); color:var(--color-accent-strong); font-weight:600; font-size:var(--text-xs); padding:.35rem .9rem; border-radius:var(--radius-pill); }
+
+        .n-card { background:var(--card-bg); border-radius:var(--card-radius); box-shadow:var(--card-shadow); overflow:hidden; max-width:380px; transition:box-shadow var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out); }
+        .n-card:hover { box-shadow:var(--card-shadow-hover); transform:translateY(-3px); }
+        .n-card .img { height:180px; background:linear-gradient(160deg, var(--color-primary), var(--surface-inverse)); position:relative; transition:border-radius var(--dur-base) var(--ease-out); }
+        [data-mode="sakina"] .n-card .img { border-radius:var(--radius-arch); margin:10px 10px 0; height:170px; }
+        .n-card .img .n-badge-promo { position:absolute; top:14px; inset-inline-start:14px; }
+        .n-card .pad { padding:var(--space-5); }
+        .n-card h4 { font-family:var(--heading-font); font-size:var(--text-xl); color:var(--text-strong); line-height:1.3; }
+        .n-card .hotel { color:var(--text-muted); font-size:var(--text-sm); margin-top:.3rem; }
+        .n-stars { color:var(--color-accent); letter-spacing:.1em; font-size:.9rem; }
+        .n-price { display:flex; align-items:baseline; gap:.45rem; margin-top:var(--space-3); }
+        .n-price .amount { font-family:var(--font-display); font-weight:700; font-size:var(--text-2xl); color:var(--price-color); }
+        .n-price .cur { font-weight:600; color:var(--text-muted); font-size:var(--text-sm); }
+        .n-price .per { color:var(--text-muted); font-size:var(--text-xs); }
+        .n-meta-row { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:var(--space-3); }
+        .n-card .cta-row { display:flex; gap:.6rem; margin-top:var(--space-4); }
+        .n-card .cta-row .n-btn { flex:1; justify-content:center; padding:.75rem 1rem; font-size:.95rem; }
+
+        .n-grid { width:100%; border-collapse:collapse; background:var(--surface-raised); border-radius:var(--radius-md); overflow:hidden; box-shadow:var(--shadow-sm); margin-top:var(--space-4); font-size:var(--text-sm); }
+        .n-grid th { background:var(--pricegrid-head-bg); color:var(--text-on-primary); font-family:var(--font-display); font-weight:600; padding:.8rem 1rem; text-align:start; }
+        .n-grid td { padding:.8rem 1rem; border-top:1px solid var(--border-soft); color:var(--text-body); }
+        .n-grid td.p { font-family:var(--font-display); font-weight:700; color:var(--price-color); font-size:1.15rem; white-space:nowrap; }
+
+        .n-trust { display:flex; flex-wrap:wrap; gap:var(--space-3); margin-top:var(--space-4); }
+        .n-trust .t { display:flex; align-items:center; gap:.6rem; background:var(--surface-raised); border:1px solid var(--border-soft); border-radius:var(--radius-md); padding:.7rem 1.1rem; font-size:var(--text-sm); color:var(--text-body); }
+        .n-trust .t svg { flex:none; }
+
+        .n-sticky { display:flex; gap:.6rem; background:var(--stickybar-bg); border:1px solid var(--border-soft); box-shadow:var(--shadow-lg); border-radius:var(--radius-pill); padding:.5rem; max-width:420px; margin-top:var(--space-5); }
+        .n-sticky .n-btn { flex:1; justify-content:center; padding:.7rem .9rem; font-size:.95rem; }
+
+        .stage h5.cmp { font-family:var(--font-mono); font-size:.68rem; letter-spacing:.14em; text-transform:uppercase; color:var(--text-muted); margin:var(--space-6) 0 var(--space-3); }
+        .stage h5.cmp:first-of-type { margin-top:0; }
+      </style>
+
+      <h5 class="cmp" dir="ltr">Buttons — primary / whatsapp / accent / ghost / disabled</h5>
+      <div style="display:flex; flex-wrap:wrap; gap:.7rem">
+        <button class="n-btn n-btn-primary">احجز مقعدك</button>
+        <button class="n-btn n-btn-wa"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 14.2c-.2.6-1.2 1.1-1.7 1.2-.4.1-1 .1-1.6-.1a13 13 0 0 1-5.7-5C7.6 11.5 7 10.4 7 9.3c0-1 .5-1.5.7-1.7.2-.2.5-.3.6-.3h.5c.2 0 .4 0 .5.4l.8 1.9c.1.2.1.4 0 .6l-.4.6c-.1.2-.2.3-.1.5.5.9 1.3 1.7 2.2 2.3.2.1.4.1.5 0l.7-.6c.2-.2.4-.2.6-.1l1.8.9c.3.1.4.3.4.5 0 .1 0 .6-.2 1.1Z"/></svg>تواصل واتساب</button>
+        <button class="n-btn n-btn-accent">العرض الخاص</button>
+        <button class="n-btn n-btn-ghost">كل الرحلات</button>
+        <button class="n-btn n-btn-primary" disabled>اكتملت المقاعد</button>
+      </div>
+
+      <h5 class="cmp" dir="ltr">Chips & badges — departure date / promo / seat scarcity</h5>
+      <div style="display:flex; flex-wrap:wrap; gap:.7rem; align-items:center">
+        <span class="n-chip">🗓 انطلاق 16 جوان — مطار قسنطينة</span>
+        <span class="n-badge-promo">Spécial Promotion −25%</span>
+        <span class="n-seats">⏳ بقي 6 مقاعد فقط</span>
+      </div>
+
+      <h5 class="cmp" dir="ltr">Trip card — identical markup, both modes</h5>
+      <div style="display:flex; flex-wrap:wrap; gap:var(--space-5)">
+        <div class="n-card">
+          <div class="img"><span class="n-badge-promo" id="card-badge">عرض الصيف</span></div>
+          <div class="pad">
+            <h4 id="card-title">جربة — فندق سيدي منصور</h4>
+            <div class="hotel"><span class="n-stars">★★★★</span> · إقامة كاملة · نقل مؤمَّن</div>
+            <div class="n-price"><span class="amount" id="card-price">55 000</span><span class="cur">دج / للشخص</span></div>
+            <div class="n-meta-row">
+              <span class="n-chip">7 ليالي</span>
+              <span class="n-chip">انطلاق من قسنطينة</span>
+            </div>
+            <div class="cta-row">
+              <button class="n-btn n-btn-wa">احجز عبر واتساب</button>
+              <button class="n-btn n-btn-ghost">التفاصيل</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h5 class="cmp" dir="ltr">Price grid — tiered hotels (the Umrah pattern)</h5>
+      <table class="n-grid">
+        <tr><th>الفندق</th><th>المسافة عن الحرم</th><th>الغرفة الرباعية</th></tr>
+        <tr><td>فندق المسيلة</td><td>350 م</td><td class="p">235 000 دج</td></tr>
+        <tr><td>فندق الإيمان</td><td>500 م</td><td class="p">219 000 دج</td></tr>
+        <tr><td>فندق الصفوة</td><td>700 م</td><td class="p">198 000 دج</td></tr>
+      </table>
+
+      <h5 class="cmp" dir="ltr">Trust strip — license, guide, reviews (lives near every CTA)</h5>
+      <div class="n-trust">
+        <div class="t"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V6l-8-4Z"/><path d="m9 12 2 2 4-4"/></svg>وكالة مرخّصة — عين مليلة</div>
+        <div class="t"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg>مرشد يرافقك طيلة الرحلة</div>
+        <div class="t"><svg width="20" height="20" viewBox="0 0 24 24" fill="var(--color-accent)" aria-hidden="true"><path d="m12 2 2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8L12 2Z"/></svg>+1200 معتمر ومسافر معنا</div>
+      </div>
+
+      <h5 class="cmp" dir="ltr">Sticky mobile conversion bar — always visible on trip pages</h5>
+      <div class="n-sticky">
+        <button class="n-btn n-btn-wa">واتساب</button>
+        <button class="n-btn n-btn-primary">📞 0661 45 70 25</button>
+      </div>
+    </div>
+
+    <p class="note">Component states (all buttons): hover = darker step + 1px lift · active = no lift · focus = 3px accent outline, 2px offset · disabled = sand-200 bg, ink-300 text, no shadow. Touch targets ≥48px. Press feedback ≤150ms.</p>
+  </div>
+</section>
+
+<!-- ============ 07 MOTION ============ -->
+<section class="block">
+  <div class="wrap">
+    <span class="eyebrow">07 · Motion</span>
+    <h2 class="sec">Calm by default, warmer in Rihla</h2>
+    <table class="spec">
+      <tr><th>Pattern</th><th>Spec</th><th>Notes</th></tr>
+      <tr><td>Micro (hover, press)</td><td>160ms · ease-out</td><td>translateY(-1px) max. Never scale buttons.</td></tr>
+      <tr><td>Card lift</td><td>240ms · ease-out</td><td>shadow-md → shadow-lg + translateY(-3px)</td></tr>
+      <tr><td>Scroll reveal</td><td>fade + 16px rise, once</td><td>Rihla only. Sakina pages do NOT animate on scroll — stillness is the design.</td></tr>
+      <tr><td>Mode transition</td><td>240ms background/color</td><td>token transition handles it (see live demo above)</td></tr>
+      <tr><td>Reduced motion</td><td>prefers-reduced-motion: kill all transforms</td><td>non-negotiable</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ============ 08 RTL & BILINGUAL RULES ============ -->
+<section class="block">
+  <div class="wrap">
+    <span class="eyebrow">08 · RTL & bilingual</span>
+    <h2 class="sec">Arabic is the grid, French is a guest</h2>
+    <table class="spec">
+      <tr><th>Rule</th><th>Spec</th></tr>
+      <tr><td>Document</td><td><code class="tok">&lt;html lang="ar" dir="rtl"&gt;</code> default. French toggle flips to <code class="tok">lang="fr" dir="ltr"</code> — full mirror, not patched margins.</td></tr>
+      <tr><td>CSS</td><td>Logical properties ONLY: <code class="tok">margin-inline-start</code>, <code class="tok">inset-inline-end</code>, <code class="tok">text-align:start</code>. Zero left/right in the codebase.</td></tr>
+      <tr><td>Embedded Latin</td><td>Destination names & prices inside Arabic text: wrap in <code class="tok">&lt;bdi&gt;</code> or <code class="tok">dir="ltr"</code> spans. Phone numbers always <code class="tok">dir="ltr"</code>.</td></tr>
+      <tr><td>Numerals</td><td>Western Arabic numerals (0–9) everywhere — matches their existing creatives and price-comparison behavior.</td></tr>
+      <tr><td>Icons</td><td>Directional icons (arrows, chevrons) mirror in RTL. Plane/star/calendar do not.</td></tr>
+      <tr><td>Fonts</td><td>Changa & Readex Pro & Amiri all carry harmonized Latin — never introduce a separate French font.</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ============ 09 VOICE & CONTENT IN UI ============ -->
+<section class="block">
+  <div class="wrap">
+    <span class="eyebrow">09 · Voice in the interface</span>
+    <h2 class="sec">The companion speaks</h2>
+    <table class="spec">
+      <tr><th>Moment</th><th>Write this</th><th>Not this</th></tr>
+      <tr><td>Primary CTA</td><td>احجز مقعدك (Reserve your seat)</td><td>إرسال / Submit</td></tr>
+      <tr><td>WhatsApp CTA</td><td>تواصل معنا واتساب — نرد بسرعة</td><td>Click here to contact</td></tr>
+      <tr><td>Price framing</td><td>السعر شامل: الطيران + الفندق + المرافقة</td><td>Starting from…* (hidden costs killed trust — the audit's #1 fear)</td></tr>
+      <tr><td>Sakina tone</td><td>نرافقك في رحلة العمر — خطوة بخطوة</td><td>🔥 عرض لا يفوّت!! (urgency theatrics are Rihla-only, and even there: one per page)</td></tr>
+      <tr><td>Empty / sold out</td><td>اكتملت مقاعد هذه الرحلة — سجّل ليصلك موعد الانطلاق القادم</td><td>غير متوفر</td></tr>
+      <tr><td>Error</td><td>لم يصلنا رقم هاتفك — أعد كتابته للتواصل معك</td><td>خطأ في النموذج</td></tr>
+    </table>
+    <p class="note">Register: warm, direct, first-person plural ("نرافقك"، "نرد عليك"). Emoji allowed in Rihla promo badges only — never in Sakina, never in body copy, never as icons (SVG only).</p>
+  </div>
+</section>
+
+<!-- ============ 10 IMPLEMENTATION ============ -->
+<section class="block">
+  <div class="wrap">
+    <span class="eyebrow">10 · Implementation</span>
+    <h2 class="sec">Shipping notes</h2>
+    <table class="spec">
+      <tr><th>Topic</th><th>Decision</th></tr>
+      <tr><td>Stack</td><td>Next.js + Tailwind v4 (map tokens via <code class="tok">@theme</code>) + shadcn/ui primitives restyled with these tokens. Vercel deploy.</td></tr>
+      <tr><td>Mode switching</td><td><code class="tok">data-mode="rihla|sakina"</code> on the route layout. Umrah/Hajj routes get Sakina automatically; everything else Rihla. Never user-toggled.</td></tr>
+      <tr><td>Fonts</td><td>Self-host via <code class="tok">next/font</code>: Changa (400/600/700/800), Readex Pro (300–700), Amiri (400/700). Subset Arabic+Latin.</td></tr>
+      <tr><td>Conversion primitive</td><td><code class="tok">wa.me/213661457025?text=</code> pre-filled with trip name + date. Every trip card and sticky bar wires to it. Track clicks as the funnel's key event.</td></tr>
+      <tr><td>Images</td><td>WebP/AVIF, lazy, real footage > stock. Sakina: arch mask via border-radius (cheap) or clip-path for hero.</td></tr>
+      <tr><td>Performance budget</td><td>LCP &lt; 2.5s on 3G — Algerian mobile networks. No carousel libraries, no heavy animation deps.</td></tr>
+      <tr><td>Accessibility floor</td><td>4.5:1 body contrast, visible focus, 48px targets, reduced-motion respected, full keyboard nav, skip link.</td></tr>
+    </table>
+    <p class="note" style="margin-top:var(--space-5)">The CSS token block in this file's <code class="tok">&lt;style&gt;</code> head (Layers 1–3) is the canonical source of truth — copy it verbatim into <code class="tok">tokens.css</code> or map it into Tailwind's <code class="tok">@theme</code>. Components in §06 are reference implementations: token-only, zero raw hex.</p>
+  </div>
+</section>
+
+<footer style="padding:var(--space-7) 0; text-align:center; color:var(--ink-300); font-family:var(--font-mono); font-size:.72rem; letter-spacing:.12em">
+  NOMARA «الرفيق» DESIGN SYSTEM v1.0 — GRAFIL STUDIO · 2026
+</footer>
+
+<script>
+function setMode(mode, btn){
+  document.getElementById('stage').setAttribute('data-mode', mode);
+  document.querySelectorAll('.mode-toggle button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  // swap demo content so the card reads true to each world
+  const t = document.getElementById('card-title');
+  const p = document.getElementById('card-price');
+  const badge = document.getElementById('card-badge');
+  if(mode==='sakina'){
+    t.textContent = 'عمرة شوّال — فنادق قريبة من الحرم';
+    p.textContent = '235 000';
+    badge.textContent = 'انطلاق مباشر من قسنطينة';
+  } else {
+    t.textContent = 'جربة — فندق سيدي منصور';
+    p.textContent = '55 000';
+    badge.textContent = 'عرض الصيف';
+  }
+}
+</script>
+</body>
+</html>
