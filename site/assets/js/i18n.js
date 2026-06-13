@@ -716,6 +716,15 @@
     'تونس — جربة وسوسة': 'Tunisie — Djerba & Sousse',
     'مصر — القاهرة والغردقة': 'Égypte — Le Caire & Hurghada',
     'العمرة والحج من قسنطينة': 'Omra & Hajj depuis Constantine',
+    'النفقات الشخصية والهدايا': 'Les dépenses personnelles et les cadeaux',
+    'الهدي أو الأضحية إن رغبت': 'Le hady ou le sacrifice, si vous le souhaitez',
+    'الجولات والزيارات الاختيارية غير المذكورة': 'Les visites et excursions optionnelles non mentionnées',
+    'الوجبات غير المذكورة في الباقة': 'Les repas non inclus dans le forfait',
+    'أي رسوم رسمية تستجد تفرضها الجهات المختصة': 'Tout frais officiel nouvellement imposé par les autorités compétentes',
+    'بعد العمرة': 'Après l’Omra',
+    'اكتشف وجهاتنا': 'Découvrez nos destinations',
+    'كل الرحلات المنظمة': 'Tous les voyages organisés',
+    'تونس · تركيا · أذربيجان · ماليزيا · مصر': 'Tunisie · Turquie · Azerbaïdjan · Malaisie · Égypte',
 };
 
   var textNodeSources = new WeakMap();
