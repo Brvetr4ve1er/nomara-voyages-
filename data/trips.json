@@ -1,0 +1,138 @@
+[
+  {
+    "slug": "tunisie",
+    "country_ar": "تونس",
+    "country_fr": "Tunisie",
+    "title_ar": "رحلة تونس المنظمة",
+    "pillar": "rihla",
+    "tier": "core",
+    "hero": "/assets/images/heroes/hero__tunisie",
+    "price_dzd": 36000,
+    "price_todo": true,
+    "nights": 7,
+    "departure_hub_ar": "مطار قسنطينة",
+    "wa_text_ar": "السلام عليكم، أريد الحجز في رحلة تونس المنظمة. ما هي التفاصيل والمواعيد المتاحة؟",
+    "hotels": [
+      { "name_ar": "جربة — فندق سيدي منصور", "name_fr": "Djerba — Hôtel Sidi Mansour", "stars": 4, "board_ar": "إقامة كاملة (Full Board)", "price_dzd": 55000 },
+      { "name_ar": "سوسة بالاس", "name_fr": "Sousse Palace", "stars": 4, "board_ar": "نصف إقامة", "price_dzd": 40000 },
+      { "name_ar": "سوسة مانتاغو", "name_fr": "Sousse Mantago", "stars": 3, "board_ar": "نصف إقامة", "price_dzd": 36000 }
+    ],
+    "includes_ar": [
+      "تذكرة الطيران ذهابًا وإيابًا من مطار قسنطينة",
+      "الإقامة في الفندق المختار",
+      "النقل من وإلى المطار",
+      "مرافقة فريق نومارا طوال الرحلة"
+    ]
+  },
+  {
+    "slug": "turquie",
+    "country_ar": "تركيا",
+    "country_fr": "Turquie",
+    "title_ar": "رحلة إسطنبول المنظمة",
+    "pillar": "rihla",
+    "tier": "premium",
+    "hero": "/assets/images/heroes/hero__turquie",
+    "price_dzd": 119000,
+    "price_todo": true,
+    "nights": 7,
+    "departure_hub_ar": "مطار قسنطينة",
+    "wa_text_ar": "السلام عليكم، أريد الحجز في رحلة إسطنبول (تركيا). ما هي التفاصيل والمواعيد المتاحة؟",
+    "hotels": [
+      { "name_ar": "فندق ٤ نجوم في إسطنبول", "name_fr": "Hôtel 4★ Istanbul", "stars": 4, "board_ar": "مع الفطور", "price_dzd": 119000 }
+    ],
+    "includes_ar": [
+      "تذكرة الطيران ذهابًا وإيابًا من مطار قسنطينة",
+      "الإقامة في فندق ٤ نجوم مع الفطور",
+      "جولات سياحية في معالم إسطنبول",
+      "مرافقة فريق نومارا طوال الرحلة"
+    ]
+  },
+  {
+    "slug": "azerbaidjan",
+    "country_ar": "أذربيجان",
+    "country_fr": "Azerbaïdjan",
+    "title_ar": "رحلة باكو المنظمة",
+    "pillar": "rihla",
+    "tier": "premium",
+    "hero": "/assets/images/heroes/hero__azerbaidjan",
+    "price_dzd": 119000,
+    "price_todo": true,
+    "nights": 7,
+    "departure_hub_ar": "مطار قسنطينة",
+    "wa_text_ar": "السلام عليكم، أريد الحجز في رحلة باكو (أذربيجان). ما هي التفاصيل والمواعيد المتاحة؟",
+    "hotels": [
+      { "name_ar": "فندق ٤ نجوم في باكو", "name_fr": "Hôtel 4★ Bakou", "stars": 4, "board_ar": "مع الفطور", "price_dzd": 119000 }
+    ],
+    "includes_ar": [
+      "تذكرة الطيران ذهابًا وإيابًا من مطار قسنطينة",
+      "الإقامة في فندق ٤ نجوم مع الفطور",
+      "جولات سياحية في باكو وضواحيها",
+      "مرافقة فريق نومارا طوال الرحلة"
+    ]
+  },
+  {
+    "slug": "malaisie",
+    "country_ar": "ماليزيا",
+    "country_fr": "Malaisie",
+    "title_ar": "رحلة ماليزيا المنظمة",
+    "pillar": "rihla",
+    "tier": "premium",
+    "hero": "/assets/images/heroes/hero__malaisie",
+    "price_dzd": 199000,
+    "price_todo": true,
+    "nights": 8,
+    "departure_hub_ar": "مطار قسنطينة",
+    "wa_text_ar": "السلام عليكم، أريد الحجز في رحلة ماليزيا المنظمة. ما هي التفاصيل والمواعيد المتاحة؟",
+    "hotels": [
+      { "name_ar": "فندق ٤ نجوم في كوالالمبور", "name_fr": "Hôtel 4★ Kuala Lumpur", "stars": 4, "board_ar": "مع الفطور", "price_dzd": 199000 }
+    ],
+    "includes_ar": [
+      "تذكرة الطيران ذهابًا وإيابًا من مطار قسنطينة",
+      "الإقامة في فندق ٤ نجوم مع الفطور",
+      "جولات بين كوالالمبور والجزر السياحية",
+      "مرافقة فريق نومارا طوال الرحلة"
+    ]
+  },
+  {
+    "slug": "egypte",
+    "country_ar": "مصر",
+    "country_fr": "Égypte",
+    "title_ar": "رحلة مصر المنظمة",
+    "pillar": "rihla",
+    "tier": "core",
+    "hero": "/assets/images/heroes/hero__egypte",
+    "price_dzd": null,
+    "price_todo": true,
+    "nights": 7,
+    "departure_hub_ar": "مطار قسنطينة",
+    "wa_text_ar": "السلام عليكم، أريد الحجز في رحلة مصر المنظمة. ما هي التفاصيل والمواعيد المتاحة؟",
+    "sub_offers": [
+      {
+        "key": "caire",
+        "title_ar": "رحلة القاهرة",
+        "title_fr": "Le Caire",
+        "price_dzd": null,
+        "price_todo": true,
+        "blurb_ar": "اكتشف الأهرامات وأبو الهول والقاهرة التاريخية مع جولات منظمة ومرافقة كاملة. السعر والمواعيد قيد التأكيد.",
+        "wa_text_ar": "السلام عليكم، أريد الحجز في رحلة القاهرة (مصر). ما هي التفاصيل والمواعيد المتاحة؟"
+      },
+      {
+        "key": "hurghada",
+        "title_ar": "الغردقة — Collection Mirage",
+        "title_fr": "Hurghada — Collection Mirage",
+        "promo_pct": 25,
+        "price_dzd": null,
+        "price_todo": true,
+        "blurb_ar": "منتجع البحر الأحمر بإطلالات ساحرة وشواطئ صافية — عرض خاص بتخفيض ٢٥٪ لفترة محدودة.",
+        "wa_text_ar": "السلام عليكم، أريد الاستفادة من عرض الغردقة Collection Mirage بتخفيض ٢٥٪. ما هي التفاصيل والمواعيد المتاحة؟"
+      }
+    ],
+    "hotels": [],
+    "includes_ar": [
+      "تذكرة الطيران ذهابًا وإيابًا من مطار قسنطينة",
+      "الإقامة في الفندق أو المنتجع المختار",
+      "النقل والجولات المنظمة",
+      "مرافقة فريق نومارا طوال الرحلة"
+    ]
+  }
+]

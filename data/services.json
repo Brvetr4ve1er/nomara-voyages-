@@ -1,0 +1,49 @@
+[
+  {
+    "slug": "omra",
+    "label_ar": "العمرة والحج",
+    "label_fr": "Omra & Hajj",
+    "pillar": "flagship",
+    "icon": "kaaba",
+    "href": "/omra/",
+    "blurb_ar": "نرافقك في رحلة العمر خطوة بخطوة — طيران مباشر من قسنطينة، فنادق قريبة من الحرم، ومرافقة لا تتركك وحدك في أي لحظة."
+  },
+  {
+    "slug": "voyages",
+    "label_ar": "الرحلات المنظمة",
+    "label_fr": "Voyages organisés",
+    "pillar": "flagship",
+    "icon": "compass",
+    "href": "/voyages/",
+    "blurb_ar": "رحلات منظمة بالكامل إلى تونس وتركيا وأذربيجان وماليزيا ومصر — تذكرة وفندق ومرافقة في سعر واحد واضح، تنطلق من قسنطينة."
+  },
+  {
+    "slug": "hotellerie",
+    "label_ar": "حجز الفنادق",
+    "label_fr": "Hôtellerie",
+    "pillar": "ancillary",
+    "icon": "bed",
+    "href": "/services/hotellerie/",
+    "blurb_ar": "نحجز لك الغرفة المناسبة في أي وجهة، بأسعار تفاوضنا عليها لك — تصلك التفاصيل والتأكيد عبر واتساب دون عناء البحث."
+  },
+  {
+    "slug": "vols",
+    "label_ar": "حجز التذاكر",
+    "label_fr": "Billetterie / Vols",
+    "pillar": "ancillary",
+    "icon": "plane",
+    "href": "/services/vols/",
+    "blurb_ar": "نقارن لك بين شركات الطيران ونجد أفضل سعر لرحلتك انطلاقًا من قسنطينة — تذاكر مؤكدة وأسعار شفافة دون مفاجآت."
+  },
+  {
+    "slug": "visa",
+    "label_ar": "خدمات التأشيرة",
+    "label_fr": "Assistance visa",
+    "pillar": "ancillary",
+    "icon": "passport",
+    "href": "/services/visa/",
+    "low_confidence": true,
+    "todo_client": true,
+    "blurb_ar": "نساعدك في تحضير ملف التأشيرة وترتيب الوثائق المطلوبة لوجهتك — نرافقك في الخطوات بصدق ووضوح، دون وعود لا نملكها."
+  }
+]
