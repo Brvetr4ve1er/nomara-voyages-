@@ -1,0 +1,924 @@
+/* ============================================================
+   NOMARA VOYAGES — styles.css
+   ONE file. Order: tokens (canonical paste) → foundation →
+   global RTL base → kill switches → components → site chrome →
+   section helpers → mode rules.
+
+   RULES (PLAN.md §1):
+   - Tokens only. Zero raw hex outside the token paste below, except
+     the documented photo-overlay legibility locks (Alliance S5).
+   - Logical properties ONLY. Zero left/right/margin-left/etc.
+     Document default is RTL (lang="ar" dir="rtl").
+   - Mobile-first. Touch ≥48px. Contrast ≥4.5:1.
+   ============================================================ */
+
+/* ============================================================
+   ░░ LAYER 1–3 · CANONICAL TOKEN PASTE ░░
+   Copied VERBATIM from docs/design-system.html <style> head.
+   Do not edit — this is the canonical source of truth.
+   ============================================================ */
+/* ============================================================
+   NOMARA DESIGN SYSTEM — «الرفيق» (Al-Rafiq / The Companion)
+   v1.0 — Token architecture: primitive → semantic → component
+   ============================================================ */
+
+:root {
+  /* ---------- LAYER 1 · PRIMITIVES ---------- */
+  /* Teal — extracted from the Nomara logo badge */
+  --teal-50:  #EFF7F5;
+  --teal-100: #D9EDE8;
+  --teal-200: #B0DACF;
+  --teal-300: #7DC0B0;
+  --teal-400: #4BA391;
+  --teal-500: #2B927E;
+  --teal-600: #1F8A7A;   /* ← brand anchor */
+  --teal-700: #176C60;
+  --teal-800: #11514A;
+  --teal-900: #0C3A35;
+  --teal-950: #07211E;
+
+  /* Coral — the "o" accent in the wordmark · Rihla energy */
+  --coral-300: #F5A37E;
+  --coral-400: #F07B4A;
+  --coral-500: #E8602C;
+  --coral-600: #CE4D1D;
+  --coral-700: #A83E18;
+
+  /* Gold — Sakina reverence · lantern light, not luxury bling */
+  --gold-200: #EFDFA8;
+  --gold-300: #E2C972;
+  --gold-400: #CFAC3F;
+  --gold-500: #B8932B;
+  --gold-600: #95761F;
+
+  /* Sand neutrals — warm, paper-like, North-African light */
+  --sand-0:   #FCFAF6;
+  --sand-50:  #FAF6EF;
+  --sand-100: #F3ECDF;
+  --sand-200: #E8DDC9;
+  --sand-300: #D5C6AB;
+
+  /* Ink — teal-tinted darks (never pure black) */
+  --ink-900: #14211E;
+  --ink-700: #2C3D39;
+  --ink-500: #51635E;
+  --ink-300: #8A9894;
+
+  /* Night — Sakina deep surfaces */
+  --night-800: #0A2D28;
+  --night-900: #071F1B;
+
+  /* Functional */
+  --whatsapp: #25D366;
+  --whatsapp-deep: #128C5E;
+  --danger: #C73E1D;
+  --success: var(--teal-500);
+
+  /* ---------- TYPE PRIMITIVES ---------- */
+  --font-display: 'Changa', sans-serif;        /* AR+LAT condensed — offers, prices, destinations */
+  --font-body: 'Readex Pro', sans-serif;       /* AR+LAT, engineered for Arabic readability */
+  --font-reverent: 'Amiri', serif;             /* Naskh serif — Sakina headings & du'a quotes */
+  --font-mono: 'Space Mono', monospace;        /* doc chrome only, not product UI */
+
+  /* Fluid type scale (mobile-first, 1.25 ratio desktop) */
+  --text-xs:   0.8125rem;
+  --text-sm:   0.9375rem;
+  --text-base: 1.0625rem;                      /* 17px base — Arabic needs the extra px */
+  --text-lg:   clamp(1.125rem, 1rem + 0.6vw, 1.375rem);
+  --text-xl:   clamp(1.375rem, 1.15rem + 1vw, 1.75rem);
+  --text-2xl:  clamp(1.75rem, 1.4rem + 1.6vw, 2.5rem);
+  --text-3xl:  clamp(2.25rem, 1.6rem + 2.8vw, 3.5rem);
+  --text-hero: clamp(2.75rem, 1.8rem + 4.5vw, 5rem);
+
+  --leading-tight: 1.15;
+  --leading-arabic: 1.7;                       /* Arabic body NEVER below 1.65 */
+  --leading-latin: 1.55;
+
+  /* ---------- SPACE / RADIUS / ELEVATION ---------- */
+  --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem;
+  --space-4: 1rem;    --space-5: 1.5rem; --space-6: 2rem;
+  --space-7: 3rem;    --space-8: 4rem;   --space-9: 6rem;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+  --radius-arch: 50% 50% 0 0 / 38% 38% 0 0;    /* the Sakina arch mask */
+
+  --shadow-sm: 0 1px 3px rgba(12,58,53,.08);
+  --shadow-md: 0 6px 20px rgba(12,58,53,.10);
+  --shadow-lg: 0 18px 44px rgba(12,58,53,.16);
+
+  --ease-out: cubic-bezier(.22,.8,.36,1);
+  --dur-fast: 160ms; --dur-base: 240ms;
+}
+
+/* ---------- LAYER 2 · SEMANTIC — RIHLA MODE (default) ----------
+   رحلة — leisure, discovery, energy. Coral accent, bright sand. */
+:root, [data-mode="rihla"] {
+  --color-primary: var(--teal-600);
+  --color-primary-strong: var(--teal-700);
+  --color-primary-soft: var(--teal-100);
+  --color-accent: var(--coral-500);
+  --color-accent-strong: var(--coral-600);
+  --color-accent-soft: #FBE9DF;
+  --surface-page: var(--sand-0);
+  --surface-raised: #FFFFFF;
+  --surface-inverse: var(--teal-900);
+  --text-strong: var(--ink-900);
+  --text-body: var(--ink-700);
+  --text-muted: var(--ink-500);
+  --text-on-primary: #FFFFFF;
+  --text-on-accent: #FFFFFF;
+  --border-soft: var(--sand-200);
+  --heading-font: var(--font-display);
+  --price-color: var(--color-accent-strong);
+  --chip-bg: var(--teal-50);
+}
+
+/* ---------- LAYER 2 · SEMANTIC — SAKINA MODE ----------
+   سكينة — Umrah & Hajj. Same teal spine; gold replaces coral,
+   Amiri enters for headings, surfaces deepen and calm down. */
+[data-mode="sakina"] {
+  --color-primary: var(--teal-700);
+  --color-primary-strong: var(--teal-800);
+  --color-primary-soft: var(--teal-100);
+  --color-accent: var(--gold-400);
+  --color-accent-strong: var(--gold-500);
+  --color-accent-soft: #F6EFD8;
+  --surface-page: var(--sand-50);
+  --surface-raised: #FFFFFF;
+  --surface-inverse: var(--night-900);
+  --text-strong: var(--ink-900);
+  --text-body: var(--ink-700);
+  --text-muted: var(--ink-500);
+  --text-on-primary: #FFFFFF;
+  --text-on-accent: var(--ink-900);
+  --border-soft: var(--sand-200);
+  --heading-font: var(--font-reverent);
+  --price-color: var(--gold-600);
+  --chip-bg: var(--color-accent-soft);
+}
+
+/* ---------- LAYER 3 · COMPONENT TOKENS ---------- */
+:root, [data-mode] {
+  --btn-radius: var(--radius-pill);
+  --btn-pad: 0.875rem 1.75rem;
+  --btn-primary-bg: var(--color-primary);
+  --btn-primary-bg-hover: var(--color-primary-strong);
+  --btn-accent-bg: var(--color-accent);
+  --btn-accent-bg-hover: var(--color-accent-strong);
+  --card-radius: var(--radius-lg);
+  --card-bg: var(--surface-raised);
+  --card-shadow: var(--shadow-md);
+  --card-shadow-hover: var(--shadow-lg);
+  --input-radius: var(--radius-md);
+  --input-border: var(--border-soft);
+  --badge-promo-bg: var(--color-accent);
+  --pricegrid-head-bg: var(--color-primary);
+  --stickybar-bg: var(--surface-raised);
+}
+/* ░░ END CANONICAL TOKEN PASTE ░░ */
+
+
+/* ============================================================
+   ░░ FOUNDATION LAYER (Alliance S4) ░░
+   Z-index ladder, chrome heights, touch + container tokens.
+   Added on top of the canonical paste — not part of it.
+   ============================================================ */
+:root {
+  /* Pure white — for white text/icons on dark chrome (footer inverse
+     surface, hero photo scrim, WhatsApp green). Kept as a named token so
+     no raw #fff lives outside the canonical paste or the legibility locks. */
+  --white: #FFFFFF;
+
+  /* Z-index ladder — 10 named layers */
+  --z-base:    0;
+  --z-raised:  10;
+  --z-overlay: 100;
+  --z-nav:     500;
+  --z-drawer:  600;
+  --z-sticky:  640;
+  --z-fab:     650;
+  --z-toast:   700;
+
+  /* Chrome heights */
+  --nav-h:        64px;
+  --nav-h-desktop: 76px;
+  --sticky-bar-h: 72px;
+  --fab-size:     56px;
+
+  /* Touch + layout */
+  --touch-min:   48px;
+  --container-x: clamp(16px, 5vw, 40px);
+  --container-max: 1180px;
+}
+
+
+/* ============================================================
+   ░░ GLOBAL RTL BASE ░░
+   Document default is RTL. Logical properties only.
+   ============================================================ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--surface-page);
+  color: var(--text-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-arabic);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* Headings inherit the mode-aware face via the semantic token */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--heading-font);
+  color: var(--text-strong);
+  line-height: var(--leading-tight);
+  font-weight: 700;
+}
+
+a { color: var(--color-primary); text-decoration: none; }
+a:hover { color: var(--color-primary-strong); }
+
+img, picture, svg, video { max-width: 100%; display: block; }
+
+ul, ol { list-style: none; }
+
+button, input, select, textarea {
+  font: inherit;
+  color: inherit;
+}
+
+/* Visible focus everywhere — accessibility floor */
+:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Skip link — keyboard accessibility */
+.skip-link {
+  position: absolute;
+  inset-block-start: -100%;
+  inset-inline-start: var(--space-3);
+  z-index: var(--z-toast);
+  background: var(--color-primary);
+  color: var(--text-on-primary);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+.skip-link:focus {
+  inset-block-start: var(--space-3);
+  color: var(--text-on-primary);
+}
+
+/* Latin runs inside Arabic — phone numbers, prices, destination names */
+[dir="ltr"], bdi { unicode-bidi: isolate; }
+
+/* Body scroll lock when drawer / lightbox open */
+body.nav-scroll-lock { overflow: hidden; }
+
+
+/* ============================================================
+   ░░ REDUCED-MOTION KILL SWITCH (Alliance lesson 5) ░░
+   Load-bearing. WCAG 2.3.3. The !important is intentional.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+/* ============================================================
+   ░░ TOUCH ENFORCEMENT (Alliance lesson 6) ░░
+   Single source of truth via @media (pointer: coarse).
+   ============================================================ */
+@media (pointer: coarse) {
+  .n-btn,
+  a.n-btn,
+  button,
+  .nav-toggle,
+  .lang-switcher button {
+    min-height: var(--touch-min);
+  }
+}
+
+
+/* ============================================================
+   ░░ COMPONENTS (ported from design-system §06 — token-only) ░░
+   ============================================================ */
+
+/* ---- Buttons ---- */
+.n-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .55rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  line-height: 1;
+  border: 0;
+  cursor: pointer;
+  padding: var(--btn-pad);
+  border-radius: var(--btn-radius);
+  transition: background var(--dur-fast) var(--ease-out),
+              transform var(--dur-fast) var(--ease-out),
+              box-shadow var(--dur-fast) var(--ease-out);
+  min-height: 48px;
+  text-align: center;
+}
+.n-btn:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 2px; }
+.n-btn:active { transform: none; }
+
+.n-btn-primary { background: var(--btn-primary-bg); color: var(--text-on-primary); }
+.n-btn-primary:hover { background: var(--btn-primary-bg-hover); color: var(--text-on-primary); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+
+.n-btn-accent { background: var(--btn-accent-bg); color: var(--text-on-accent); }
+.n-btn-accent:hover { background: var(--btn-accent-bg-hover); color: var(--text-on-accent); transform: translateY(-1px); }
+
+.n-btn-wa { background: var(--whatsapp); color: var(--white); }
+.n-btn-wa:hover { background: var(--whatsapp-deep); color: var(--white); }
+
+.n-btn-ghost { background: transparent; color: var(--color-primary); border: 2px solid var(--color-primary); }
+.n-btn-ghost:hover { background: var(--color-primary-soft); color: var(--color-primary-strong); }
+
+.n-btn[disabled],
+.n-btn:disabled {
+  background: var(--sand-200);
+  color: var(--ink-300);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  border-color: transparent;
+}
+
+/* ---- Chips & badges ---- */
+.n-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  background: var(--chip-bg);
+  color: var(--color-primary-strong);
+  font-weight: 600;
+  font-size: var(--text-xs);
+  padding: .4rem .9rem;
+  border-radius: var(--radius-pill);
+}
+
+.n-badge-promo {
+  display: inline-block;
+  background: var(--badge-promo-bg);
+  color: var(--text-on-accent);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: .85rem;
+  padding: .35rem 1rem;
+  border-radius: var(--radius-pill);
+}
+
+.n-seats {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  background: var(--surface-raised);
+  border: 1.5px solid var(--color-accent);
+  color: var(--color-accent-strong);
+  font-weight: 600;
+  font-size: var(--text-xs);
+  padding: .35rem .9rem;
+  border-radius: var(--radius-pill);
+}
+
+/* ---- Card ---- */
+.n-card {
+  background: var(--card-bg);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+  transition: box-shadow var(--dur-base) var(--ease-out),
+              transform var(--dur-base) var(--ease-out);
+}
+.n-card:hover { box-shadow: var(--card-shadow-hover); transform: translateY(-3px); }
+.n-card .img {
+  height: 180px;
+  background: linear-gradient(160deg, var(--color-primary), var(--surface-inverse));
+  position: relative;
+  transition: border-radius var(--dur-base) var(--ease-out);
+}
+.n-card .img > img,
+.n-card .img > picture { width: 100%; height: 100%; }
+.n-card .img > img,
+.n-card .img > picture img { object-fit: cover; width: 100%; height: 100%; }
+[data-mode="sakina"] .n-card .img {
+  border-radius: var(--radius-arch);
+  margin: 10px 10px 0;
+  height: 170px;
+  filter: saturate(.85);   /* Sakina −15% saturation per §05 */
+}
+.n-card .img .n-badge-promo { position: absolute; inset-block-start: 14px; inset-inline-start: 14px; }
+.n-card .pad { padding: var(--space-5); }
+.n-card h4 { font-family: var(--heading-font); font-size: var(--text-xl); color: var(--text-strong); line-height: 1.3; }
+.n-card .hotel { color: var(--text-muted); font-size: var(--text-sm); margin-block-start: .3rem; }
+.n-stars { color: var(--color-accent); letter-spacing: .1em; font-size: .9rem; }
+.n-meta-row { display: flex; flex-wrap: wrap; gap: .5rem; margin-block-start: var(--space-3); }
+.n-card .cta-row { display: flex; gap: .6rem; margin-block-start: var(--space-4); }
+.n-card .cta-row .n-btn { flex: 1; justify-content: center; padding: .75rem 1rem; font-size: .95rem; }
+
+/* ---- Price (Changa 700 in BOTH modes) ---- */
+.n-price { display: flex; align-items: baseline; gap: .45rem; margin-block-start: var(--space-3); }
+.n-price .amount { font-family: var(--font-display); font-weight: 700; font-size: var(--text-2xl); color: var(--price-color); }
+.n-price .cur { font-weight: 600; color: var(--text-muted); font-size: var(--text-sm); align-self: baseline; }
+.n-price .per { color: var(--text-muted); font-size: var(--text-xs); }
+
+/* ---- Tiered price grid ---- */
+.n-grid {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--surface-raised);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  margin-block-start: var(--space-4);
+  font-size: var(--text-sm);
+}
+.n-grid th {
+  background: var(--pricegrid-head-bg);
+  color: var(--text-on-primary);
+  font-family: var(--font-display);
+  font-weight: 600;
+  padding: .8rem 1rem;
+  text-align: start;
+}
+.n-grid td { padding: .8rem 1rem; border-block-start: 1px solid var(--border-soft); color: var(--text-body); }
+.n-grid td.p { font-family: var(--font-display); font-weight: 700; color: var(--price-color); font-size: 1.15rem; white-space: nowrap; }
+
+/* ---- Trust strip ---- */
+.n-trust { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-block-start: var(--space-4); }
+.n-trust .t {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  background: var(--surface-raised);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: .7rem 1.1rem;
+  font-size: var(--text-sm);
+  color: var(--text-body);
+}
+.n-trust .t svg { flex: none; }
+
+/* ---- Sticky conversion strip (the inner control) ---- */
+.n-sticky {
+  display: flex;
+  gap: .6rem;
+  background: var(--stickybar-bg);
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--shadow-lg);
+  border-radius: var(--radius-pill);
+  padding: .5rem;
+  max-width: 420px;
+  margin-inline: auto;
+}
+.n-sticky .n-btn { flex: 1; justify-content: center; padding: .7rem .9rem; font-size: .95rem; }
+
+
+/* ============================================================
+   ░░ SITE CHROME ░░  (on-brand; not in the design doc)
+   ============================================================ */
+
+/* ---------- .site-nav — fixed top bar ---------- */
+.site-nav {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline: 0;
+  z-index: var(--z-nav);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  min-height: var(--nav-h);
+  padding-inline: var(--container-x);
+  padding-block: var(--space-2);
+  background: color-mix(in srgb, var(--surface-page) 92%, transparent);
+  backdrop-filter: saturate(1.2) blur(8px);
+  -webkit-backdrop-filter: saturate(1.2) blur(8px);
+  border-block-end: 1px solid transparent;
+  transition: box-shadow var(--dur-base) var(--ease-out),
+              border-color var(--dur-base) var(--ease-out),
+              background var(--dur-base) var(--ease-out);
+}
+.site-nav.is-scrolled {
+  box-shadow: var(--shadow-sm);
+  border-block-end-color: var(--border-soft);
+  background: color-mix(in srgb, var(--surface-page) 97%, transparent);
+}
+
+.nav-logo { display: inline-flex; align-items: center; flex: none; }
+.nav-logo img,
+.nav-logo svg { height: 38px; width: auto; }
+
+/* Right-side cluster (links + lang + cta) — moved into the drawer on mobile */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+.nav-links a {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-sm);
+  color: var(--text-strong);
+  padding: .5rem .7rem;
+  border-radius: var(--radius-pill);
+  transition: background var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
+}
+.nav-links a:hover,
+.nav-links a[aria-current="page"] {
+  background: var(--color-primary-soft);
+  color: var(--color-primary-strong);
+}
+
+.nav-cta { flex: none; }
+.nav-cta .n-btn { padding: .6rem 1.1rem; font-size: .95rem; }
+
+/* Hamburger toggle — visible ≤900px only */
+.nav-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--touch-min);
+  block-size: var(--touch-min);
+  border: 0;
+  background: transparent;
+  color: var(--text-strong);
+  cursor: pointer;
+  border-radius: var(--radius-md);
+  flex: none;
+}
+.nav-toggle:hover { background: var(--color-primary-soft); }
+.nav-toggle .icon-close { display: none; }
+.site-nav.nav-open .nav-toggle .icon-menu { display: none; }
+.site-nav.nav-open .nav-toggle .icon-close { display: block; }
+
+/* ---------- .nav-drawer (Alliance S3 + S8) ---------- */
+/* Desktop ≥901px: wrapper is transparent to layout. Children flow into nav. */
+.nav-drawer {
+  display: contents;
+}
+
+/* Backdrop — only rendered/active on mobile */
+.nav-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-overlay);
+  background: rgba(12, 58, 53, .5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--dur-base) var(--ease-out), visibility var(--dur-base) var(--ease-out);
+}
+.nav-backdrop.is-visible { opacity: 1; visibility: visible; }
+
+@media (max-width: 900px) {
+  .nav-toggle { display: inline-flex; }
+
+  /* Drawer becomes a fixed slide-in panel anchored to the inline-end edge.
+     RTL-aware: translateX(100%) hides off the inline-end side. We flip the
+     sign for LTR so the panel always slides from the correct edge. */
+  .nav-drawer {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-4);
+    position: fixed;
+    inset-block: 0;
+    inset-inline-end: 0;
+    inline-size: min(84vw, 340px);
+    z-index: var(--z-drawer);
+    background: var(--surface-raised);
+    box-shadow: var(--shadow-lg);
+    padding: calc(var(--nav-h) + var(--space-4)) var(--space-5) var(--space-6);
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform var(--dur-base) var(--ease-out);
+  }
+  /* LTR: drawer sits on the right, still slides off the right edge */
+  [dir="ltr"] .nav-drawer { transform: translateX(100%); }
+  /* RTL: drawer sits on the left edge visually (inline-end), slides off it */
+  [dir="rtl"] .nav-drawer { transform: translateX(-100%); }
+
+  .site-nav.nav-open .nav-drawer { transform: translateX(0); }
+
+  .nav-drawer .nav-links {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-1);
+  }
+  .nav-drawer .nav-links a {
+    display: block;
+    padding: .85rem 1rem;
+    font-size: var(--text-base);
+  }
+  .nav-drawer .lang-switcher,
+  .nav-drawer .nav-cta { align-self: stretch; }
+  .nav-drawer .nav-cta .n-btn { width: 100%; }
+}
+
+/* ---------- .lang-switcher (AR | FR pill toggle) ---------- */
+.lang-switcher {
+  display: inline-flex;
+  background: var(--color-primary-soft);
+  border-radius: var(--radius-pill);
+  padding: 3px;
+  flex: none;
+}
+.lang-switcher button {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-xs);
+  border: 0;
+  cursor: pointer;
+  padding: .4rem .8rem;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--color-primary-strong);
+  transition: background var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
+}
+.lang-switcher button.is-active {
+  background: var(--color-primary);
+  color: var(--text-on-primary);
+}
+
+/* ---------- .fab-whatsapp (Alliance S7) ---------- */
+.fab-whatsapp {
+  position: fixed;
+  inset-block-end: calc(var(--space-4) + env(safe-area-inset-bottom));
+  inset-inline-end: var(--space-4);
+  z-index: var(--z-fab);
+  inline-size: var(--fab-size);
+  block-size: var(--fab-size);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--whatsapp);
+  color: var(--white);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-lg);
+  transition: transform var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out);
+}
+.fab-whatsapp:hover { background: var(--whatsapp-deep); color: var(--white); transform: translateY(-2px) scale(1.04); }
+.fab-whatsapp svg { inline-size: 28px; block-size: 28px; }
+
+/* ---------- .n-sticky-bar (mobile conversion bar wrapper) ---------- */
+.n-sticky-bar {
+  position: fixed;
+  inset-block-end: 0;
+  inset-inline: 0;
+  z-index: var(--z-sticky);
+  padding: var(--space-3) var(--container-x);
+  padding-block-end: calc(var(--space-3) + env(safe-area-inset-bottom));
+  background: color-mix(in srgb, var(--surface-page) 94%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-block-start: 1px solid var(--border-soft);
+}
+.n-sticky-bar .n-sticky { box-shadow: none; border: 0; padding: 0; }
+
+/* Show the sticky bar only ≤1024px; hide above */
+@media (min-width: 1025px) {
+  .n-sticky-bar { display: none; }
+}
+
+/* Alliance S7: only consume bottom padding + lift FAB on pages that
+   ACTUALLY have a sticky bar. Homepage pays zero layout cost. */
+@media (max-width: 1024px) {
+  body:has(.n-sticky-bar) {
+    padding-block-end: calc(var(--sticky-bar-h) + env(safe-area-inset-bottom));
+  }
+  body:has(.n-sticky-bar) .fab-whatsapp {
+    inset-block-end: calc(var(--sticky-bar-h) + var(--space-3) + env(safe-area-inset-bottom));
+  }
+}
+
+/* ---------- .site-footer (full contact / trust block) ---------- */
+.site-footer {
+  background: var(--surface-inverse);
+  color: var(--sand-100);
+  padding-block: var(--space-8);
+  padding-inline: var(--container-x);
+  margin-block-start: var(--space-8);
+}
+.site-footer .wrap { max-width: var(--container-max); margin-inline: auto; }
+.site-footer__grid {
+  display: grid;
+  gap: var(--space-6);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 720px) {
+  .site-footer__grid { grid-template-columns: 1.4fr 1fr 1fr; }
+}
+.site-footer__brand img,
+.site-footer__brand svg { height: 44px; width: auto; margin-block-end: var(--space-3); }
+.site-footer h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-base);
+  color: var(--white);
+  margin-block-end: var(--space-3);
+}
+.site-footer a { color: var(--teal-200); }
+.site-footer a:hover { color: var(--white); }
+.site-footer__list li { margin-block-end: var(--space-2); font-size: var(--text-sm); }
+.site-footer__contact { font-size: var(--text-sm); line-height: var(--leading-arabic); }
+.site-footer__contact .tel { font-family: var(--font-display); font-weight: 700; color: #fff; font-size: var(--text-lg); }
+.site-footer__socials { display: flex; gap: var(--space-3); margin-block-start: var(--space-3); }
+.site-footer__socials a {
+  display: inline-flex; align-items: center; justify-content: center;
+  inline-size: var(--touch-min); block-size: var(--touch-min);
+  border: 1px solid var(--teal-700); border-radius: var(--radius-md);
+}
+.site-footer__legal {
+  margin-block-start: var(--space-6);
+  padding-block-start: var(--space-4);
+  border-block-start: 1px solid var(--teal-800);
+  font-size: var(--text-xs);
+  color: var(--ink-300);
+  line-height: var(--leading-arabic);
+}
+
+
+/* ============================================================
+   ░░ PAGE-SECTION HELPERS ░░
+   ============================================================ */
+.section { padding-block: var(--space-8); }
+@media (min-width: 901px) { .section { padding-block: var(--space-9); } }
+
+.wrap {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-x);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: .75rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  display: block;
+  margin-block-end: var(--space-3);
+}
+
+.sec-head { margin-block-end: var(--space-6); max-width: 64ch; }
+.sec-head h2 { font-size: var(--text-2xl); margin-block-end: var(--space-3); }
+.sec-head p { color: var(--text-muted); font-size: var(--text-lg); }
+
+/* Generic hero block */
+.hero {
+  position: relative;
+  display: grid;
+  align-items: center;
+  min-block-size: clamp(420px, 70vh, 620px);
+  padding-block: calc(var(--nav-h) + var(--space-7)) var(--space-8);
+  padding-inline: var(--container-x);
+  overflow: hidden;
+  color: #fff;
+  background: var(--surface-inverse);
+}
+.hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-base);
+}
+.hero__media img,
+.hero__media picture,
+.hero__media picture img { inline-size: 100%; block-size: 100%; object-fit: cover; }
+.hero__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* legibility scrim — gradient over photo, theme-independent */
+  background: linear-gradient(180deg, rgba(7,33,30,.35), rgba(7,33,30,.78));
+}
+.hero__inner {
+  position: relative;
+  z-index: var(--z-raised);
+  max-width: var(--container-max);
+  margin-inline: auto;
+  width: 100%;
+}
+.hero h1 { color: #fff; font-size: var(--text-hero); line-height: 1.05; }
+[data-mode="sakina"] .hero h1 { line-height: 1.4; }
+.hero p { color: var(--sand-100); font-size: var(--text-lg); max-width: 52ch; margin-block-start: var(--space-4); }
+.hero .cta-row { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-block-start: var(--space-5); }
+
+/* Sakina arch hero (gradient + arch, no photo) */
+.hero--sakina {
+  background: linear-gradient(165deg, var(--night-900) 0%, var(--teal-800) 60%, var(--teal-700) 130%);
+}
+.hero--sakina .hero__media::after { background: none; }
+
+/* Responsive trip / card grids */
+.trip-grid,
+.card-grid {
+  display: grid;
+  gap: var(--space-5);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 560px) {
+  .trip-grid, .card-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 920px) {
+  .trip-grid, .card-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Service card (the 6 parallel offerings) */
+.service-card {
+  background: var(--surface-raised);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  transition: box-shadow var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out);
+}
+.service-card:hover { box-shadow: var(--card-shadow-hover); transform: translateY(-3px); }
+.service-card__icon {
+  inline-size: 48px; block-size: 48px;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--color-primary-soft);
+  color: var(--color-primary-strong);
+  border-radius: var(--radius-md);
+}
+.service-card h3 { font-size: var(--text-xl); }
+.service-card p { color: var(--text-muted); font-size: var(--text-sm); flex: 1; }
+
+
+/* ============================================================
+   ░░ SCROLL-REVEAL CSS (driven by reveal.js) ░░
+   ============================================================ */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 240ms var(--ease-out), transform 240ms var(--ease-out);
+}
+[data-reveal].is-revealed { opacity: 1; transform: none; }
+
+
+/* ============================================================
+   ░░ MODE RULES ░░
+   ============================================================ */
+/* Sakina never scroll-animates — "stillness is the design" (§07).
+   Force any reveal target to its final state, regardless of JS state. */
+[data-mode="sakina"] [data-reveal] {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+/* Smooth mode/token transition on the page surface (matches the demo) */
+[data-mode] { transition: background var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out); }
+
+
+/* ============================================================
+   ░░ PHOTO-OVERLAY LEGIBILITY LOCKS (Alliance S5) ░░
+   Any price / badge sitting OVER a photograph gets a dark glass
+   + white text, theme-independent. The !important is load-bearing.
+   /* legibility lock — do not "clean up" */
+   ============================================================ */
+.over-photo,
+.n-card .img .n-price,
+.n-card .img .n-badge-promo,
+.hero .n-price,
+.hero .over-photo {
+  background: rgba(0, 0, 0, .6) !important;   /* legibility lock — do not "clean up" */
+  color: #fff !important;                      /* legibility lock — do not "clean up" */
+  border-radius: var(--radius-md);
+  padding: .35rem .7rem;
+}
+.over-photo .amount,
+.over-photo .cur,
+.over-photo .per,
+.n-card .img .n-price .amount,
+.n-card .img .n-price .cur,
+.hero .n-price .amount,
+.hero .n-price .cur {
+  color: #fff !important;                      /* legibility lock — do not "clean up" */
+}

@@ -1,0 +1,27 @@
+<!-- TODO-CLIENT: replace with official logo -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 88" role="img" aria-label="Nomara Voyages">
+  <title>Nomara Voyages</title>
+  <!-- Circular teal badge with a coral compass/sun accent -->
+  <g>
+    <circle cx="44" cy="44" r="40" fill="#1F8A7A"/>
+    <!-- inner ring -->
+    <circle cx="44" cy="44" r="33" fill="none" stroke="#7DC0B0" stroke-width="2" stroke-opacity="0.55"/>
+    <!-- compass / sun rose: coral 4-point star -->
+    <path d="M44 16 L49.5 38.5 L72 44 L49.5 49.5 L44 72 L38.5 49.5 L16 44 L38.5 38.5 Z"
+          fill="#E8602C"/>
+    <circle cx="44" cy="44" r="6.5" fill="#FCFAF6"/>
+  </g>
+  <!-- Wordmark: "Nomara" — white on transparent for use on dark/teal bars;
+       the 'o' carries the coral compass accent -->
+  <g fill="#14211E" font-family="Changa, sans-serif" font-weight="700">
+    <text x="100" y="54" font-size="40" letter-spacing="0.5">N</text>
+    <text x="126" y="54" font-size="40" letter-spacing="0.5">mara</text>
+  </g>
+  <!-- the coral 'o' (compass/sun feel) -->
+  <g>
+    <circle cx="118.5" cy="40" r="11" fill="none" stroke="#E8602C" stroke-width="5"/>
+    <circle cx="118.5" cy="40" r="2.6" fill="#E8602C"/>
+  </g>
+  <text x="100" y="74" font-family="'Readex Pro', sans-serif" font-weight="500"
+        font-size="13" letter-spacing="2.5" fill="#51635E">VOYAGES</text>
+</svg>

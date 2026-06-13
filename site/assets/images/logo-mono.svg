@@ -1,0 +1,19 @@
+<!-- TODO-CLIENT: replace with official logo -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 88" role="img" aria-label="Nomara Voyages">
+  <title>Nomara Voyages</title>
+  <!-- Single-colour mark using currentColor so it inherits the footer text
+       colour (white on the dark inverse surface). -->
+  <g fill="currentColor">
+    <circle cx="44" cy="44" r="40" fill="none" stroke="currentColor" stroke-width="3"/>
+    <circle cx="44" cy="44" r="33" fill="none" stroke="currentColor" stroke-width="1.5" stroke-opacity="0.5"/>
+    <path d="M44 16 L49.5 38.5 L72 44 L49.5 49.5 L44 72 L38.5 49.5 L16 44 L38.5 38.5 Z"/>
+    <circle cx="44" cy="44" r="6.5" fill="none" stroke="currentColor" stroke-width="2.5"/>
+  </g>
+  <g fill="currentColor" font-family="Changa, sans-serif" font-weight="700">
+    <text x="100" y="54" font-size="40" letter-spacing="0.5">Nomara</text>
+  </g>
+  <circle cx="118.5" cy="40" r="11" fill="none" stroke="currentColor" stroke-width="5" stroke-opacity="0.85"/>
+  <circle cx="118.5" cy="40" r="2.6" fill="currentColor"/>
+  <text x="100" y="74" font-family="'Readex Pro', sans-serif" font-weight="500"
+        font-size="13" letter-spacing="2.5" fill="currentColor" fill-opacity="0.75">VOYAGES</text>
+</svg>

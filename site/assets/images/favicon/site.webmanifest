@@ -1,0 +1,26 @@
+{
+  "name": "Nomara Voyages",
+  "short_name": "Nomara",
+  "description": "وكالة نومارا للسياحة والأسفار — العمرة والحج والرحلات المنظمة.",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#1F8A7A",
+  "background_color": "#FCFAF6",
+  "icons": [
+    {
+      "src": "/assets/images/favicon/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/images/favicon/favicon-32.svg",
+      "sizes": "32x32",
+      "type": "image/svg+xml"
+    }
+  ]
+}

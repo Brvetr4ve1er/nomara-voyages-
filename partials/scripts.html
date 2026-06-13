@@ -1,0 +1,9 @@
+<!-- =========================================================
+     partials/scripts.html — script tags, correct order, before </body>.
+     i18n.js first so .lang-switcher is wired before enhance.js MOVES it
+     into the mobile drawer; reveal.js last (it reads body[data-mode]).
+     All `defer` so DOM is ready and order is preserved.
+     ========================================================= -->
+<script src="/assets/js/i18n.js" defer></script>
+<script src="/assets/js/enhance.js" defer></script>
+<script src="/assets/js/reveal.js" defer></script>
