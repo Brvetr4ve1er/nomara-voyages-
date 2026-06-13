@@ -99,9 +99,10 @@ foreach($p in $pages){
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Changa:wght@400;500;600;700;800&family=Readex+Pro:wght@300;400;500;600;700&family=Amiri:ital,wght@0,400;0,700;1,400&family=Space+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/styles.css">
-  <link rel="icon" href="/assets/images/favicon/favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="/assets/images/favicon/favicon-32.svg" sizes="32x32" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="/assets/images/favicon/favicon.svg">
+  <link rel="icon" href="/assets/images/favicon/favicon.ico" sizes="any">
+  <link rel="icon" href="/assets/images/favicon/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="/assets/images/favicon/favicon-16.png" sizes="16x16" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/images/favicon/apple-touch-icon.png" sizes="180x180">
   <link rel="manifest" href="/assets/images/favicon/site.webmanifest">
   <!-- SEO: title/meta/canonical/og/jsonld go here (Agent 4) -->
   <title>$($p.title) — من قسنطينة | نومارا</title>

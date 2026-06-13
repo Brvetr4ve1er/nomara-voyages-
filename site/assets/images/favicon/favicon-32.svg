@@ -1,7 +1,0 @@
-<!-- TODO-CLIENT: replace with official logo · 32px PNG-equivalent SVG -->
-<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" role="img" aria-label="Nomara">
-  <title>Nomara</title>
-  <rect width="32" height="32" rx="7" fill="#1F8A7A"/>
-  <path d="M16 4 L18.1 13.9 L28 16 L18.1 18.1 L16 28 L13.9 18.1 L4 16 L13.9 13.9 Z" fill="#E8602C"/>
-  <circle cx="16" cy="16" r="2.6" fill="#FCFAF6"/>
-</svg>

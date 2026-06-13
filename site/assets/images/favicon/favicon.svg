@@ -1,8 +1,0 @@
-<!-- TODO-CLIENT: replace with official logo -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Nomara">
-  <title>Nomara</title>
-  <rect width="64" height="64" rx="14" fill="#1F8A7A"/>
-  <circle cx="32" cy="32" r="24" fill="none" stroke="#7DC0B0" stroke-width="2" stroke-opacity="0.55"/>
-  <path d="M32 8 L36.2 27.8 L56 32 L36.2 36.2 L32 56 L27.8 36.2 L8 32 L27.8 27.8 Z" fill="#E8602C"/>
-  <circle cx="32" cy="32" r="5" fill="#FCFAF6"/>
-</svg>

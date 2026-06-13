@@ -897,7 +897,12 @@ body.nav-scroll-lock { overflow: hidden; }
   /* RTL: drawer sits on the left edge visually (inline-end), slides off it */
   [dir="rtl"] .nav-drawer { transform: translateX(-100%); }
 
-  .site-nav.nav-open .nav-drawer { transform: translateX(0); }
+  /* OPEN STATE — direction-explicit so it unambiguously beats the [dir]
+     closed rules above (a plain `.site-nav.nav-open .nav-drawer` tied at
+     specificity with `[dir="rtl"] .nav-drawer` in some engines and the
+     drawer never slid in RTL). Both resolve to translateX(0) = on-screen. */
+  [dir="ltr"] .site-nav.nav-open .nav-drawer,
+  [dir="rtl"] .site-nav.nav-open .nav-drawer { transform: translateX(0); }
 
   .nav-drawer .nav-links {
     flex-direction: column;
