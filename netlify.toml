@@ -1,0 +1,5 @@
+[build]
+  publish = "site"
+  # No build command — this is a pre-built static site; the site/ directory
+  # is committed directly and deployed as-is.
+  command = ""

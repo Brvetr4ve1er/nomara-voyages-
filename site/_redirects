@@ -1,8 +1,8 @@
 # ============================================================
-#  Nomara Voyages — Cloudflare Pages _redirects
+#  Nomara Voyages — _redirects (Netlify / Cloudflare Pages compatible)
 #  Place at the DEPLOY ROOT. All 301 (permanent).
-#  Cloudflare auto-serves /404.html and auto-normalises trailing
-#  slashes, so those are intentionally omitted.
+#  Netlify and Cloudflare auto-serve /404.html for missing routes and
+#  auto-normalise trailing slashes, so those are intentionally omitted.
 #  Format:  <source>  <destination>  <status>   (full-line # comments only;
 #  do NOT put a trailing comment on a rule line — it is parsed as the rule).
 # ============================================================
