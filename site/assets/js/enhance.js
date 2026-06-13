@@ -271,7 +271,26 @@
     });
   }
 
+  /* ── PWA service worker — offline shell + fast repeat visits on mobile.
+     The worker keeps HTML network-first (always fresh online) and SWRs
+     static assets; registered after load so it never competes with paint. */
+  function initServiceWorker() {
+    if (!('serviceWorker' in navigator)) return;
+    function register() {
+      navigator.serviceWorker.register('/sw.js').catch(function () {});
+    }
+    // Register when the browser is idle (after first paint) rather than on
+    // `load` — `load` can stall indefinitely behind slow third-party fonts and
+    // never fire, which would silently skip registration.
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(register, { timeout: 3000 });
+    } else {
+      setTimeout(register, 1200);
+    }
+  }
+
   function boot() {
+    initServiceWorker();
     initThemeToggle();
     initNavScroll();
     initNavDrawer();
