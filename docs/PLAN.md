@@ -36,6 +36,10 @@ site/
   azerbaidjan/index.html    ← Azerbaijan/Baku (Rihla)        119 000
   malaisie/index.html       ← Malaysia (Rihla)               199 000
   egypte/index.html         ← Egypt: Cairo + Hurghada "Collection Mirage" −25% (Rihla)
+  services/index.html       ← Services overview — 6 parallel cards (Rihla). Flagships deep-link to /omra & /voyages
+  services/visa/index.html      ← Visa assistance (Rihla)
+  services/hotellerie/index.html ← Hotel reservation (Rihla)
+  services/vols/index.html      ← Flight ticketing (Rihla)
   a-propos/index.html       ← agency + guide (Haddad Youssef Islam) + license + reviews
   faq/index.html            ← visas, payment/deposit, Umrah packing
   contact/index.html        ← phone/WA/address/hours/socials
@@ -52,6 +56,22 @@ partials/                   ← canonical nav/footer/head snippets pages copy fr
 ```
 
 **Hero reuse map (Alliance → Nomara):** tunisie→`hero__tunisie`, turquie→`hero__istanbul`, azerbaidjan→`hero__azerbaidjan`, malaisie→`hero__kuala-lumpur`, egypte→`hero__cairo-sharm`. Umrah→gradient+arch, no photo.
+
+### Service catalog (the 6 parallel offerings — Aya Booking pattern, B2C-adapted)
+| Service (AR / FR) | Pillar | Destination |
+|---|---|---|
+| عمرة و حج · Omra & Hajj | flagship | → /omra/ (Sakina hub) |
+| رحلات منظمة · Voyages Organisés | flagship | → /voyages/ + country pages |
+| حجز الفنادق · Hôtellerie | ancillary | /services/hotellerie/ |
+| حجز التذاكر · Billetterie / Vols | ancillary | /services/vols/ |
+| خدمات التأشيرة · Visa | ancillary | /services/visa/ (mark TODO-CLIENT — Low-confidence offering) |
+
+**Patterns lifted from the Aya Booking teardown** (`docs/the map of the site i want .md`):
+- **One reusable service-description block** authored once, reused on Home strip + /services/ overview (single source of copy).
+- **Persistent dual CTA** on every major section: primary `احجز مقعدك` + `تواصل واتساب`. Conversion always one tap away.
+- **Footer = full contact/trust block:** phone, email, Ghazali/Aïn M'Lila address, IG+FB links, Google Maps link, license line.
+- **Clean slug namespace:** `/services/{slug}/` with short FR/AR-neutral slugs; UI labels Arabic-first.
+- (NOT lifted: Aya's SPA/auth-gating — Nomara is a public static B2C site.)
 
 ## 1 · Non-negotiable conventions (every agent)
 
@@ -93,7 +113,7 @@ partials/                   ← canonical nav/footer/head snippets pages copy fr
 | # | Agent / facet | Owns (exclusive while running) | Delivers |
 |---|---|---|---|
 | 1 | **Foundation** | styles.css, all JS, partials/, assets/images, scaffolding | tokens + foundation CSS, components (§06 reference set), nav drawer (S3), sticky bar, FAB, reveal.js, i18n.js skeleton, logo/favicon SVG, hero images copied |
-| 2 | **Pages & trips** (/ux-copy populate) | data/trips.json + all site/**/*.html | all 13 pages, real AR copy drafted from audit, correct modes, prefilled WA links |
+| 2 | **Pages & trips** (/ux-copy populate) | data/trips.json + data/services.json + all site/**/*.html | all 16 pages + 404, real AR copy drafted from audit, correct modes, prefilled WA links, services catalog |
 | 3 | **Copywriting & i18n** (/copywriting) | text inside existing HTML + i18n.js dictionary | voice-table compliance (§09), Sakina vs Rihla registers, microcopy, full FR dictionary |
 | 4 | **SEO** | <head> blocks, sitemap/robots/_headers/_redirects/manifest, JSON-LD | AR-canonical meta, OG, TravelAgency/TouristTrip/FAQPage schema, docs/SEO-PLAYBOOK.md |
 | 5 | **Animations** (/aos facet, vanilla) | data-reveal attributes, reveal.js tuning, motion CSS | DS §07 motion spec wired on Rihla pages, Sakina stillness verified, reduced-motion verified |
@@ -101,7 +121,7 @@ partials/                   ← canonical nav/footer/head snippets pages copy fr
 
 ## 3 · Definition of done
 
-- All 12 pages (home, omra, voyages, tunisie, turquie, azerbaidjan, malaisie, egypte, a-propos, faq, contact, 404) render correctly RTL at 375px / 768px / 1440px, zero console errors.
+- All 16 pages + 404 (home, omra, voyages, tunisie, turquie, azerbaidjan, malaisie, egypte, services, services/visa, services/hotellerie, services/vols, a-propos, faq, contact, 404) render correctly RTL at 375px / 768px / 1440px, zero console errors.
 - Every trip card + sticky bar opens WhatsApp with correct prefilled AR text.
 - `/omra/` is fully Sakina (Amiri, gold, arch, still); all else Rihla.
 - FR switcher flips `lang`/`dir` and translates nav + key surfaces; AR fallback works.
