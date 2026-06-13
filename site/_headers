@@ -4,32 +4,45 @@
 #  No build step / no asset hashing → cache lifetimes are the
 #  ONLY way edits reach returning visitors. See SEO-PLAYBOOK §5.
 # ============================================================
+#
+#  Rule ordering: LEAST-specific (/*) FIRST, MOST-specific asset
+#  rules LAST. Cloudflare Pages applies the MOST-specific matching
+#  rule for a given path/header, so the asset rules below OVERRIDE
+#  the default /* Cache-Control. The /* default revalidate therefore
+#  covers ALL pretty-URL directory pages (/omra/, /contact/,
+#  /tunisie/, /services/visa/, …) whose request path is "/omra/"
+#  etc. — these match neither "/*.html" nor "/", which is why the
+#  old per-extension HTML rules silently skipped 13 of 15 pages and
+#  could serve stale prices. Defaulting on /* fixes that gap.
+#  VERIFY post-deploy with curl -I:
+#    /omra/                  → expect "must-revalidate"
+#    /assets/images/logo.svg → expect "immutable"
 
-# --- 1. Global security headers (applied to every response) ---
+# --- 1. Global security headers + DEFAULT cache (every response) ---
+# /* is the least-specific rule: its Cache-Control is the site-wide
+# default for HTML pages (including pretty-URL directories); the more
+# specific /assets/* rules below win where they match.
 /*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   X-Frame-Options: SAMEORIGIN
-  Permissions-Policy: geolocation=(), camera=(), microphone=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=(), interest-cohort=()
+  Permissions-Policy: geolocation=(), camera=(), microphone=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=(), interest-cohort=(), browsing-topics=()
   Cross-Origin-Opener-Policy: same-origin
   # CSP in REPORT-ONLY first — pages have inline <script>/<style> + inline SVG.
   # Enforcing a strict CSP now would break the page; this only reports.
-  # Path to enforced CSP = move inline JS/CSS to per-request nonces (needs a Pages Function). See SEO-PLAYBOOK §5.
+  # NOTE: this Report-Only policy has NO report-to / report-uri endpoint, so
+  #   violations are NOT collected — they surface only in each visitor's own
+  #   browser console (nobody on our side sees them aggregated).
+  # Path to ENFORCED CSP = move inline JS/CSS to per-request nonces, which needs
+  #   a Pages Function to mint a nonce per response. That conflicts with the
+  #   locked no-build / no-backend static architecture — so Report-Only is the
+  #   realistic security ceiling for this drop. See SEO-PLAYBOOK §5.
   Content-Security-Policy-Report-Only: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests
   # TODO-CLIENT: add HSTS at deploy once the final domain serves HTTPS cleanly:
   #   Strict-Transport-Security: max-age=31536000; includeSubDomains   (add "; preload" only deliberately)
+  Cache-Control: public, max-age=0, must-revalidate
 
-# --- 2. Long, immutable cache for content that ~never changes ---
-# Images + favicons (generated assets, content stable). Safe to pin a year.
-/assets/images/*
-  Cache-Control: public, max-age=31536000, immutable
-
-# Self-hosted fonts, if/when any are added under /assets/fonts/.
-# (Google Fonts come from fonts.gstatic.com with Google's own far-future headers.)
-/assets/fonts/*
-  Cache-Control: public, max-age=31536000, immutable
-
-# --- 3. CSS / JS — SHORT cache + revalidation (NOT immutable) ---
+# --- 2. CSS / JS — SHORT cache + revalidation (NOT immutable) ---
 # Filenames are unhashed, so 'immutable' would strand returning visitors on a
 # stale styles.css for up to a year. max-age=0 + must-revalidate forces a cheap
 # conditional GET (304 if unchanged); stale-while-revalidate keeps it instant.
@@ -39,11 +52,12 @@
 /assets/js/*
   Cache-Control: public, max-age=0, must-revalidate, stale-while-revalidate=86400
 
-# --- 4. HTML / everything else — always revalidate so content edits ship ---
-# Pretty-URL directories (/omra/, /contact/ → index.html). Price/date/TODO-CLIENT
-# fills must appear immediately for returning visitors.
-/*.html
-  Cache-Control: public, max-age=0, must-revalidate
+# --- 3. Long, immutable cache for content that ~never changes ---
+# Images + favicons (generated assets, content stable). Safe to pin a year.
+/assets/images/*
+  Cache-Control: public, max-age=31536000, immutable
 
-/
-  Cache-Control: public, max-age=0, must-revalidate
+# Self-hosted fonts, if/when any are added under /assets/fonts/.
+# (Google Fonts come from fonts.gstatic.com with Google's own far-future headers.)
+/assets/fonts/*
+  Cache-Control: public, max-age=31536000, immutable

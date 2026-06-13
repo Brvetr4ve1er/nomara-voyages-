@@ -16,14 +16,33 @@
 (function () {
   'use strict';
 
+  /* Re-sync .lang-switcher active state to the live <html lang> within a
+     scope. Mirrors i18n.applyLang's sync without touching its strategy or
+     dictionary — used after the switcher is moved into the drawer. */
+  function syncLangSwitcher(scope) {
+    var root = scope || document;
+    var lang = document.documentElement.getAttribute('lang') || 'ar';
+    root.querySelectorAll('.lang-switcher [data-i18n-lang]').forEach(function (btn) {
+      btn.classList.toggle('is-active', btn.getAttribute('data-i18n-lang') === lang);
+    });
+  }
+
   /* ── Mobile nav drawer ─────────────────────────────────────── */
+  var navDrawerRetries = 0;
   function initNavDrawer() {
     var nav = document.querySelector('.site-nav');
     if (!nav) return;
 
-    // Wait a tick if i18n.js hasn't finished building .lang-switcher yet,
-    // so the switcher gets MOVED into the drawer with its listeners intact.
-    if (nav.querySelector('[data-i18n-lang]') && !nav.querySelector('.lang-switcher')) {
+    // Defensive ordering guard: i18n.js wires (does NOT build) the static
+    // .lang-switcher. In normal markup the switcher is already present, so
+    // we move straight through. If a page emits the lang buttons before
+    // their .lang-switcher wrapper, wait a tick so the WHOLE wrapper (with
+    // its surviving listeners) gets MOVED into the drawer — never split.
+    // Capped so a malformed page can never loop forever.
+    if (nav.querySelector('[data-i18n-lang]') &&
+        !nav.querySelector('.lang-switcher') &&
+        navDrawerRetries < 10) {
+      navDrawerRetries++;
       return setTimeout(initNavDrawer, 50);
     }
 
@@ -60,6 +79,13 @@
         if (el) drawer.appendChild(el);
       });
       nav.appendChild(drawer);
+
+      // The switcher now lives inside .nav-drawer. Re-sync its active state
+      // to the language i18n already applied (covers the case where i18n
+      // ran applyLang() before this move, or markup shipped a stale flag).
+      // NOMARA_setLang re-syncs on every later switch via a global
+      // descendant selector, so in-drawer switching stays correct too.
+      syncLangSwitcher(drawer);
     }
 
     /* 3. Backdrop */
@@ -117,6 +143,87 @@
     });
   }
 
+  /* ── Theme toggle (dark / light) ───────────────────────────────
+     The anti-FOUC inline script in <head> has ALREADY set
+     document.documentElement[data-theme] before paint. This only wires
+     the toggle button, persists the choice, and keeps the system-theme
+     listener alive for users who have not made an explicit choice.
+     Storage key + values are fixed by the shared contract:
+       localStorage 'nomara-theme' -> 'light' | 'dark'. */
+  var THEME_KEY = 'nomara-theme';
+
+  function themeStore() {
+    return {
+      get: function () { try { return localStorage.getItem(THEME_KEY); } catch (e) { return null; } },
+      set: function (v) { try { localStorage.setItem(THEME_KEY, v); } catch (e) {} }
+    };
+  }
+
+  function currentTheme() {
+    return document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+  }
+
+  // Remember the page's authored (light) theme-color so we can restore the
+  // brand chrome exactly, instead of guessing a generic light value.
+  var lightThemeColor = (function () {
+    var m = document.querySelector('meta[name="theme-color"]');
+    return m ? m.getAttribute('content') : null;
+  })();
+
+  function applyTheme(theme) {
+    var html = document.documentElement;
+    if (theme === 'dark') {
+      html.setAttribute('data-theme', 'dark');
+    } else {
+      // light is the absence of the attribute (contract default)
+      html.removeAttribute('data-theme');
+    }
+    // Keep <meta name="theme-color"> in step (nice-to-have, defensive).
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (meta && lightThemeColor != null) {
+      meta.setAttribute('content', theme === 'dark' ? '#0f1419' : lightThemeColor);
+    }
+  }
+
+  function initThemeToggle() {
+    var btn = document.querySelector('button[data-theme-toggle]');
+    if (!btn) return; // no-op if the page omitted the button
+
+    var store = themeStore();
+
+    function syncButton(theme) {
+      btn.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
+    }
+
+    // Reflect the state the anti-FOUC script already painted.
+    syncButton(currentTheme());
+
+    btn.addEventListener('click', function () {
+      var next = currentTheme() === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+      syncButton(next);
+      store.set(next); // explicit choice — stops the system listener below
+    });
+
+    // Re-apply the OS theme on change, but ONLY while the user has made no
+    // explicit choice (no stored value). Once they click, their choice wins.
+    var mq;
+    try { mq = window.matchMedia('(prefers-color-scheme: dark)'); } catch (e) { mq = null; }
+    if (mq) {
+      var onSystemChange = function (e) {
+        if (store.get()) return; // user has chosen — ignore OS changes
+        var sys = e.matches ? 'dark' : 'light';
+        applyTheme(sys);
+        syncButton(sys);
+      };
+      if (typeof mq.addEventListener === 'function') {
+        mq.addEventListener('change', onSystemChange);
+      } else if (typeof mq.addListener === 'function') {
+        mq.addListener(onSystemChange); // older Safari
+      }
+    }
+  }
+
   /* ── Nav shadow on scroll ──────────────────────────────────── */
   function initNavScroll() {
     var nav = document.querySelector('.site-nav');
@@ -143,10 +250,33 @@
     document.body.classList.toggle('has-sticky-bar', hasBar);
   }
 
+  /* ── One-shot load-in entrances (P0-4 hero text, P1-5 FAB + sticky) ──
+     CSS owns the actual animation; JS just flips two marker classes after
+     first paint so the entrances fire ONCE on load (not on scroll). Both
+     entrances are CSS no-ops under Sakina (overlay stillness is forced) and
+     under reduced-motion (the global kill switch zeroes the durations), so
+     this is safe to run unconditionally. We add the classes on the next
+     frame so the initial (hidden) state is painted first and the transition
+     actually plays. */
+  function initEntrances() {
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        // P0-4: hero text-overlay entrance (image untouched).
+        if (document.querySelector('.hero__inner')) {
+          document.body.classList.add('hero-ready');
+        }
+        // P1-5: FAB fade+rise and sticky-bar slide-up.
+        document.body.classList.add('chrome-ready');
+      });
+    });
+  }
+
   function boot() {
+    initThemeToggle();
     initNavScroll();
     initNavDrawer();
     initStickyAwareness();
+    initEntrances();
   }
 
   if (document.readyState === 'loading') {

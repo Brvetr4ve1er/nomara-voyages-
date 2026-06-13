@@ -216,6 +216,111 @@
 
 
 /* ============================================================
+   ░░ DARK THEME · brand night-mode ░░
+   State lives on <html data-theme="dark">. Strategy: re-point the
+   SEMANTIC + a few PRIMITIVE tokens so every component that already
+   consumes them inverts cohesively — zero per-component dark rules
+   needed downstream. Backgrounds = teal-tinted "ink/night" darks
+   (never pure black); body text = sand/near-white; surfaces lift with
+   a subtly lighter teal; borders soften; accents brighten just enough
+   for WCAG AA on the dark ground. Reads as deliberate in BOTH
+   data-mode="rihla" AND data-mode="sakina" (gold + Amiri reverence
+   preserved on /omra/). Photo-overlay legibility locks are untouched
+   (they hard-code their own dark glass + white text).
+
+   The raw hex values below are the ONLY sanctioned hex outside the
+   canonical paste besides the documented photo-overlay locks: they
+   define the dark palette anchors that the semantic tokens reference.
+   ============================================================ */
+:root[data-theme="dark"] {
+  /* --- dark palette anchors (teal-tinted, never #000) --- */
+  --dk-bg:           #061A17;   /* page ground — deepest night-teal */
+  --dk-surface:      #0C2823;   /* raised cards / nav / drawer */
+  --dk-surface-2:    #123A33;   /* hover / elevated surface lift */
+  --dk-border:       #1E4A42;   /* soft hairline on dark */
+  --dk-text-strong:  #F6F1E6;   /* near-white sand for headings */
+  --dk-text-body:    #DCD7C9;   /* sand body — AA on --dk-bg */
+  --dk-text-muted:   #9FB0AB;   /* muted teal-sand — AA on --dk-bg */
+
+  /* brightened accents (AA-tuned for the dark ground) */
+  --dk-teal:         var(--teal-300);   /* #7DC0B0 link/primary on dark */
+  --dk-teal-strong:  var(--teal-200);   /* #B0DACF hover */
+  --dk-teal-soft:    #12342F;           /* faint teal chip/hover wash */
+  --dk-coral:        var(--coral-400);  /* #F07B4A — brighter Rihla accent */
+  --dk-coral-strong: var(--coral-300);  /* #F5A37E hover */
+  --dk-gold:         var(--gold-300);   /* #E2C972 — Sakina lantern light */
+  --dk-gold-strong:  var(--gold-200);   /* #EFDFA8 hover */
+  /* Keep WhatsApp at its CANONICAL brand green in dark too: the
+     white-icon-on-green pairing is the recognizable brand button (a
+     graphical/brand element, exempt from the 4.5:1 text floor). Literal
+     hex (not var(--whatsapp)) to avoid a custom-property cycle with the
+     --whatsapp re-point in the theme block below. */
+  --dk-whatsapp:     #25D366;           /* brand green held in dark */
+}
+
+/* RIHLA (default) — coral accent on the dark ground */
+:root[data-theme="dark"], :root[data-theme="dark"] [data-mode="rihla"] {
+  --color-primary: var(--dk-teal);
+  --color-primary-strong: var(--dk-teal-strong);
+  --color-primary-soft: var(--dk-teal-soft);
+  --color-accent: var(--dk-coral);
+  --color-accent-strong: var(--dk-coral-strong);
+  --color-accent-soft: #3A241A;
+  --surface-page: var(--dk-bg);
+  --surface-raised: var(--dk-surface);
+  --surface-inverse: #04110F;
+  --text-strong: var(--dk-text-strong);
+  --text-body: var(--dk-text-body);
+  --text-muted: var(--dk-text-muted);
+  --text-on-primary: var(--ink-900);   /* dark ink ON the light teal accent = AA */
+  --text-on-accent: var(--ink-900);    /* dark ink ON bright coral = AA */
+  --border-soft: var(--dk-border);
+  --price-color: var(--dk-coral-strong);
+  --chip-bg: var(--dk-teal-soft);
+
+  /* primitives consumed directly by chrome (footer/fab/whatsapp).
+     WhatsApp keeps brand green; --whatsapp-deep is left inheriting the
+     canonical #128C5E so the FAB hover still reads as WhatsApp on dark. */
+  --whatsapp: var(--dk-whatsapp);
+  --sand-100: var(--dk-text-body);     /* footer copy → readable on dark */
+  --sand-200: var(--dk-border);        /* disabled-btn bg lift */
+}
+
+/* SAKINA (/omra/) — gold + Amiri reverence held on the dark ground */
+:root[data-theme="dark"] [data-mode="sakina"] {
+  --color-primary: var(--dk-teal);
+  --color-primary-strong: var(--dk-teal-strong);
+  --color-primary-soft: var(--dk-teal-soft);
+  --color-accent: var(--dk-gold);
+  --color-accent-strong: var(--dk-gold-strong);
+  --color-accent-soft: #2E2716;
+  --surface-page: var(--night-900);    /* #071F1B — keeps the Sakina deep */
+  --surface-raised: #0D2A25;
+  --surface-inverse: #04110F;
+  --text-strong: var(--dk-text-strong);
+  --text-body: var(--dk-text-body);
+  --text-muted: var(--dk-text-muted);
+  --text-on-primary: var(--ink-900);
+  --text-on-accent: var(--ink-900);    /* dark ink ON gold = AA */
+  --border-soft: #244C42;
+  --price-color: var(--dk-gold-strong);
+  --chip-bg: var(--color-accent-soft);
+}
+
+/* Gentle theme transition on color/background only (mode transition
+   already exists below). Disabled under reduced-motion by the global
+   kill switch. Scoped to chrome + surfaces so it never animates text
+   reflow. */
+html, body, .site-nav, .nav-drawer, .n-card, .service-card,
+.n-grid, .n-trust .t, .n-sticky, .n-sticky-bar, .site-footer,
+.lang-switcher, .theme-toggle {
+  transition: background-color var(--dur-base) var(--ease-out),
+              border-color var(--dur-base) var(--ease-out),
+              color var(--dur-base) var(--ease-out);
+}
+
+
+/* ============================================================
    ░░ GLOBAL RTL BASE ░░
    Document default is RTL. Logical properties only.
    ============================================================ */
@@ -258,10 +363,16 @@ button, input, select, textarea {
   color: inherit;
 }
 
-/* Visible focus everywhere — accessibility floor */
+/* Visible focus everywhere — accessibility floor.
+   P1-11: DUAL ring. A single accent-colored outline vanishes on accent
+   (coral/gold) CTAs — exactly the highest-priority controls. We pair a
+   white/surface inner outline with a dark ink box-shadow halo so the
+   indicator stays visible on ANY background, light or accent. */
 :focus-visible {
-  outline: 3px solid var(--color-accent);
+  outline: 3px solid var(--surface-raised);
   outline-offset: 2px;
+  box-shadow: 0 0 0 5px var(--text-strong);
+  border-radius: var(--radius-sm);
 }
 
 /* Skip link — keyboard accessibility */
@@ -342,8 +453,18 @@ body.nav-scroll-lock { overflow: hidden; }
   min-height: 48px;
   text-align: center;
 }
-.n-btn:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 2px; }
-.n-btn:active { transform: none; }
+/* P1-11: buttons use the same dual ring (white inner + ink halo) so the
+   focus indicator is visible even on a coral/gold/whatsapp-green button. */
+.n-btn:focus-visible {
+  outline: 3px solid var(--surface-raised);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 5px var(--text-strong);
+}
+/* P1-3: real press feedback. Scale-DOWN is the one place a button SHOULD
+   scale (§07 "never scale buttons" targets hover/grow, not the press) — it
+   reads as a positive tap response, especially on touch where no hover
+   exists. Reduced-motion is covered by the global kill switch. */
+.n-btn:active { transform: translateY(0) scale(.98); transition-duration: 90ms; }
 
 .n-btn-primary { background: var(--btn-primary-bg); color: var(--text-on-primary); }
 .n-btn-primary:hover { background: var(--btn-primary-bg-hover); color: var(--text-on-primary); transform: translateY(-1px); box-shadow: var(--shadow-md); }
@@ -415,20 +536,51 @@ body.nav-scroll-lock { overflow: hidden; }
 }
 .n-card:hover { box-shadow: var(--card-shadow-hover); transform: translateY(-3px); }
 .n-card .img {
-  height: 180px;
+  /* P0-1: the wrapper is an <a> (inline by default), so the previous
+     height:180px + overflow:hidden were IGNORED and images ballooned to
+     their intrinsic aspect-ratio, pushing price/CTA off-card. Force block
+     + aspect-ratio so the frame scales with card width and clips. */
+  display: block;
+  aspect-ratio: 16 / 10;
   background: linear-gradient(160deg, var(--color-primary), var(--surface-inverse));
   position: relative;
+  overflow: hidden;
   transition: border-radius var(--dur-base) var(--ease-out);
 }
 .n-card .img > img,
 .n-card .img > picture { width: 100%; height: 100%; }
 .n-card .img > img,
 .n-card .img > picture img { object-fit: cover; width: 100%; height: 100%; }
+
+/* P0-3: lazy-image fade-in (kills pop-in). Card/gallery imgs start
+   transparent and fade once decoded; reveal.js/enhance.js sets .is-loaded
+   on `load` and immediately for already-`complete` (cached) images. The LCP
+   hero <img> is EXCLUDED (constraint #2 — it must paint immediately).
+   P1-6: image zoom on hover — clipped by the wrapper's overflow:hidden. */
+.n-card .img > img,
+.n-card .img > picture img {
+  opacity: 0;
+  transition: opacity 400ms var(--ease-out), transform 600ms var(--ease-out);
+}
+.n-card .img > img.is-loaded,
+.n-card .img > picture img.is-loaded { opacity: 1; }
+@media (hover: hover) {
+  .n-card:hover .img > img,
+  .n-card:hover .img > picture img { transform: scale(1.04); }
+}
+
 [data-mode="sakina"] .n-card .img {
   border-radius: var(--radius-arch);
   margin: 10px 10px 0;
-  height: 170px;
+  aspect-ratio: 17 / 10;
   filter: saturate(.85);   /* Sakina −15% saturation per §05 */
+}
+/* Sakina stillness: no image-load fade and no hover zoom on /omra/ cards. */
+[data-mode="sakina"] .n-card .img > img,
+[data-mode="sakina"] .n-card .img > picture img {
+  opacity: 1 !important;
+  transition: none !important;
+  transform: none !important;
 }
 .n-card .img .n-badge-promo { position: absolute; inset-block-start: 14px; inset-inline-start: 14px; }
 .n-card .pad { padding: var(--space-5); }
@@ -444,6 +596,24 @@ body.nav-scroll-lock { overflow: hidden; }
 .n-price .amount { font-family: var(--font-display); font-weight: 700; font-size: var(--text-2xl); color: var(--price-color); }
 .n-price .cur { font-weight: 600; color: var(--text-muted); font-size: var(--text-sm); align-self: baseline; }
 .n-price .per { color: var(--text-muted); font-size: var(--text-xs); }
+
+/* P0-6: price-on-request — a DELIBERATE teal chip (not body-weight error
+   text) sized at the price baseline, for cards whose price is genuinely
+   unconfirmed (Égypte). No number is fabricated. */
+.n-price--on-request {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  background: var(--chip-bg);
+  color: var(--color-primary-strong);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-base);
+  line-height: 1.25;
+  padding: .5rem .9rem;
+  border-radius: var(--radius-pill);
+}
+.n-price--on-request svg { flex: none; }
 
 /* ---- Tiered price grid ---- */
 .n-grid {
@@ -467,6 +637,26 @@ body.nav-scroll-lock { overflow: hidden; }
 .n-grid td { padding: .8rem 1rem; border-block-start: 1px solid var(--border-soft); color: var(--text-body); }
 .n-grid td.p { font-family: var(--font-display); font-weight: 700; color: var(--price-color); font-size: 1.15rem; white-space: nowrap; }
 
+/* P1-9: Sakina prices are the brand's #1 signal but gold-600 reads muted at
+   price size. Keep the gold (reverence constraint — do NOT switch to coral)
+   but lift the price with a heavier weight, a touch more size, and a
+   hairline gold rule so it reads as deliberate emphasis. */
+[data-mode="sakina"] .n-grid td.p {
+  font-weight: 800;
+  font-size: 1.3rem;
+}
+[data-mode="sakina"] .n-grid td.p span[dir="ltr"] {
+  border-block-end: 2px solid var(--gold-400);
+  padding-block-end: 2px;
+}
+[data-mode="sakina"] .n-price .amount {
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-color: var(--gold-400);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
+}
+
 /* ---- Trust strip ---- */
 .n-trust { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-block-start: var(--space-4); }
 .n-trust .t {
@@ -480,7 +670,17 @@ body.nav-scroll-lock { overflow: hidden; }
   font-size: var(--text-sm);
   color: var(--text-body);
 }
-.n-trust .t svg { flex: none; }
+/* P2-6: faint primary-soft chip behind each trust icon — lifts the strip
+   from "list" to "component", echoing .service-card__icon. */
+.n-trust .t svg {
+  flex: none;
+  box-sizing: content-box;
+  inline-size: 22px;
+  block-size: 22px;
+  padding: 7px;
+  background: var(--color-primary-soft);
+  border-radius: var(--radius-pill);
+}
 
 /* ---- Sticky conversion strip (the inner control) ---- */
 .n-sticky {
@@ -514,18 +714,24 @@ body.nav-scroll-lock { overflow: hidden; }
   min-height: var(--nav-h);
   padding-inline: var(--container-x);
   padding-block: var(--space-2);
-  background: color-mix(in srgb, var(--surface-page) 92%, transparent);
-  backdrop-filter: saturate(1.2) blur(8px);
-  -webkit-backdrop-filter: saturate(1.2) blur(8px);
+  /* P0-2: NO backdrop-filter. A non-`none` backdrop-filter establishes a
+     containing block for position:fixed descendants, which trapped the
+     enhance.js-injected .nav-drawer (a fixed child of .site-nav) inside the
+     65px-tall bar instead of the viewport. The drawer MUST stay a child of
+     .site-nav for the desktop display:contents architecture, so we drop the
+     frosted effect and use a near-opaque token surface instead — the nav
+     still reads cleanly over scrolling content. */
+  background: color-mix(in srgb, var(--surface-raised) 92%, transparent);
   border-block-end: 1px solid transparent;
   transition: box-shadow var(--dur-base) var(--ease-out),
               border-color var(--dur-base) var(--ease-out),
               background var(--dur-base) var(--ease-out);
 }
+/* P2-2: scrolled nav gains presence — 1px hairline + an opacity step. */
 .site-nav.is-scrolled {
   box-shadow: var(--shadow-sm);
   border-block-end-color: var(--border-soft);
-  background: color-mix(in srgb, var(--surface-page) 97%, transparent);
+  background: color-mix(in srgb, var(--surface-raised) 98%, transparent);
 }
 
 .nav-logo { display: inline-flex; align-items: center; flex: none; }
@@ -576,6 +782,52 @@ body.nav-scroll-lock { overflow: hidden; }
 .site-nav.nav-open .nav-toggle .icon-menu { display: none; }
 .site-nav.nav-open .nav-toggle .icon-close { display: block; }
 
+/* ---------- .theme-toggle (light/dark) ----------
+   Direct child of .site-nav, immediately before .nav-toggle. Stays in
+   the TOP BAR at every width (never moved into the drawer). Compact
+   circular icon button; ≥48px touch target on coarse pointers. Shows
+   the SUN in light theme, the MOON in dark theme — driven by the
+   [data-theme] selectors below. RTL-safe (no physical offsets). */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  inline-size: 42px;
+  block-size: 42px;
+  padding: 0;
+  border: 1px solid var(--border-soft);
+  background: transparent;
+  color: var(--text-strong);
+  cursor: pointer;
+  border-radius: var(--radius-pill);
+  transition: background var(--dur-fast) var(--ease-out),
+              color var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out),
+              transform var(--dur-fast) var(--ease-out);
+}
+.theme-toggle:hover {
+  background: var(--color-primary-soft);
+  color: var(--color-primary-strong);
+  border-color: var(--color-primary-soft);
+}
+.theme-toggle:active { transform: scale(.94); }
+.theme-toggle:focus-visible { outline: 3px solid var(--surface-raised); outline-offset: 2px; box-shadow: 0 0 0 5px var(--text-strong); }
+.theme-toggle svg {
+  inline-size: 22px;
+  block-size: 22px;
+  pointer-events: none;
+}
+/* Coarse pointers (touch): meet the 48px floor without bloating desktop */
+@media (pointer: coarse) {
+  .theme-toggle { inline-size: var(--touch-min); block-size: var(--touch-min); }
+}
+/* Icon swap: SUN in light (default), MOON in dark */
+.theme-toggle .icon-moon { display: none; }
+.theme-toggle .icon-sun  { display: block; }
+:root[data-theme="dark"] .theme-toggle .icon-sun  { display: none; }
+:root[data-theme="dark"] .theme-toggle .icon-moon { display: block; }
+
 /* ---------- .nav-drawer (Alliance S3 + S8) ---------- */
 /* Desktop ≥901px: wrapper is transparent to layout. Children flow into nav. */
 .nav-drawer {
@@ -597,6 +849,27 @@ body.nav-scroll-lock { overflow: hidden; }
 @media (max-width: 900px) {
   .nav-toggle { display: inline-flex; }
 
+  /* TOP-BAR DECLUTTER (contract §B) — at ≤900px only [logo] +
+     [theme-toggle] + [hamburger] may sit in the bar. We hide the three
+     control clusters ONLY while they are STILL DIRECT CHILDREN of
+     .site-nav (i.e. their top-bar home, before enhance.js moves them).
+     This is the empty-drawer-leak guard: the moment enhance.js relocates
+     them into .nav-drawer they are no longer `> children` of .site-nav,
+     so this rule stops applying and the drawer rules below show them.
+     Never a blanket `.nav-links{display:none}` that would leak inside. */
+  .site-nav > .nav-links,
+  .site-nav > .lang-switcher,
+  .site-nav > .nav-cta {
+    display: none;
+  }
+  /* Empty-drawer-leak guard (explicit): once the controls live inside
+     .nav-drawer they MUST be visible when the drawer is open. We restate
+     their display here so the `> child` hide above can never bleed in via
+     specificity. Each gets back its natural display. */
+  .nav-drawer .nav-links    { display: flex; }
+  .nav-drawer .lang-switcher { display: inline-flex; }
+  .nav-drawer .nav-cta      { display: block; }
+
   /* Drawer becomes a fixed slide-in panel anchored to the inline-end edge.
      RTL-aware: translateX(100%) hides off the inline-end side. We flip the
      sign for LTR so the panel always slides from the correct edge. */
@@ -611,11 +884,13 @@ body.nav-scroll-lock { overflow: hidden; }
     inline-size: min(84vw, 340px);
     z-index: var(--z-drawer);
     background: var(--surface-raised);
-    box-shadow: var(--shadow-lg);
+    /* P1-4: faint inline-start shadow so the panel reads as lifted over the
+       page as it slides; slightly longer eased slide than --dur-base. */
+    box-shadow: -18px 0 44px rgba(12, 58, 53, .18);
     padding: calc(var(--nav-h) + var(--space-4)) var(--space-5) var(--space-6);
     overflow-y: auto;
     transform: translateX(100%);
-    transition: transform var(--dur-base) var(--ease-out);
+    transition: transform 320ms var(--ease-out);
   }
   /* LTR: drawer sits on the right, still slides off the right edge */
   [dir="ltr"] .nav-drawer { transform: translateX(100%); }
@@ -637,6 +912,24 @@ body.nav-scroll-lock { overflow: hidden; }
   .nav-drawer .lang-switcher,
   .nav-drawer .nav-cta { align-self: stretch; }
   .nav-drawer .nav-cta .n-btn { width: 100%; }
+
+  /* P1-4: links settle in with a small staggered rise once the drawer is
+     open (panel slide is the lead motion; this is the follow-through).
+     Pure CSS — keyed off .nav-open. Reduced-motion neutralizes it via the
+     global kill switch. */
+  .site-nav .nav-drawer .nav-links a {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 240ms var(--ease-out), transform 240ms var(--ease-out);
+  }
+  .site-nav.nav-open .nav-drawer .nav-links a { opacity: 1; transform: none; }
+  .site-nav.nav-open .nav-drawer .nav-links a:nth-child(1) { transition-delay: 80ms; }
+  .site-nav.nav-open .nav-drawer .nav-links a:nth-child(2) { transition-delay: 110ms; }
+  .site-nav.nav-open .nav-drawer .nav-links a:nth-child(3) { transition-delay: 140ms; }
+  .site-nav.nav-open .nav-drawer .nav-links a:nth-child(4) { transition-delay: 170ms; }
+  .site-nav.nav-open .nav-drawer .nav-links a:nth-child(5) { transition-delay: 200ms; }
+  .site-nav.nav-open .nav-drawer .nav-links a:nth-child(6) { transition-delay: 230ms; }
+  .site-nav.nav-open .nav-drawer .nav-links a:nth-child(7) { transition-delay: 260ms; }
 }
 
 /* ---------- .lang-switcher (AR | FR pill toggle) ---------- */
@@ -679,10 +972,35 @@ body.nav-scroll-lock { overflow: hidden; }
   color: var(--white);
   border-radius: var(--radius-pill);
   box-shadow: var(--shadow-lg);
-  transition: transform var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out);
+  transition: transform var(--dur-fast) var(--ease-out),
+              background var(--dur-fast) var(--ease-out),
+              box-shadow var(--dur-fast) var(--ease-out);
 }
-.fab-whatsapp:hover { background: var(--whatsapp-deep); color: var(--white); transform: translateY(-2px) scale(1.04); }
+/* P1-5: drop the hover scale (§07 "never scale buttons"). Lift + shadow
+   bloom only. */
+.fab-whatsapp:hover {
+  background: var(--whatsapp-deep);
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 22px 50px rgba(12, 58, 53, .28);
+}
 .fab-whatsapp svg { inline-size: 28px; block-size: 28px; }
+
+/* P1-5: one-shot FAB entrance — fade + rise, fired on .chrome-ready (set by
+   enhance.js on load). No-op under Sakina + reduced-motion (guards below). */
+.fab-whatsapp {
+  opacity: 0;
+  transform: translateY(12px);
+}
+.chrome-ready .fab-whatsapp {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 420ms var(--ease-out) 200ms,
+              transform 420ms var(--ease-out) 200ms,
+              background var(--dur-fast) var(--ease-out),
+              box-shadow var(--dur-fast) var(--ease-out);
+}
+.chrome-ready .fab-whatsapp:hover { transform: translateY(-2px); }
 
 /* ---------- .n-sticky-bar (mobile conversion bar wrapper) ---------- */
 .n-sticky-bar {
@@ -696,6 +1014,14 @@ body.nav-scroll-lock { overflow: hidden; }
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border-block-start: 1px solid var(--border-soft);
+  /* P1-5: one-shot slide-up entrance from below the fold. Fires on
+     .chrome-ready (enhance.js, on load). No fixed children here so the
+     transform creates no containing-block trap. */
+  transform: translateY(100%);
+}
+.chrome-ready .n-sticky-bar {
+  transform: translateY(0);
+  transition: transform 480ms var(--ease-out) 260ms;
 }
 .n-sticky-bar .n-sticky { box-shadow: none; border: 0; padding: 0; }
 
@@ -812,8 +1138,34 @@ body.nav-scroll-lock { overflow: hidden; }
   content: "";
   position: absolute;
   inset: 0;
-  /* legibility scrim — gradient over photo, theme-independent */
-  background: linear-gradient(180deg, rgba(7,33,30,.35), rgba(7,33,30,.78));
+  /* P1-1: directional, bottom + text-side-weighted scrim — a documented
+     legibility lock (raw rgba allowed). The bottom-weight keeps the upper
+     photo vivid; the side-weight (flipped per direction below) concentrates
+     darkening under the copy column so text stays legible without muting the
+     whole image. CSS gradient keywords are physical, so the side layer is
+     set per [dir] just under this rule. */
+  background:
+    linear-gradient(to bottom,
+      rgba(7,33,30,.12) 0%,
+      rgba(7,33,30,0) 32%,
+      rgba(7,33,30,.55) 72%,
+      rgba(7,33,30,.84) 100%),
+    linear-gradient(to right,
+      rgba(7,33,30,.45) 0%,
+      rgba(7,33,30,0) 55%);
+}
+/* RTL (default): copy sits on the visual right → darken from the right.
+   LTR: copy sits on the visual left → darken from the left. */
+[dir="ltr"] .hero__media::after {
+  background:
+    linear-gradient(to bottom,
+      rgba(7,33,30,.12) 0%,
+      rgba(7,33,30,0) 32%,
+      rgba(7,33,30,.55) 72%,
+      rgba(7,33,30,.84) 100%),
+    linear-gradient(to left,
+      rgba(7,33,30,.45) 0%,
+      rgba(7,33,30,0) 55%);
 }
 .hero__inner {
   position: relative;
@@ -826,6 +1178,32 @@ body.nav-scroll-lock { overflow: hidden; }
 [data-mode="sakina"] .hero h1 { line-height: 1.4; }
 .hero p { color: var(--sand-100); font-size: var(--text-lg); max-width: 52ch; margin-block-start: var(--space-4); }
 .hero .cta-row { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-block-start: var(--space-5); }
+
+/* ============================================================
+   P0-4: HERO TEXT-OVERLAY LOAD-IN ENTRANCE
+   The LCP hero IMAGE paints immediately (never animated). Only the
+   .hero__inner CHILDREN (chip → h1 → p → cta-row) fade + rise, ONCE, on
+   .hero-ready (set by enhance.js on DOMContentLoaded — not on scroll).
+   No-op under Sakina (stillness) and reduced-motion (kill switch).
+   ============================================================ */
+.hero-ready .hero:not(.hero--sakina) .hero__inner > * {
+  opacity: 0;
+  transform: translateY(14px);
+  animation: hero-rise 480ms var(--ease-out) forwards;
+}
+.hero-ready .hero:not(.hero--sakina) .hero__inner > *:nth-child(1) { animation-delay: 60ms; }
+.hero-ready .hero:not(.hero--sakina) .hero__inner > *:nth-child(2) { animation-delay: 130ms; }
+.hero-ready .hero:not(.hero--sakina) .hero__inner > *:nth-child(3) { animation-delay: 200ms; }
+.hero-ready .hero:not(.hero--sakina) .hero__inner > *:nth-child(4) { animation-delay: 270ms; }
+@keyframes hero-rise {
+  to { opacity: 1; transform: none; }
+}
+/* Hard stillness guard: Sakina hero never animates its overlay. */
+[data-mode="sakina"] .hero__inner > * {
+  opacity: 1 !important;
+  transform: none !important;
+  animation: none !important;
+}
 
 /* Sakina arch hero (gradient + arch, no photo) */
 .hero--sakina {
@@ -845,6 +1223,33 @@ body.nav-scroll-lock { overflow: hidden; }
 }
 @media (min-width: 920px) {
   .trip-grid, .card-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ============================================================
+   P1-8: /voyages/ PURE-CSS :target FILTER
+   The destination chips were styled like filter pills but only anchor-jumped.
+   Now they actually filter: scoping a .trip-grid--filter so that when ANY
+   card is :target, all NON-targeted cards hide. The "كل الوجهات" chip points
+   at #all (a wrapper outside the grid) which matches no card → everything
+   shows (default + reset). Each filter chip also gets an active/:focus state.
+   No JS. Only applies on the voyages grid (opt-in class). RTL-safe.
+   ============================================================ */
+.trip-grid--filter:has(.n-card:target) .n-card { display: none; }
+.trip-grid--filter:has(.n-card:target) .n-card:target { display: block; }
+
+/* Filter chip active + focus state (P1-8). The targeted chip reads as
+   selected; :focus-visible already gets the dual ring. */
+.filter-chips .n-chip {
+  border: 1.5px solid transparent;
+  transition: background var(--dur-fast) var(--ease-out),
+              color var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out);
+}
+.filter-chips .n-chip:hover,
+.filter-chips .n-chip:focus-visible {
+  background: var(--color-primary-soft);
+  color: var(--color-primary-strong);
+  border-color: var(--color-primary);
 }
 
 /* Service card (the 6 parallel offerings) */
@@ -870,16 +1275,114 @@ body.nav-scroll-lock { overflow: hidden; }
 .service-card h3 { font-size: var(--text-xl); }
 .service-card p { color: var(--text-muted); font-size: var(--text-sm); flex: 1; }
 
+/* P1-10: long-line guard. Body paragraphs in cards/blocks have no inherent
+   measure cap, so on wide desktop a card paragraph could exceed the ≤65ch
+   readability rule. Cap them (heroes/sec-head already cap their own). */
+.service-card p,
+.n-card .pad > p,
+.n-card > p {
+  max-inline-size: 62ch;
+}
+
+/* ============================================================
+   P1-2 / §05 var.3: THE ARCH AS A STILL OUTLINED FRAME
+   The brand's signature device, rendered as a calm reverent frame (NOT an
+   image mask): arch radius, 2px gold border, sand fill. For Sakina /omra/
+   only — one per viewport. No motion (Sakina stillness). RTL-safe.
+   ============================================================ */
+.arch-frame {
+  border: 2px solid var(--color-accent-strong);
+  border-radius: var(--radius-arch);
+  background: var(--sand-50);
+  padding: var(--space-7) var(--space-6) var(--space-6);
+}
+[data-theme="dark"] .arch-frame { background: var(--surface-raised); }
+
+/* ============================================================
+   P2-4: DEPARTURE-FROM-CONSTANTINE MOTIF
+   A tiny inline "✈ قسنطينة" route glyph (decorative SVG + label), no
+   motion. Reinforces the one geographic differentiator on cards/heroes.
+   ============================================================ */
+.n-depart {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-xs);
+  color: var(--color-primary-strong);
+}
+.n-depart svg { flex: none; inline-size: 14px; block-size: 14px; }
+.hero .n-depart { color: var(--sand-100); }
+
+/* ============================================================
+   P2-3: GUIDE PORTRAIT PLACEHOLDER (companion-not-vendor)
+   No real guide photo yet → a tasteful circular monogram in brand teal.
+   TODO-CLIENT: swap for a real guide photo (same dimensions, object-fit
+   cover) when supplied. Pairs the founder/guide beside trust + CTAs.
+   ============================================================ */
+.guide-portrait {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 64px;
+  block-size: 64px;
+  flex: none;
+  border-radius: var(--radius-pill);
+  background: var(--color-primary);
+  color: var(--text-on-primary);
+  font-family: var(--heading-font);
+  font-weight: 700;
+  font-size: var(--text-lg);
+  border: 2px solid var(--surface-raised);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+.guide-portrait img { inline-size: 100%; block-size: 100%; object-fit: cover; }
+.guide-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+.guide-row .guide-meta { line-height: var(--leading-latin); }
+.guide-row .guide-meta strong { color: var(--text-strong); font-family: var(--heading-font); display: block; }
+.guide-row .guide-meta span { color: var(--text-muted); font-size: var(--text-sm); }
+
 
 /* ============================================================
    ░░ SCROLL-REVEAL CSS (driven by reveal.js) ░░
+   P0-5: fade + 24px rise (was 16px); transform 600ms / opacity 420ms so the
+   motion reads as intentional (240ms flickered). will-change is added here
+   on un-revealed nodes and REMOVED in reveal.js on the same unobserve.
    ============================================================ */
 [data-reveal] {
   opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 240ms var(--ease-out), transform 240ms var(--ease-out);
+  transform: translateY(24px);
+  transition: opacity 420ms var(--ease-out), transform 600ms var(--ease-out);
+  will-change: opacity, transform;
 }
 [data-reveal].is-revealed { opacity: 1; transform: none; }
+
+/* ============================================================
+   PROGRESSIVE-ENHANCEMENT SAFETY NET
+   The motion layer hides several elements by default and reveals them
+   via JS-set classes (.is-loaded / .hero-ready / .chrome-ready /
+   .is-revealed). If JS never runs (script load failure on flaky 3G, or
+   scripting disabled) force the visible end-state so no content — hero
+   text, prices, card images, the WhatsApp FAB, or the sticky conversion
+   bar ("WhatsApp is checkout") — is ever stranded hidden. Inert whenever
+   scripting is active, so it never fights the JS-driven motion path.
+   (Covers modern engines; very old browsers without the `scripting`
+   media feature fall back to the JS path, which is the common case.)
+   ============================================================ */
+@media (scripting: none) {
+  [data-reveal] { opacity: 1 !important; transform: none !important; }
+  .n-card .img > img,
+  .n-card .img > picture img { opacity: 1 !important; }
+  .hero__inner > * { opacity: 1 !important; transform: none !important; animation: none !important; }
+  .fab-whatsapp { opacity: 1 !important; transform: none !important; }
+  .n-sticky-bar { transform: none !important; }
+}
 
 
 /* ============================================================
@@ -891,10 +1394,85 @@ body.nav-scroll-lock { overflow: hidden; }
   opacity: 1 !important;
   transform: none !important;
   transition: none !important;
+  will-change: auto !important;
 }
 
 /* Smooth mode/token transition on the page surface (matches the demo) */
 [data-mode] { transition: background var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out); }
+
+
+/* ============================================================
+   ░░ RESPONSIVE HARDENING ░░
+   Tighten the EXISTING layout for 320px → 1440px+ (no redesign):
+   overflow-x guards where warranted, sane chrome at tiny + huge
+   widths, tap-target floors, landscape-phone safety. Token-driven.
+   ============================================================ */
+
+/* Global overflow + wrapping safety nets. body already has overflow-x
+   hidden; reinforce that long unbroken strings (URLs, emails, long AR
+   words) wrap instead of forcing a horizontal scrollbar. */
+html { overflow-x: hidden; }
+body { max-inline-size: 100%; }
+p, li, a, h1, h2, h3, h4, h5, h6, td, th, figcaption {
+  overflow-wrap: break-word;
+}
+
+/* Top bar: never overflow from 320px up. Let the logo shrink before the
+   bar does, and tighten the inter-item gap on the narrowest phones so
+   [logo] + [theme-toggle] + [hamburger] always fit. */
+.site-nav { gap: var(--space-3); }
+.nav-logo { min-inline-size: 0; }
+.nav-logo img,
+.nav-logo svg { height: clamp(30px, 7vw, 38px); }
+@media (max-width: 360px) {
+  .site-nav { gap: var(--space-2); }
+}
+
+/* Hero: keep vertical rhythm sane on very small AND very large screens,
+   and survive landscape phones (short viewports) without locking a tall
+   min-height that pushes the CTA off-screen. */
+.hero { padding-inline: var(--container-x); }
+@media (max-width: 380px) {
+  .hero h1 { font-size: clamp(2.25rem, 9vw, 2.75rem); }
+}
+@media (max-height: 520px) and (orientation: landscape) {
+  .hero { min-block-size: auto; padding-block: calc(var(--nav-h) + var(--space-5)) var(--space-6); }
+}
+
+/* Sticky conversion strip: at 320px the 420px max-width would overflow
+   its padded container. Cap it to the viewport. */
+.n-sticky { max-width: min(420px, 100%); }
+
+/* Price grid on phones: keep it a real table (column alignment intact)
+   but make sure it can never push the page wider than the viewport.
+   table-layout:fixed + wrapping prices means it always fits 320px up;
+   we don't force display:block (that would destroy the columns) nor add
+   a scroll wrapper (that markup belongs to the HTML lane). */
+.n-grid { table-layout: fixed; max-inline-size: 100%; }
+@media (max-width: 480px) {
+  .n-grid td.p { white-space: normal; }   /* let tight prices wrap, not overflow */
+  .n-grid th, .n-grid td { padding-inline: .6rem; }
+}
+
+/* Tap-target floor for inline chrome links that aren't buttons but are
+   primary touch targets. Footer links get a comfortable touch height.
+   Top-bar nav links (direct children of .site-nav, shown 901–1024px on
+   coarse tablets) also get the floor — but we deliberately DON'T touch
+   .nav-drawer links, which already pad to ≥48px and must stay block. */
+@media (pointer: coarse) {
+  .site-footer__list a {
+    min-block-size: var(--touch-min);
+    display: inline-flex;
+    align-items: center;
+  }
+  .site-nav > .nav-links a { min-block-size: var(--touch-min); }
+}
+
+/* Fluid section padding floor on tiny screens (keeps content off the
+   edges without over-padding 320px). Large screens already get space-9. */
+@media (max-width: 400px) {
+  .section { padding-block: var(--space-7); }
+}
 
 
 /* ============================================================

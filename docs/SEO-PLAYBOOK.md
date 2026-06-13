@@ -39,8 +39,12 @@ colliding with the in-progress page edits:
   `og:url`, and every JSON-LD `@id`/`url`/`item`. **Find-replace at deploy** (see §6). `TODO-CLIENT`.
 - **All prices are `TODO-CLIENT`** (audit-observed, not client-confirmed). Egypt price is genuinely `null` → no offer emitted.
 - **`404.html` is excluded from the sitemap** (Cloudflare Pages serves it automatically).
-- **CSP ships Report-Only** at launch (pages have inline scripts) — see §5 for the path to enforcement.
+- **CSP ships Report-Only** at launch (pages have inline scripts) — and with **no reporting endpoint**, so it's a
+  console-only smoke test, not collected monitoring. Enforced CSP needs per-request nonces (a Pages Function), which
+  conflicts with the no-build/no-backend lock → Report-Only is the realistic ceiling. See §5.
   **HSTS is added at deploy**, not now (placeholder domain).
+- **Caching defaults on `/*`** so every pretty-URL directory page (`/omra/`, `/contact/`, …) revalidates; the old
+  `/*.html` + `/` rules silently missed 13 of 15 pages (C1 fix). Asset rules under `/assets/*` override. See §5.
 - **Honesty:** license number, email, exact Facebook URL, exact departure dates, final prices, and the
   visa offering = `TODO-CLIENT`. Never fabricated. The OG image + brand logo/og assets are `TODO-CLIENT`.
 
@@ -97,7 +101,7 @@ Sources: [أسعار العمرة في الجزائر 2026](https://umrah-prices
 
 ## 3 · Per-page meta & Open Graph
 
-These blocks paste directly **after** the existing `partials/head.html` content (into the `<!-- SEO: ... (Agent 4) -->` slot). Document head is already `<html lang="ar" dir="rtl">`. Per strategy (c) single-URL-space, **no `hreflang`** appears anywhere. The `/omra/` page is the **only** `data-mode="sakina"` page — that toggle lives on `<body>`, not in `<head>`, so it is noted in prose only. Domain `https://nomaravoyages.com` is a **TODO-CLIENT placeholder** (find-replace at deploy). `og:image` `/assets/images/og/og-default.jpg` is **TODO-CLIENT** (see spec at the end). All `og:type` = `website` (no blog). All `og:locale` = `ar_AR`.
+These blocks paste directly **after** the existing `partials/head.html` content (into the `<!-- SEO: ... (Agent 4) -->` slot). Document head is already `<html lang="ar" dir="rtl">`. Per strategy (c) single-URL-space, **no `hreflang`** appears anywhere. The `/omra/` page is the **only** `data-mode="sakina"` page — that toggle lives on `<body>`, not in `<head>`, so it is noted in prose only. Domain `https://nomaravoyages.com` is a **TODO-CLIENT placeholder** (find-replace at deploy). `og:image` `/assets/images/og/og-default.jpg` is **TODO-CLIENT** (see spec at the end). All `og:type` = `website` (no blog). All `og:locale` = `ar_DZ` (Arabic — Algeria; not the invalid `ar_AR`).
 
 ---
 
@@ -110,7 +114,7 @@ These blocks paste directly **after** the existing `partials/head.html` content 
 <meta name="robots" content="index,follow">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="نومارا للسياحة والأسفار">
-<meta property="og:locale" content="ar_AR">
+<meta property="og:locale" content="ar_DZ">
 <meta property="og:url" content="https://nomaravoyages.com/">
 <meta property="og:title" content="نومارا للسياحة والأسفار | عمرة ورحلات منظمة">
 <meta property="og:description" content="عمرة وحج ورحلات منظمة من قسنطينة — السعر شامل الطيران والفندق والمرافقة. احجز رحلتك مع نومارا عبر واتساب.">
@@ -132,7 +136,7 @@ JSON-LD: include **TravelAgency + WebSite** (root identity + search/site entity;
 <meta name="robots" content="index,follow">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="نومارا للسياحة والأسفار">
-<meta property="og:locale" content="ar_AR">
+<meta property="og:locale" content="ar_DZ">
 <meta property="og:url" content="https://nomaravoyages.com/omra/">
 <meta property="og:title" content="العمرة والحج مع نومارا | طيران مباشر من قسنطينة">
 <meta property="og:description" content="عمرة وحج بفنادق قريبة من الحرم ومرافقة كاملة، انطلاقًا من قسنطينة. السعر شامل الطيران والفندق والمرافقة.">
@@ -152,7 +156,7 @@ JSON-LD: include **TravelAgency + WebSite + BreadcrumbList** (الرئيسية �
 <meta name="robots" content="index,follow">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="نومارا للسياحة والأسفار">
-<meta property="og:locale" content="ar_AR">
+<meta property="og:locale" content="ar_DZ">
 <meta property="og:url" content="https://nomaravoyages.com/voyages/">
 <meta property="og:title" content="الرحلات المنظمة | نومارا للسياحة والأسفار">
 <meta property="og:description" content="رحلات منظمة بالكامل من قسنطينة إلى تونس وتركيا وأذربيجان وماليزيا ومصر. السعر شامل الطيران والفندق والمرافقة.">
@@ -172,7 +176,7 @@ JSON-LD: include **TravelAgency + WebSite + BreadcrumbList** (الرئيسية �
 <meta name="robots" content="index,follow">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="نومارا للسياحة والأسفار">
-<meta property="og:locale" content="ar_AR">
+<meta property="og:locale" content="ar_DZ">
 <meta property="og:url" content="https://nomaravoyages.com/tunisie/">
 <meta property="og:title" content="رحلة تونس المنظمة | من قسنطينة مع نومارا">
 <meta property="og:description" content="جربة وسوسة لمدة 7 ليالٍ، طيران مباشر من قسنطينة. السعر شامل الطيران والفندق والمرافقة — 36000 دج فأكثر.">
@@ -192,7 +196,7 @@ JSON-LD: include **TravelAgency + WebSite + TouristTrip(tunisie) + BreadcrumbLis
 <meta name="robots" content="index,follow">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="نومارا للسياحة والأسفار">
-<meta property="og:locale" content="ar_AR">
+<meta property="og:locale" content="ar_DZ">
 <meta property="og:url" content="https://nomaravoyages.com/turquie/">
 <meta property="og:title" content="رحلة إسطنبول المنظمة | من قسنطينة مع نومارا">
 <meta property="og:description" content="إسطنبول 7 ليالٍ بفندق 4 نجوم وجولات سياحية، طيران مباشر من قسنطينة. السعر شامل الطيران والفندق والمرافقة 119000 دج.">
@@ -212,7 +216,7 @@ JSON-LD: include **TravelAgency + WebSite + TouristTrip(turquie) + BreadcrumbLis
 <meta name="robots" content="index,follow">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="نومارا للسياحة والأسفار">
-<meta property="og:locale" content="ar_AR">
+<meta property="og:locale" content="ar_DZ">
 <meta property="og:url" content="https://nomaravoyages.com/azerbaidjan/">
 <meta property="og:title" content="رحلة باكو المنظمة | أذربيجان من قسنطينة">
 <meta property="og:description" content="باكو 7 ليالٍ بفندق 4 نجوم وجولات سياحية، طيران مباشر من قسنطينة. السعر شامل الطيران والفندق والمرافقة 119000 دج.">
@@ -232,7 +236,7 @@ JSON-LD: include **TravelAgency + WebSite + TouristTrip(azerbaidjan) + Breadcrum
 <meta name="robots" content="index,follow">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="نومارا للسياحة والأسفار">
-<meta property="og:locale" content="ar_AR">
+<meta property="og:locale" content="ar_DZ">
 <meta property="og:url" content="https://nomaravoyages.com/malaisie/">
 <meta property="og:title" content="رحلة ماليزيا المنظمة | من قسنطينة مع نومارا">
 <meta property="og:description" content="ماليزيا 8 ليالٍ بين كوالالمبور والجزر، طيران مباشر من قسنطينة. السعر شامل الطيران والفندق والمرافقة 199000 دج.">
@@ -252,7 +256,7 @@ JSON-LD: include **TravelAgency + WebSite + TouristTrip(malaisie) + BreadcrumbLi
 <meta name="robots" content="index,follow">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="نومارا للسياحة والأسفار">
-<meta property="og:locale" content="ar_AR">
+<meta property="og:locale" content="ar_DZ">
 <meta property="og:url" content="https://nomaravoyages.com/egypte/">
 <meta property="og:title" content="رحلة مصر المنظمة | القاهرة والغردقة من قسنطينة">
 <meta property="og:description" content="القاهرة والأهرامات ومنتجع الغردقة Collection Mirage بتخفيض 25٪، طيران مباشر من قسنطينة. السعر شامل الطيران والفندق والمرافقة.">
@@ -272,7 +276,7 @@ JSON-LD: include **TravelAgency + WebSite + TouristTrip(egypte) + BreadcrumbList
 <meta name="robots" content="index,follow">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="نومارا للسياحة والأسفار">
-<meta property="og:locale" content="ar_AR">
+<meta property="og:locale" content="ar_DZ">
 <meta property="og:url" content="https://nomaravoyages.com/services/">
 <meta property="og:title" content="خدماتنا | نومارا للسياحة والأسفار">
 <meta property="og:description" content="العمرة والحج، الرحلات المنظمة، حجز الفنادق والتذاكر، وخدمات التأشيرة — كل خدمات سفرك مع نومارا في مكان واحد.">
@@ -292,7 +296,7 @@ JSON-LD: include **TravelAgency + WebSite + BreadcrumbList** (الرئيسية �
 <meta name="robots" content="index,follow">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="نومارا للسياحة والأسفار">
-<meta property="og:locale" content="ar_AR">
+<meta property="og:locale" content="ar_DZ">
 <meta property="og:url" content="https://nomaravoyages.com/services/visa/">
 <meta property="og:title" content="خدمات التأشيرة | نومارا للسياحة والأسفار">
 <meta property="og:description" content="مساعدة في تحضير ملف التأشيرة وترتيب الوثائق لوجهتك مع نومارا، بصدق ووضوح. للاستفسار تواصل عبر واتساب.">
@@ -312,7 +316,7 @@ JSON-LD: include **TravelAgency + WebSite + BreadcrumbList** (الرئيسية �
 <meta name="robots" content="index,follow">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="نومارا للسياحة والأسفار">
-<meta property="og:locale" content="ar_AR">
+<meta property="og:locale" content="ar_DZ">
 <meta property="og:url" content="https://nomaravoyages.com/services/hotellerie/">
 <meta property="og:title" content="حجز الفنادق | نومارا للسياحة والأسفار">
 <meta property="og:description" content="حجز الغرفة المناسبة في أي وجهة بأسعار تفاوضنا عليها لك، مع تأكيد عبر واتساب دون عناء البحث.">
@@ -332,7 +336,7 @@ JSON-LD: include **TravelAgency + WebSite + BreadcrumbList** (الرئيسية �
 <meta name="robots" content="index,follow">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="نومارا للسياحة والأسفار">
-<meta property="og:locale" content="ar_AR">
+<meta property="og:locale" content="ar_DZ">
 <meta property="og:url" content="https://nomaravoyages.com/services/vols/">
 <meta property="og:title" content="حجز تذاكر الطيران | نومارا للسياحة والأسفار">
 <meta property="og:description" content="مقارنة شركات الطيران وأفضل سعر لرحلتك من قسنطينة، بتذاكر مؤكدة وأسعار شفافة. احجز عبر واتساب.">
@@ -352,7 +356,7 @@ JSON-LD: include **TravelAgency + WebSite + BreadcrumbList** (الرئيسية �
 <meta name="robots" content="index,follow">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="نومارا للسياحة والأسفار">
-<meta property="og:locale" content="ar_AR">
+<meta property="og:locale" content="ar_DZ">
 <meta property="og:url" content="https://nomaravoyages.com/a-propos/">
 <meta property="og:title" content="من نحن | نومارا للسياحة والأسفار">
 <meta property="og:description" content="نومارا ومرافقكم حداد يوسف إسلام، وكالة في عين مليلة — العمرة والرحلات المنظمة من قسنطينة بصدق وخبرة.">
@@ -372,7 +376,7 @@ JSON-LD: include **TravelAgency + WebSite + BreadcrumbList** (الرئيسية �
 <meta name="robots" content="index,follow">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="نومارا للسياحة والأسفار">
-<meta property="og:locale" content="ar_AR">
+<meta property="og:locale" content="ar_DZ">
 <meta property="og:url" content="https://nomaravoyages.com/faq/">
 <meta property="og:title" content="الأسئلة الشائعة | نومارا للسياحة والأسفار">
 <meta property="og:description" content="إجابات عن التأشيرات والدفع والعربون وتجهيزات العمرة — كل ما تحتاج معرفته قبل الحجز مع نومارا.">
@@ -387,19 +391,19 @@ JSON-LD: include **TravelAgency + WebSite + FAQPage + BreadcrumbList** (الرئ
 
 ```html
 <title>اتصل بنا | نومارا للسياحة والأسفار</title>
-<meta name="description" content="تواصل مع نومارا للسياحة والأسفار: هاتف 0661457025، واتساب، وعنواننا في حي غزالي، عين مليلة، أم البواقي. راسلنا للحجز والاستفسار عن العمرة والرحلات المنظمة من قسنطينة.">
+<meta name="description" content="تواصل مع نومارا للسياحة والأسفار: هاتف 0661 45 70 25، واتساب، وعنواننا في حي غزالي، عين مليلة، أم البواقي. راسلنا للحجز والاستفسار عن العمرة والرحلات المنظمة من قسنطينة.">
 <link rel="canonical" href="https://nomaravoyages.com/contact/">
 <meta name="robots" content="index,follow">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="نومارا للسياحة والأسفار">
-<meta property="og:locale" content="ar_AR">
+<meta property="og:locale" content="ar_DZ">
 <meta property="og:url" content="https://nomaravoyages.com/contact/">
 <meta property="og:title" content="اتصل بنا | نومارا للسياحة والأسفار">
-<meta property="og:description" content="هاتف 0661457025 وواتساب وعنواننا في حي غزالي، عين مليلة، أم البواقي. راسلنا للحجز والاستفسار.">
+<meta property="og:description" content="هاتف 0661 45 70 25 وواتساب وعنواننا في حي غزالي، عين مليلة، أم البواقي. راسلنا للحجز والاستفسار.">
 <meta property="og:image" content="https://nomaravoyages.com/assets/images/og/og-default.jpg">
 <meta name="twitter:card" content="summary_large_image">
 ```
-JSON-LD: include **TravelAgency + WebSite + BreadcrumbList** (الرئيسية ← اتصل بنا). The `TravelAgency` block here is the natural place for `telephone +213661457025`, `address` (Cité Ghazali / حي غزالي, Aïn M'Lila, Oum El Bouaghi, 04003, DZ), and `sameAs` (Instagram only — Facebook URL is TODO-CLIENT, do **not** invent it). Email is TODO-CLIENT — omit.
+JSON-LD: include **TravelAgency + WebSite + BreadcrumbList** (الرئيسية ← اتصل بنا). The `TravelAgency` block here is the natural place for `telephone +213661457025`, `address` (Cité Ghazali / حي غزالي, Aïn M'Lila, Oum El Bouaghi, 04003, DZ), and `sameAs` (Instagram only — Facebook URL is TODO-CLIENT, do **not** invent it). Email is TODO-CLIENT — omit. **Phone forms (N1):** the canonical visible NAP string is the spaced `0661 45 70 25` (use it byte-for-byte in copy/footer/GBP, per §2.3); the schema/`tel:` form is the E.164 `+213661457025`. Same number, two presentations — keep both consistent.
 
 ---
 
@@ -439,8 +443,8 @@ Apply to: ALL 15 pages (`/`, `/omra/`, `/voyages/`, `/tunisie/`, `/turquie/`, `/
   "alternateName": ["Nomara Voyages", "نومارا للسياحة وخدمات الحج والعمرة"],
   "url": "https://nomaravoyages.com/",
   "telephone": "+213661457025",
-  "image": "https://nomaravoyages.com/assets/images/brand/nomara-og.jpg",
-  "logo": "https://nomaravoyages.com/assets/images/brand/nomara-logo.png",
+  "logo": "https://nomaravoyages.com/assets/images/logo.svg",
+  "image": "https://nomaravoyages.com/assets/images/logo.svg",
   "slogan": "اكتشف العالم مع نومارا",
   "priceRange": "36000–235000 DZD",
   "knowsLanguage": ["ar", "fr"],
@@ -476,7 +480,7 @@ Apply to: ALL 15 pages (`/`, `/omra/`, `/voyages/`, `/tunisie/`, `/turquie/`, `/
 <!-- sameAs: Facebook page exists ("Nomara voyages – نومارا للسياحة و الأسفار") but exact URL = TODO-CLIENT — DO NOT add until confirmed -->
 <!-- email: TODO-CLIENT — add as "email": "<gmail>" once confirmed -->
 <!-- license / registration number: TODO-CLIENT — add as a GovernmentService or identifier once confirmed -->
-<!-- image / logo paths assume generated brand assets exist; confirm filenames at deploy -->
+<!-- logo + image both point to the real generated /assets/images/logo.svg (W2 fix); confirm it ships at deploy -->
 
 ---
 
@@ -765,7 +769,7 @@ Apply to: `/faq/`  (populate from final /faq/ copy — these 2 are placeholders)
 - **License / registration number** — **omitted** (no `identifier`/badge fabricated).
 - **Final domain** — `https://nomaravoyages.com` is a placeholder in every `url`/`item`/`@id`; **find-replace at deploy**.
 - **All prices** (`price`/`lowPrice`/`highPrice` in Blocks 5a–5d and 6) are audit-observed → **TODO-CLIENT**; re-validate before launch. Egypt price is genuinely null → no offer.
-- **Image/logo asset paths** in Block 1 assume generated brand files exist — confirm filenames at deploy or remove `image`/`logo` if assets are not ready (both are optional).
+- **Image/logo asset paths** in Block 1 now both point to the shipped `/assets/images/logo.svg` (W2 fix — was a non-existent `brand/nomara-og.jpg` + `brand/nomara-logo.png`). Confirm `logo.svg` is deployed; both props are optional and may be dropped if the asset is not ready.
 - **FAQPage** content is a 2-item placeholder template → populate from final `/faq/` copy (visa, payment/deposit, Umrah packing).
 - **Exact trip/departure dates** — not modeled as `TouristTrip.itinerary` legs or `Offer.validThrough` because dates are TODO-CLIENT ("upcoming"). Add `startDate`/`endDate` per departure once published.
 
@@ -791,30 +795,29 @@ Two facts drive the whole caching design:
 #  No build step / no asset hashing → cache lifetimes are the
 #  ONLY way edits reach returning visitors. See rationale below.
 # ============================================================
+#  Rule ordering: LEAST-specific (/*) FIRST, MOST-specific asset
+#  rules LAST. Cloudflare applies the MOST-specific matching rule
+#  for a given header, so /assets/* overrides the /* default.
 
-# --- 1. Global security headers (applied to every response) ---
+# --- 1. Global security headers + DEFAULT cache (every response) ---
+# /* default Cache-Control covers ALL pretty-URL directory pages
+# (/omra/, /contact/, /tunisie/, /services/visa/ …) whose path is
+# "/omra/" etc. — these match neither "/*.html" nor "/".
 /*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   X-Frame-Options: SAMEORIGIN
-  Permissions-Policy: geolocation=(), camera=(), microphone=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=(), interest-cohort=()
+  Permissions-Policy: geolocation=(), camera=(), microphone=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=(), interest-cohort=(), browsing-topics=()
   Cross-Origin-Opener-Policy: same-origin
   # CSP in REPORT-ONLY first — site has inline <script>/<style> + inline SVG.
-  # Enforcing a strict CSP now would break the page; this only reports.
+  # NO report-to/report-uri endpoint → violations surface only in the visitor's
+  # console (not collected). Enforced CSP needs per-request nonces (a Pages
+  # Function), which conflicts with the no-build/no-backend lock → report-only ceiling.
   Content-Security-Policy-Report-Only: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests
+  # TODO-CLIENT: add HSTS at deploy once HTTPS is clean.
+  Cache-Control: public, max-age=0, must-revalidate
 
-# --- 2. Long, immutable cache for content that ~never changes ---
-# Images + favicons (generated assets, content stable). Safe to pin a year.
-/assets/images/*
-  Cache-Control: public, max-age=31536000, immutable
-
-# Self-hosted fonts, if/when any are added under /assets/fonts/.
-# (Google Fonts are served from fonts.gstatic.com and cached by Google's own
-#  far-future headers — this rule only covers fonts you host yourself.)
-/assets/fonts/*
-  Cache-Control: public, max-age=31536000, immutable
-
-# --- 3. CSS / JS — SHORT cache + revalidation (NOT immutable) ---
+# --- 2. CSS / JS — SHORT cache + revalidation (NOT immutable) ---
 # Filenames are unhashed, so 'immutable' would strand returning visitors on a
 # stale styles.css for up to a year. max-age=0 + must-revalidate forces a cheap
 # conditional GET (304 if unchanged); SWR lets the edge serve instantly while
@@ -825,23 +828,27 @@ Two facts drive the whole caching design:
 /assets/js/*
   Cache-Control: public, max-age=0, must-revalidate, stale-while-revalidate=86400
 
-# --- 4. HTML / everything else — always revalidate so content edits ship ---
-# Pages are pretty-URL directories (/omra/, /contact/ → index.html). Content
-# changes (prices, dates, TODO-CLIENT fills) must appear immediately.
-/*.html
-  Cache-Control: public, max-age=0, must-revalidate
+# --- 3. Long, immutable cache for content that ~never changes ---
+# Images + favicons (generated assets, content stable). Safe to pin a year.
+/assets/images/*
+  Cache-Control: public, max-age=31536000, immutable
 
-/
-  Cache-Control: public, max-age=0, must-revalidate
+# Self-hosted fonts, if/when any are added under /assets/fonts/.
+# (Google Fonts are served from fonts.gstatic.com and cached by Google's own
+#  far-future headers — this rule only covers fonts you host yourself.)
+/assets/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
 ```
 
 **Notes on the header choices**
 
-- **`Permissions-Policy`** disables sensors/capabilities the site never uses. `interest-cohort=()` opts out of FLoC/Topics. Kept conservative and additive — none of these break WhatsApp/`tel:` deep-links (those are plain `<a href>` navigations, not gated permissions).
+- **Caching applies to ALL pages now (C1 fix).** The earlier version scoped the HTML revalidate rule to `/*.html` + `/`. Those match only the bare root and literal `.html` URLs — but every interior page is a **pretty-URL directory** whose request path is `/omra/`, `/contact/`, `/tunisie/`, `/services/visa/` … which matches *neither* pattern. Result: 13 of 15 pages shipped with **no `Cache-Control`** and could serve stale prices. The fix moves the revalidate default onto `/*` (least-specific, so it covers every page) and lets the more-specific `/assets/*` rules override it. Cloudflare applies the **most-specific matching rule** for a given header, so asset rules still win where they match. **Verify post-deploy with `curl -I`:** `/omra/` → expect `must-revalidate`; `/assets/images/logo.svg` → expect `immutable`.
+- **`Permissions-Policy`** disables sensors/capabilities the site never uses. `interest-cohort=()` opts out of FLoC; `browsing-topics=()` opts out of the **Topics API** that replaced it (FLoC is dead, Topics is the current Privacy-Sandbox mechanism — both are now set). Kept conservative and additive — none of these break WhatsApp/`tel:` deep-links (those are plain `<a href>` navigations, not gated permissions).
 - **`X-Frame-Options: SAMEORIGIN`** plus CSP `frame-ancestors 'self'` is belt-and-braces clickjacking defence. (If you only want one, `frame-ancestors` is the modern form, but XFO costs nothing and helps old crawlers.)
 - **No `Strict-Transport-Security` here on purpose.** The production domain is still **TODO-CLIENT** (`nomaravoyages.com` is a placeholder). Adding HSTS — especially `preload` — before the final apex + all subdomains are confirmed on HTTPS can lock users out. **Add HSTS at deploy** once the real domain is live and serving HTTPS cleanly: `Strict-Transport-Security: max-age=31536000; includeSubDomains` (add `; preload` only after deliberate decision).
 - **CSP is Report-Only by design.** `partials/head.html` loads CSS from `fonts.googleapis.com`, fonts from `fonts.gstatic.com`, uses `data:`/inline SVG favicons, and pages carry inline `<script>`/`<style>`. The Report-Only policy above **allows exactly those origins** and `'unsafe-inline'`, so it will fire *zero* violations on a healthy page while you watch the reports — it can't break anything because it doesn't enforce.
-  - **Path to enforced CSP (do later, not at launch):** move inline `<script>`/`<style>` to per-response **nonces** (`script-src 'self' 'nonce-…'`) and drop `'unsafe-inline'`. That requires generating a nonce per request — i.e. a Pages Function or edge middleware — which is a deliberate future step, not part of this static drop. Until then, keep it Report-Only; do **not** flip the header name to enforcing `Content-Security-Policy` while `'unsafe-inline'` is still present (that would give you the breakage risk without the security benefit).
+  - **Honesty (W5):** the Report-Only header has **no `report-to`/`report-uri` directive**, so violations are **not collected anywhere** — they appear only in each individual visitor's browser console, which nobody on our side sees aggregated. "Watching the reports" really means manually opening DevTools on a few pages, not a reporting pipeline. Wiring a real collector would need an HTTPS reporting endpoint (a Pages Function or a third-party report sink), which is out of scope for the locked no-backend architecture. So Report-Only without an endpoint is a deliberate, low-cost smoke test, not active monitoring.
+  - **Path to enforced CSP (do later, not at launch):** move inline `<script>`/`<style>` to per-response **nonces** (`script-src 'self' 'nonce-…'`) and drop `'unsafe-inline'`. That requires generating a nonce per request — i.e. a Pages Function or edge middleware — which **directly conflicts with the locked no-build / no-backend static architecture**. So enforced CSP is not a free header flip; it's an architecture change. Until that's deliberately taken on, **Report-Only is the realistic security ceiling**. Do **not** flip the header name to enforcing `Content-Security-Policy` while `'unsafe-inline'` is still present (that would give you the breakage risk without the security benefit).
 - **Caveat (from Cloudflare docs):** `_headers` rules are **not** applied to responses generated by Pages Functions. This site is pure static, so that's a non-issue today — but if a contact-form Function is ever added, its security headers must be set in code.
 
 ---
@@ -952,8 +959,9 @@ and every JSON-LD `@id`/`url`/`item` once §4 is pasted in.
 - [ ] Output/root directory = `site/` (so `_headers`, `_redirects`, `robots.txt`, `sitemap.xml` sit at the deploy root).
 - [ ] After first deploy, verify headers: `curl -I https://REALDOMAIN.tld/assets/css/styles.css` (expect `must-revalidate`),
       and `curl -I https://REALDOMAIN.tld/assets/images/logo.svg` (expect `immutable`).
+- [ ] **C1 regression check (critical):** `curl -I https://REALDOMAIN.tld/omra/` MUST return `Cache-Control: public, max-age=0, must-revalidate`. A pretty-URL directory page with *no* `Cache-Control` means the `/*` default isn't matching — the exact bug this fix closes. Spot-check one more (e.g. `/contact/` or `/services/visa/`).
 - [ ] Add **HSTS** to `site/_headers` once HTTPS is confirmed clean: `Strict-Transport-Security: max-age=31536000; includeSubDomains`.
-- [ ] Watch CSP-Report-Only reports; only then plan the nonce-based enforced CSP (needs a Pages Function).
+- [ ] CSP-Report-Only has **no reporting endpoint** — violations show only in each visitor's console (not collected). To "watch" them, open DevTools on a few pages manually. Wiring a real report sink, like enforced CSP, needs a Pages Function (conflicts with the no-backend lock).
 
 ### 6.5 — Search & validation
 - [ ] Google Search Console: verify domain, submit `https://REALDOMAIN.tld/sitemap.xml`.

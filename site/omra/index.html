@@ -2,6 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
+  <script>(function(){try{var t=localStorage.getItem('nomara-theme');if(!t){t=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';}if(t==='dark'){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#1F8A7A">
 
@@ -46,7 +47,7 @@
     "alternateName": ["Nomara Voyages", "نومارا للسياحة وخدمات الحج والعمرة"],
     "url": "https://nomaravoyages.com/",
     "telephone": "+213661457025",
-    "image": "https://nomaravoyages.com/assets/images/heroes/hero__turquie.jpg",
+    "image": "https://nomaravoyages.com/assets/images/logo.svg",
     "logo": "https://nomaravoyages.com/assets/images/logo.svg",
     "slogan": "اكتشف العالم مع نومارا",
     "priceRange": "DZD",
@@ -150,6 +151,11 @@
         <span data-i18n="cta.waLong">تواصل واتساب</span>
       </a>
     </div>
+    <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false"
+            aria-label="تبديل بين الوضع الفاتح والداكن" title="الوضع الفاتح / الداكن">
+      <svg class="icon-sun" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      <svg class="icon-moon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+    </button>
     <button class="nav-toggle" type="button" aria-label="القائمة" aria-expanded="false" aria-controls="nav-drawer">
       <svg class="icon-menu" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       <svg class="icon-close" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
@@ -274,6 +280,19 @@
             <li style="display:flex;gap:.6rem;align-items:start;color:var(--sand-100)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold-300)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> إجراءات التأشيرة</li>
           </ul>
           <p style="font-family:var(--font-reverent);color:var(--gold-300);font-size:var(--text-xl);margin-block-start:var(--space-6)" data-i18n="omra.slogan">نومارا، رفيقك في طاعتك</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= DU'A — THE ARCH (P1-2, §05 variant 3) =================
+         The brand's signature device finally appears on the one Sakina page:
+         a STILL outlined arch frame (gold border, sand fill, arch radius) around
+         a reverent du'a. No motion (Sakina stillness). One arch per viewport. -->
+    <section class="section" id="omra-dua">
+      <div class="wrap">
+        <div class="arch-frame" style="text-align:center;max-inline-size:60ch;margin-inline:auto">
+          <p style="font-family:var(--font-reverent);color:var(--gold-600);font-size:var(--text-2xl);line-height:1.7">«اللّهُمّ اجعلها عمرةً مبرورةً وسعيًا مشكورًا»</p>
+          <p style="color:var(--text-muted);font-size:var(--text-sm);margin-block-start:var(--space-4)">نرافقك من لحظة الانطلاق إلى العودة — بسكينة واطمئنان.</p>
         </div>
       </div>
     </section>
