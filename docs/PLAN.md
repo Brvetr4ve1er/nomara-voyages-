@@ -121,9 +121,17 @@ partials/                   ← canonical nav/footer/head snippets pages copy fr
 
 ## 3 · Definition of done
 
-- All 16 pages + 404 (home, omra, voyages, tunisie, turquie, azerbaidjan, malaisie, egypte, services, services/visa, services/hotellerie, services/vols, a-propos, faq, contact, 404) render correctly RTL at 375px / 768px / 1440px, zero console errors.
-- Every trip card + sticky bar opens WhatsApp with correct prefilled AR text.
-- `/omra/` is fully Sakina (Amiri, gold, arch, still); all else Rihla.
-- FR switcher flips `lang`/`dir` and translates nav + key surfaces; AR fallback works.
-- Lighthouse-style sanity: total JS < 60KB, LCP image < 110KB mobile, fonts preconnected.
-- sitemap.xml lists all pages; JSON-LD validates; docs complete (PLAN, AUDIT, SEO-PLAYBOOK, QA-REPORT).
+> **BUILD-STATUS (Phase 6 QA sign-off, 2026-06-13):** all phases complete. QA pass found 9 issues
+> → 4 fixed (fabricated email + unverified Facebook URL removed across all footers + contact +
+> generator scripts; confirmed IG/phone kept), 5 deferred to client. **Verdict: GO for soft
+> launch** once the client supplies domain + license # + prices (see `QA-REPORT.md §6` and
+> `DEPLOY.md`). Live-rendered at 375/768/1292px; zero console errors. Remaining ⬜ items below are
+> client-data gates, not engineering defects.
+
+- ✅ All 16 pages + 404 (home, omra, voyages, tunisie, turquie, azerbaidjan, malaisie, egypte, services, services/visa, services/hotellerie, services/vols, a-propos, faq, contact, 404) render correctly RTL at 375px / 768px / 1440px, zero console errors. *(verified live 375/768/1292; no FAIL)*
+- ✅ Every trip card + sticky bar opens WhatsApp with correct prefilled AR text. *(zero deviations from `wa.me/213661457025`)*
+- ✅ `/omra/` is fully Sakina (Amiri, gold, arch, still); all else Rihla. *(live-confirmed: Amiri font, gold, gradient+arch, revealCount 0, no emoji)*
+- ✅ FR switcher flips `lang`/`dir` and translates nav + key surfaces; AR fallback works. *(round-trip verified live; icons survive swap; 0 missing keys)*
+- ✅ Lighthouse-style sanity: total JS < 60KB, LCP image < 110KB mobile, fonts preconnected. *(3 small vanilla JS files, no libs; `<picture>` AVIF/WebP/JPG; `display=swap`)*
+- ✅ sitemap.xml lists all pages; JSON-LD validates; docs complete (PLAN, AUDIT, SEO-PLAYBOOK, QA-REPORT, DEPLOY). *(15 indexable URLs; JSON-LD parses)*
+- ⬜ **Client-data gates (not engineering):** production domain · license number · confirmed prices/dates · real email (Gmail) · Facebook exact URL. See `QA-REPORT.md §6`.

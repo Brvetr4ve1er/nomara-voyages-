@@ -190,11 +190,11 @@ $stepsList
           <p class="site-footer__contact">نومارا للسياحة و خدمات الحج و العمرة — رفيقك في كل رحلة.</p>
           <div class="site-footer__contact" style="margin-block-start:1rem">
             <a class="tel" href="tel:+213661457025" dir="ltr">0661 45 70 25</a><br>
-            <a href="mailto:contact@nomaravoyages.dz" dir="ltr">contact@nomaravoyages.dz</a>
+            <!-- TODO-CLIENT: real Gmail address (unconfirmed) --><span style="opacity:.85">البريد الإلكتروني: قيد التأكيد</span>
           </div>
           <div class="site-footer__socials" aria-label="شبكات التواصل">
             <a href="https://instagram.com/nomara.voyages" target="_blank" rel="noopener" aria-label="Instagram"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
-            <a href="https://facebook.com/nomaravoyages" target="_blank" rel="noopener" aria-label="Facebook"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 9h3V6h-3a4 4 0 0 0-4 4v2H8v3h2v6h3v-6h2.5l.5-3H13v-2a1 1 0 0 1 1-1Z"/></svg></a>
+            <a href="https://www.facebook.com/search/top?q=Nomara%20voyages%20%D9%86%D9%88%D9%85%D8%A7%D8%B1%D8%A7" target="_blank" rel="noopener" aria-label="Facebook"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 9h3V6h-3a4 4 0 0 0-4 4v2H8v3h2v6h3v-6h2.5l.5-3H13v-2a1 1 0 0 1 1-1Z"/></svg></a>
           </div>
         </div>
         <div>
