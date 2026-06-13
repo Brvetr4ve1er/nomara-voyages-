@@ -35,9 +35,9 @@
       <button type="button" data-i18n-lang="fr">FR</button>
     </div>
     <div class="nav-cta">
-      <a class="n-btn n-btn-wa" href="https://wa.me/213661457025" target="_blank" rel="noopener" data-i18n="cta.whatsapp">
+      <a class="n-btn n-btn-wa" href="https://wa.me/213661457025" target="_blank" rel="noopener">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 14.2c-.2.6-1.2 1.1-1.7 1.2-.4.1-1 .1-1.6-.1a13 13 0 0 1-5.7-5C7.6 11.5 7 10.4 7 9.3c0-1 .5-1.5.7-1.7.2-.2.5-.3.6-.3h.5c.2 0 .4 0 .5.4l.8 1.9c.1.2.1.4 0 .6l-.4.6c-.1.2-.2.3-.1.5.5.9 1.3 1.7 2.2 2.3.2.1.4.1.5 0l.7-.6c.2-.2.4-.2.6-.1l1.8.9c.3.1.4.3.4.5 0 .1 0 .6-.2 1.1Z"/></svg>
-        تواصل واتساب
+        <span data-i18n="cta.waLong">تواصل واتساب</span>
       </a>
     </div>
     <button class="nav-toggle" type="button" aria-label="القائمة" aria-expanded="false" aria-controls="nav-drawer">
@@ -51,9 +51,9 @@
     <section class="section" style="padding-block-start:calc(var(--nav-h) + var(--space-7))" id="services-overview">
       <div class="wrap">
         <div class="sec-head">
-          <span class="eyebrow">Nos Services</span>
-          <h1 style="font-size:var(--text-3xl)">خدماتنا</h1>
-          <p>كل ما تحتاجه لرحلتك تحت سقف واحد — من العمرة والرحلات المنظمة إلى الفنادق والتذاكر والتأشيرة.</p>
+          <span class="eyebrow" data-i18n="services.hero.eyebrow">Nos Services</span>
+          <h1 style="font-size:var(--text-3xl)" data-i18n="services.hero.title">خدماتنا</h1>
+          <p data-i18n="services.hero.sub">كل ما تحتاجه لرحلتك تحت سقف واحد — من العمرة والرحلات المنظمة إلى الفنادق والتذاكر والتأشيرة.</p>
         </div>
 
         <div class="card-grid">
@@ -62,26 +62,26 @@
             <span class="service-card__icon" aria-hidden="true">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V8l8-5 8 5v13"/><rect x="9" y="12" width="6" height="9"/><path d="M4 21h16"/></svg>
             </span>
-            <h3>العمرة والحج</h3>
-            <p>نرافقك في رحلة العمر خطوة بخطوة — طيران مباشر من قسنطينة، فنادق قريبة من الحرم، ومرافقة لا تتركك وحدك في أي لحظة.</p>
-            <a class="n-btn n-btn-primary" href="/omra/">باقات العمرة</a>
+            <h3 data-i18n="svc.omra.title">العمرة والحج</h3>
+            <p data-i18n="svc.omra.blurb">نرافقك في رحلة العمر خطوة بخطوة — طيران مباشر من قسنطينة، فنادق قريبة من الحرم، ومرافقة لا تتركك وحدك في أي لحظة.</p>
+            <a class="n-btn n-btn-primary" href="/omra/" data-i18n="cta.omraPackages">باقات العمرة</a>
           </article>
 
           <article class="service-card">
             <span class="service-card__icon" aria-hidden="true">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16 8 14 14 8 16 10 10 16 8"/></svg>
             </span>
-            <h3>الرحلات المنظمة</h3>
-            <p>رحلات منظمة بالكامل إلى تونس وتركيا وأذربيجان وماليزيا ومصر — تذكرة وفندق ومرافقة في سعر واحد واضح، تنطلق من قسنطينة.</p>
-            <a class="n-btn n-btn-primary" href="/voyages/">كل الوجهات</a>
+            <h3 data-i18n="svc.voyages.title">الرحلات المنظمة</h3>
+            <p data-i18n="svc.voyages.blurb">رحلات منظمة بالكامل إلى تونس وتركيا وأذربيجان وماليزيا ومصر — تذكرة وفندق ومرافقة في سعر واحد واضح، تنطلق من قسنطينة.</p>
+            <a class="n-btn n-btn-primary" href="/voyages/" data-i18n="cta.allDest">كل الوجهات</a>
           </article>
 
           <article class="service-card">
             <span class="service-card__icon" aria-hidden="true">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 14h20"/><path d="M2 18h20"/><path d="M4 14V8a2 2 0 0 1 2-2h5a2 2 0 0 1 2 2v6"/><path d="M13 9h5a2 2 0 0 1 2 2v3"/></svg>
             </span>
-            <h3>حجز الفنادق</h3>
-            <p>نحجز لك الغرفة المناسبة في أي وجهة، بأسعار تفاوضنا عليها لك — تصلك التفاصيل والتأكيد عبر واتساب دون عناء البحث.</p>
+            <h3 data-i18n="svc.hotel.title">حجز الفنادق</h3>
+            <p data-i18n="svc.hotel.blurb">نحجز لك الغرفة المناسبة في أي وجهة، بأسعار تفاوضنا عليها لك — تصلك التفاصيل والتأكيد عبر واتساب دون عناء البحث.</p>
             <a class="n-btn n-btn-ghost" href="/services/hotellerie/">اعرف المزيد</a>
           </article>
 
@@ -89,8 +89,8 @@
             <span class="service-card__icon" aria-hidden="true">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5a2.12 2.12 0 0 0-3-3L13 8 4.8 6.2a.5.5 0 0 0-.5.8l3.9 3.9-2.4 2.4-2-.5a.5.5 0 0 0-.5.8L5 18l2.2 1.7a.5.5 0 0 0 .8-.5l-.5-2 2.4-2.4 3.9 3.9a.5.5 0 0 0 .8-.5Z"/></svg>
             </span>
-            <h3>حجز التذاكر</h3>
-            <p>نقارن لك بين شركات الطيران ونجد أفضل سعر لرحلتك انطلاقًا من قسنطينة — تذاكر مؤكدة وأسعار شفافة دون مفاجآت.</p>
+            <h3 data-i18n="svc.vols.title">حجز التذاكر</h3>
+            <p data-i18n="svc.vols.blurb">نقارن لك بين شركات الطيران ونجد أفضل سعر لرحلتك انطلاقًا من قسنطينة — تذاكر مؤكدة وأسعار شفافة دون مفاجآت.</p>
             <a class="n-btn n-btn-ghost" href="/services/vols/">اعرف المزيد</a>
           </article>
 
@@ -98,13 +98,13 @@
             <span class="service-card__icon" aria-hidden="true">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M8 18h8"/></svg>
             </span>
-            <h3>خدمات التأشيرة <span class="n-chip" style="background:var(--color-accent-soft);color:var(--color-accent-strong)">قيد التأكيد</span></h3>
-            <p>نساعدك في تحضير ملف التأشيرة وترتيب الوثائق المطلوبة لوجهتك — نرافقك في الخطوات بصدق ووضوح، دون وعود لا نملكها.</p>
+            <h3><span data-i18n="svc.visa.title">خدمات التأشيرة</span> <span class="n-chip" style="background:var(--color-accent-soft);color:var(--color-accent-strong)">قيد التأكيد</span></h3>
+            <p data-i18n="svc.visa.blurb">نساعدك في تحضير ملف التأشيرة وترتيب الوثائق المطلوبة لوجهتك — نرافقك في الخطوات بصدق ووضوح، دون وعود لا نملكها.</p>
             <a class="n-btn n-btn-ghost" href="/services/visa/">اعرف المزيد</a>
           </article>
 
           <article class="service-card" style="justify-content:center;text-align:center">
-            <h3>هل لديك سؤال؟</h3>
+            <h3 data-i18n="services.help.title">هل لديك سؤال؟</h3>
             <p>تواصل معنا مباشرة عبر واتساب، نرد عليك بسرعة ونرتّب لك كل شيء.</p>
             <a class="n-btn n-btn-wa" href="https://wa.me/213661457025" target="_blank" rel="noopener" data-i18n="cta.whatsapp">تواصل واتساب</a>
           </article>
@@ -146,7 +146,7 @@
         <div>
           <h4 data-i18n="footer.services">خدماتنا</h4>
           <ul class="site-footer__list">
-            <li><a href="/services/" data-i18n="nav.services">كل الخدمات</a></li>
+            <li><a href="/services/" data-i18n="footer.allServices">كل الخدمات</a></li>
             <li><a href="/services/visa/" data-i18n="nav.visa">خدمات التأشيرة</a></li>
             <li><a href="/services/hotellerie/" data-i18n="nav.hotellerie">حجز الفنادق</a></li>
             <li><a href="/services/vols/" data-i18n="nav.vols">حجز التذاكر</a></li>

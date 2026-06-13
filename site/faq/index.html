@@ -75,9 +75,9 @@
       <button type="button" data-i18n-lang="fr">FR</button>
     </div>
     <div class="nav-cta">
-      <a class="n-btn n-btn-wa" href="https://wa.me/213661457025" target="_blank" rel="noopener" data-i18n="cta.whatsapp">
+      <a class="n-btn n-btn-wa" href="https://wa.me/213661457025" target="_blank" rel="noopener">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 14.2c-.2.6-1.2 1.1-1.7 1.2-.4.1-1 .1-1.6-.1a13 13 0 0 1-5.7-5C7.6 11.5 7 10.4 7 9.3c0-1 .5-1.5.7-1.7.2-.2.5-.3.6-.3h.5c.2 0 .4 0 .5.4l.8 1.9c.1.2.1.4 0 .6l-.4.6c-.1.2-.2.3-.1.5.5.9 1.3 1.7 2.2 2.3.2.1.4.1.5 0l.7-.6c.2-.2.4-.2.6-.1l1.8.9c.3.1.4.3.4.5 0 .1 0 .6-.2 1.1Z"/></svg>
-        تواصل واتساب
+        <span data-i18n="cta.waLong">تواصل واتساب</span>
       </a>
     </div>
     <button class="nav-toggle" type="button" aria-label="القائمة" aria-expanded="false" aria-controls="nav-drawer">
@@ -91,23 +91,23 @@
     <section class="section" style="padding-block-start:calc(var(--nav-h) + var(--space-7))" id="faq">
       <div class="wrap">
         <div class="sec-head">
-          <span class="eyebrow">FAQ</span>
-          <h1 style="font-size:var(--text-3xl)">الأسئلة الشائعة</h1>
-          <p>جمعنا لك أكثر ما يسأل عنه المسافرون. لم تجد جوابك؟ تواصل معنا عبر واتساب ونرد عليك بسرعة.</p>
+          <span class="eyebrow" data-i18n="faq.hero.eyebrow">FAQ</span>
+          <h1 style="font-size:var(--text-3xl)" data-i18n="faq.hero.title">الأسئلة الشائعة</h1>
+          <p data-i18n="faq.hero.sub">جمعنا لك أكثر ما يسأل عنه المسافرون. لم تجد جوابك؟ تواصل معنا عبر واتساب ونرد عليك بسرعة.</p>
         </div>
 
         <div class="faq-list">
 
           <!-- Visas & documents -->
           <details class="faq-item">
-            <summary>ما الوثائق المطلوبة للسفر معكم؟</summary>
+            <summary data-i18n="faq.q.docs">ما الوثائق المطلوبة للسفر معكم؟</summary>
             <div class="faq-body">
               تختلف الوثائق حسب الوجهة، لكنها عادةً تشمل: جواز سفر ساري المفعول، صور شمسية، وملف التأشيرة إن كانت الوجهة تتطلبها. نوضّح لك القائمة الكاملة لوجهتك عند الحجز، ونساعدك في ترتيب الملف.
             </div>
           </details>
 
           <details class="faq-item">
-            <summary>هل تساعدوننا في إجراءات التأشيرة؟</summary>
+            <summary data-i18n="faq.q.visa">هل تساعدوننا في إجراءات التأشيرة؟</summary>
             <div class="faq-body">
               نعم، نساعدك في تحضير ملف التأشيرة وترتيب الوثائق المطلوبة. مع ذلك، قرار منح التأشيرة يبقى بيد القنصلية، ونحن لا نضمن الحصول عليها — نساعدك فقط في تقديم ملف سليم ومرتّب. <a href="/services/visa/">تفاصيل خدمة التأشيرة</a>. <bdi>(TODO-CLIENT: تأكيد نطاق الخدمة)</bdi>
             </div>
@@ -115,14 +115,14 @@
 
           <!-- Payment / deposit -->
           <details class="faq-item">
-            <summary>كيف يتم الدفع؟ وهل يوجد دفع بالتقسيط أو عربون؟</summary>
+            <summary data-i18n="faq.q.payment">كيف يتم الدفع؟ وهل يوجد دفع بالتقسيط أو عربون؟</summary>
             <div class="faq-body">
               نعتمد عادةً نظام العربون لتثبيت الحجز، ثم تسديد الباقي قبل السفر. تفاصيل المبالغ والمواعيد نتفق عليها عند الحجز عبر واتساب. <bdi>(TODO-CLIENT: تأكيد نسبة العربون وآجال الدفع)</bdi>
             </div>
           </details>
 
           <details class="faq-item">
-            <summary>هل السعر شامل كل شيء؟</summary>
+            <summary data-i18n="faq.q.allInclusive">هل السعر شامل كل شيء؟</summary>
             <div class="faq-body">
               نعم، نعرض الأسعار شاملةً: الطيران من قسنطينة + الإقامة + المرافقة (وللعمرة: التأشيرة أيضًا). لا نعتمد أسلوب «ابتداءً من» ولا نخفي تكاليف. أي خدمة إضافية اختيارية نوضّحها لك مسبقًا.
             </div>
@@ -130,7 +130,7 @@
 
           <!-- Umrah packing -->
           <details class="faq-item">
-            <summary>ماذا أحضّر لرحلة العمرة؟</summary>
+            <summary data-i18n="faq.q.packing">ماذا أحضّر لرحلة العمرة؟</summary>
             <div class="faq-body">
               ننصح بتحضير: ملابس الإحرام، ملابس مريحة ومحتشمة، حذاء مريح للمشي، أدوات النظافة الشخصية، الأدوية الخاصة بك، نسخة من الوثائق، ومبلغ نقدي بسيط للمصاريف. نرسل لك قائمة تحضير مفصّلة قبل السفر، ونرافقك في كل خطوة. <a href="/omra/">تعرّف على باقات العمرة</a>.
             </div>
@@ -138,7 +138,7 @@
 
           <!-- Departures from Constantine -->
           <details class="faq-item">
-            <summary>من أين تنطلق رحلاتكم؟</summary>
+            <summary data-i18n="faq.q.departure">من أين تنطلق رحلاتكم؟</summary>
             <div class="faq-body">
               تنطلق رحلاتنا مباشرةً من مطار قسنطينة (محمد بوضياف)، وهو الأقرب لمسافري شرق الجزائر. هذا يوفّر عليك عناء التنقّل إلى مطارات بعيدة.
             </div>
@@ -146,14 +146,14 @@
 
           <!-- Refund / changes -->
           <details class="faq-item">
-            <summary>ماذا لو احتجت تغيير الموعد أو الإلغاء؟</summary>
+            <summary data-i18n="faq.q.cancel">ماذا لو احتجت تغيير الموعد أو الإلغاء؟</summary>
             <div class="faq-body">
               نتفهّم أن الظروف قد تتغيّر. سياسة التعديل والإلغاء تعتمد على نوع الرحلة وقربها من موعد الانطلاق وشروط شركات الطيران والفنادق. تواصل معنا في أقرب وقت ونوضّح لك الخيارات المتاحة بصدق. <bdi>(TODO-CLIENT: تأكيد سياسة الإلغاء والاسترجاع)</bdi>
             </div>
           </details>
 
           <details class="faq-item">
-            <summary>كيف أحجز؟</summary>
+            <summary data-i18n="faq.q.howbook">كيف أحجز؟</summary>
             <div class="faq-body">
               ببساطة: تواصل معنا عبر واتساب على <a href="https://wa.me/213661457025" target="_blank" rel="noopener">واتساب</a> أو اتصل على <a href="tel:+213661457025" dir="ltr">0661 45 70 25</a>، أخبرنا بالوجهة والتاريخ وعدد المسافرين، ونتكفّل بالباقي. الحجز يثبت بالعربون.
             </div>
@@ -162,7 +162,7 @@
         </div>
 
         <div class="cta-row" style="display:flex;gap:var(--space-3);margin-block-start:var(--space-6);flex-wrap:wrap">
-          <a class="n-btn n-btn-wa" href="https://wa.me/213661457025" target="_blank" rel="noopener" data-i18n="cta.whatsapp">لديك سؤال آخر؟ تواصل واتساب</a>
+          <a class="n-btn n-btn-wa" href="https://wa.me/213661457025" target="_blank" rel="noopener" data-i18n="faq.cta.more">لديك سؤال آخر؟ تواصل واتساب</a>
         </div>
       </div>
     </section>
@@ -200,7 +200,7 @@
         <div>
           <h4 data-i18n="footer.services">خدماتنا</h4>
           <ul class="site-footer__list">
-            <li><a href="/services/" data-i18n="nav.services">كل الخدمات</a></li>
+            <li><a href="/services/" data-i18n="footer.allServices">كل الخدمات</a></li>
             <li><a href="/services/visa/" data-i18n="nav.visa">خدمات التأشيرة</a></li>
             <li><a href="/services/hotellerie/" data-i18n="nav.hotellerie">حجز الفنادق</a></li>
             <li><a href="/services/vols/" data-i18n="nav.vols">حجز التذاكر</a></li>
