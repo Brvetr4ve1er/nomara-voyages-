@@ -15,19 +15,29 @@ small static catalog, Algerian 3G mobile traffic, WhatsApp checkout, free CDN ho
 vanilla static ships faster, performs better, and has zero supply-chain/maintenance burden.
 Deploy target: Cloudflare Pages (same loop as Alliance: edit → push → live).
 
+### CONFIRMED DECISIONS (locked 2026-06-13)
+- **Stack:** vanilla static, no build step, no libraries. Deploy: Cloudflare Pages (domain TODO-CLIENT).
+- **Languages:** AR canonical (indexed/default) + FR runtime switcher with AR fallback. One URL space, no `/fr/`.
+- **Trip pages:** GROUPED BY COUNTRY (not per-destination). Tunisie = Djerba + Sousse; Égypte = Cairo + Hurghada.
+- **Assets:** generate SVG logo from brand desc; reuse Alliance's optimized destination heroes; Umrah = gradient+arch (no fake Mecca stock). All tagged TODO-CLIENT.
+- **Pricing/dates:** audit prices used as-is, tagged TODO-CLIENT in trips.json; dates = placeholder "upcoming" chips.
+- **Booking:** WhatsApp deep-link + call only. No backend, no form server.
+- **Reviews:** structure built, filled with clearly-labeled SAMPLE placeholders + TODO-CLIENT (only 2 real reviews exist — never fabricate).
+- **Blog:** skipped at launch. FAQ is the content/SEO surface.
+- **Contact:** phone 0661 45 70 25 live; email, hours, license number = TODO-CLIENT.
+
 ```
 site/
-  index.html                ← Home (Rihla, with one Sakina section)
-  omra/index.html           ← Umrah & Hajj hub (SAKINA mode)
-  voyages/index.html        ← all-tours catalog + filter chips (Rihla)
-  djerba/index.html         ← trip detail (Rihla)        55 000 DZD
-  sousse/index.html         ← trip detail, 2-tier grid    36/40 000
-  istanbul/index.html       ← trip detail                119 000
-  baku/index.html           ← trip detail                119 000
-  malaisie/index.html       ← trip detail                199 000
-  egypte/index.html         ← Cairo + Hurghada −25% promo
-  a-propos/index.html       ← agency + guide + license + reviews
-  faq/index.html            ← visas, payment, Umrah packing
+  index.html                ← Home (Rihla, with one Sakina section for Umrah)
+  omra/index.html           ← Umrah & Hajj hub (SAKINA mode) — Shawwal + June, tiered hotel grids
+  voyages/index.html        ← all-tours catalog + country filter chips (Rihla)
+  tunisie/index.html        ← Tunisia (Rihla) — Djerba/Sidi Mansour 55 000 · Sousse Palace 40 000 · Sousse Mantago 36 000
+  turquie/index.html        ← Turkey/Istanbul (Rihla)        119 000
+  azerbaidjan/index.html    ← Azerbaijan/Baku (Rihla)        119 000
+  malaisie/index.html       ← Malaysia (Rihla)               199 000
+  egypte/index.html         ← Egypt: Cairo + Hurghada "Collection Mirage" −25% (Rihla)
+  a-propos/index.html       ← agency + guide (Haddad Youssef Islam) + license + reviews
+  faq/index.html            ← visas, payment/deposit, Umrah packing
   contact/index.html        ← phone/WA/address/hours/socials
   404.html
   robots.txt · sitemap.xml · _headers · _redirects · site.webmanifest
@@ -40,6 +50,8 @@ data/trips.json             ← single source of truth for trip data
 docs/                       ← this plan, audit, design system, QA report
 partials/                   ← canonical nav/footer/head snippets pages copy from
 ```
+
+**Hero reuse map (Alliance → Nomara):** tunisie→`hero__tunisie`, turquie→`hero__istanbul`, azerbaidjan→`hero__azerbaidjan`, malaisie→`hero__kuala-lumpur`, egypte→`hero__cairo-sharm`. Umrah→gradient+arch, no photo.
 
 ## 1 · Non-negotiable conventions (every agent)
 
@@ -89,7 +101,7 @@ partials/                   ← canonical nav/footer/head snippets pages copy fr
 
 ## 3 · Definition of done
 
-- All 13 pages render correctly RTL at 375px / 768px / 1440px, zero console errors.
+- All 12 pages (home, omra, voyages, tunisie, turquie, azerbaidjan, malaisie, egypte, a-propos, faq, contact, 404) render correctly RTL at 375px / 768px / 1440px, zero console errors.
 - Every trip card + sticky bar opens WhatsApp with correct prefilled AR text.
 - `/omra/` is fully Sakina (Amiri, gold, arch, still); all else Rihla.
 - FR switcher flips `lang`/`dir` and translates nav + key surfaces; AR fallback works.
