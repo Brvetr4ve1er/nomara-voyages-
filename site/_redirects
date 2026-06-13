@@ -1,0 +1,44 @@
+# ============================================================
+#  Nomara Voyages — Cloudflare Pages _redirects
+#  Place at the DEPLOY ROOT. All 301 (permanent).
+#  Cloudflare auto-serves /404.html and auto-normalises trailing
+#  slashes, so those are intentionally omitted.
+#  Format:  <source>  <destination>  <status>   (full-line # comments only;
+#  do NOT put a trailing comment on a rule line — it is parsed as the rule).
+# ============================================================
+
+# Home aliases
+/home           /                       301
+/index.html     /                       301
+/index          /                       301
+
+# About
+/about          /a-propos/              301
+/about-us       /a-propos/              301
+/a-propos.html  /a-propos/              301
+
+# Services — overview + the three confirmed sub-offerings
+/services.html  /services/              301
+/visa           /services/visa/         301
+/hotellerie     /services/hotellerie/   301
+/hotel          /services/hotellerie/   301
+/vols           /services/vols/         301
+/flights        /services/vols/         301
+
+# Umrah / Hajj hub (English & alt spellings → canonical /omra/)
+/umrah          /omra/                  301
+/omra.html      /omra/                  301
+/hajj           /omra/                  301
+
+# Tours catalogue + English destination aliases (FR/AR slugs stay canonical)
+/voyages.html   /voyages/               301
+/tours          /voyages/               301
+/turkey         /turquie/               301
+/tunisia        /tunisie/               301
+/egypt          /egypte/                301
+/malaysia       /malaisie/              301
+/azerbaijan     /azerbaidjan/           301
+
+# Contact / FAQ
+/contact.html   /contact/               301
+/faq.html       /faq/                   301

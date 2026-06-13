@@ -1,0 +1,49 @@
+# ============================================================
+#  Nomara Voyages — Cloudflare Pages _headers
+#  Place at the DEPLOY ROOT (alongside index.html, /assets/, …).
+#  No build step / no asset hashing → cache lifetimes are the
+#  ONLY way edits reach returning visitors. See SEO-PLAYBOOK §5.
+# ============================================================
+
+# --- 1. Global security headers (applied to every response) ---
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN
+  Permissions-Policy: geolocation=(), camera=(), microphone=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=(), interest-cohort=()
+  Cross-Origin-Opener-Policy: same-origin
+  # CSP in REPORT-ONLY first — pages have inline <script>/<style> + inline SVG.
+  # Enforcing a strict CSP now would break the page; this only reports.
+  # Path to enforced CSP = move inline JS/CSS to per-request nonces (needs a Pages Function). See SEO-PLAYBOOK §5.
+  Content-Security-Policy-Report-Only: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests
+  # TODO-CLIENT: add HSTS at deploy once the final domain serves HTTPS cleanly:
+  #   Strict-Transport-Security: max-age=31536000; includeSubDomains   (add "; preload" only deliberately)
+
+# --- 2. Long, immutable cache for content that ~never changes ---
+# Images + favicons (generated assets, content stable). Safe to pin a year.
+/assets/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Self-hosted fonts, if/when any are added under /assets/fonts/.
+# (Google Fonts come from fonts.gstatic.com with Google's own far-future headers.)
+/assets/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# --- 3. CSS / JS — SHORT cache + revalidation (NOT immutable) ---
+# Filenames are unhashed, so 'immutable' would strand returning visitors on a
+# stale styles.css for up to a year. max-age=0 + must-revalidate forces a cheap
+# conditional GET (304 if unchanged); stale-while-revalidate keeps it instant.
+/assets/css/*
+  Cache-Control: public, max-age=0, must-revalidate, stale-while-revalidate=86400
+
+/assets/js/*
+  Cache-Control: public, max-age=0, must-revalidate, stale-while-revalidate=86400
+
+# --- 4. HTML / everything else — always revalidate so content edits ship ---
+# Pretty-URL directories (/omra/, /contact/ → index.html). Price/date/TODO-CLIENT
+# fills must appear immediately for returning visitors.
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/
+  Cache-Control: public, max-age=0, must-revalidate

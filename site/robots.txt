@@ -1,0 +1,11 @@
+# Nomara Voyages — robots.txt
+# AR is the canonical, indexed language (single URL space; FR is a runtime switcher, no /fr/ paths).
+# NOTE: the production domain is not finalized — replace nomaravoyages.com everywhere (TODO-CLIENT).
+
+User-agent: *
+Allow: /
+
+# Nothing to hide on a public static catalog. Crawl everything.
+# (Cloudflare Pages serves /404.html automatically; no need to disallow it.)
+
+Sitemap: https://nomaravoyages.com/sitemap.xml
