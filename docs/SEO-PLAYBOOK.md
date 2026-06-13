@@ -251,7 +251,7 @@ JSON-LD: include **TravelAgency + WebSite + TouristTrip(malaisie) + BreadcrumbLi
 
 ```html
 <title>رحلة مصر المنظمة | القاهرة والغردقة من قسنطينة</title>
-<meta name="description" content="رحلة مصر المنظمة مع نومارا: القاهرة والأهرامات ومنتجع الغردقة Collection Mirage بتخفيض 25٪، طيران مباشر من قسنطينة. السعر شامل الطيران والفندق والمرافقة — احجز عبر واتساب.">
+<meta name="description" content="رحلة مصر المنظمة مع نومارا: القاهرة والأهرامات ومنتجع الغردقة Collection Mirage بتخفيض 25%، طيران مباشر من قسنطينة. السعر شامل الطيران والفندق والمرافقة — احجز عبر واتساب.">
 <link rel="canonical" href="https://nomaravoyages.com/egypte/">
 <meta name="robots" content="index,follow">
 <meta property="og:type" content="website">
@@ -259,7 +259,7 @@ JSON-LD: include **TravelAgency + WebSite + TouristTrip(malaisie) + BreadcrumbLi
 <meta property="og:locale" content="ar_DZ">
 <meta property="og:url" content="https://nomaravoyages.com/egypte/">
 <meta property="og:title" content="رحلة مصر المنظمة | القاهرة والغردقة من قسنطينة">
-<meta property="og:description" content="القاهرة والأهرامات ومنتجع الغردقة Collection Mirage بتخفيض 25٪، طيران مباشر من قسنطينة. السعر شامل الطيران والفندق والمرافقة.">
+<meta property="og:description" content="القاهرة والأهرامات ومنتجع الغردقة Collection Mirage بتخفيض 25%، طيران مباشر من قسنطينة. السعر شامل الطيران والفندق والمرافقة.">
 <meta property="og:image" content="https://nomaravoyages.com/assets/images/og/og-default.jpg">
 <meta name="twitter:card" content="summary_large_image">
 ```
@@ -572,7 +572,7 @@ Apply to: `/a-propos/`
   "@type": "TouristTrip",
   "@id": "https://nomaravoyages.com/tunisie/#trip",
   "name": "رحلة تونس المنظمة",
-  "description": "رحلة منظمة بالكامل إلى تونس (٧ ليالٍ) تنطلق من مطار قسنطينة — تشمل تذكرة الطيران ذهابًا وإيابًا والإقامة والنقل ومرافقة فريق نومارا.",
+  "description": "رحلة منظمة بالكامل إلى تونس (7 ليالٍ) تنطلق من مطار قسنطينة — تشمل تذكرة الطيران ذهابًا وإيابًا والإقامة والنقل ومرافقة فريق نومارا.",
   "touristType": ["عائلات", "أزواج", "سياحة ترفيهية"],
   "provider": { "@id": "https://nomaravoyages.com/#travelagency" },
   "departureLocation": { "@type": "Airport", "name": "مطار قسنطينة" },
@@ -601,7 +601,7 @@ Apply to: `/a-propos/`
   "@type": "TouristTrip",
   "@id": "https://nomaravoyages.com/turquie/#trip",
   "name": "رحلة إسطنبول المنظمة",
-  "description": "رحلة منظمة إلى إسطنبول (٧ ليالٍ) من مطار قسنطينة — طيران ذهابًا وإيابًا، فندق ٤ نجوم مع الفطور، جولات سياحية، ومرافقة فريق نومارا.",
+  "description": "رحلة منظمة إلى إسطنبول (7 ليالٍ) من مطار قسنطينة — طيران ذهابًا وإيابًا، فندق 4 نجوم مع الفطور، جولات سياحية، ومرافقة فريق نومارا.",
   "touristType": ["عائلات", "أزواج", "سياحة ترفيهية"],
   "provider": { "@id": "https://nomaravoyages.com/#travelagency" },
   "departureLocation": { "@type": "Airport", "name": "مطار قسنطينة" },
@@ -625,7 +625,7 @@ Apply to: `/a-propos/`
   "@type": "TouristTrip",
   "@id": "https://nomaravoyages.com/azerbaidjan/#trip",
   "name": "رحلة باكو المنظمة",
-  "description": "رحلة منظمة إلى باكو (أذربيجان، ٧ ليالٍ) من مطار قسنطينة — طيران ذهابًا وإيابًا، فندق ٤ نجوم مع الفطور، جولات في باكو وضواحيها، ومرافقة فريق نومارا.",
+  "description": "رحلة منظمة إلى باكو (أذربيجان، 7 ليالٍ) من مطار قسنطينة — طيران ذهابًا وإيابًا، فندق 4 نجوم مع الفطور، جولات في باكو وضواحيها، ومرافقة فريق نومارا.",
   "touristType": ["عائلات", "أزواج", "سياحة ترفيهية"],
   "provider": { "@id": "https://nomaravoyages.com/#travelagency" },
   "departureLocation": { "@type": "Airport", "name": "مطار قسنطينة" },
@@ -649,7 +649,7 @@ Apply to: `/a-propos/`
   "@type": "TouristTrip",
   "@id": "https://nomaravoyages.com/malaisie/#trip",
   "name": "رحلة ماليزيا المنظمة",
-  "description": "رحلة منظمة إلى ماليزيا (٨ ليالٍ) من مطار قسنطينة — طيران ذهابًا وإيابًا، فندق ٤ نجوم مع الفطور، جولات بين كوالالمبور والجزر السياحية، ومرافقة فريق نومارا.",
+  "description": "رحلة منظمة إلى ماليزيا (8 ليالٍ) من مطار قسنطينة — طيران ذهابًا وإيابًا، فندق 4 نجوم مع الفطور، جولات بين كوالالمبور والجزر السياحية، ومرافقة فريق نومارا.",
   "touristType": ["عائلات", "أزواج", "سياحة ترفيهية"],
   "provider": { "@id": "https://nomaravoyages.com/#travelagency" },
   "departureLocation": { "@type": "Airport", "name": "مطار قسنطينة" },
@@ -673,7 +673,7 @@ Apply to: `/a-propos/`
   "@type": "TouristTrip",
   "@id": "https://nomaravoyages.com/egypte/#trip",
   "name": "رحلة مصر المنظمة",
-  "description": "رحلة منظمة إلى مصر (٧ ليالٍ) من مطار قسنطينة — القاهرة التاريخية والأهرامات، ومنتجع الغردقة Collection Mirage على البحر الأحمر — طيران وإقامة وجولات ومرافقة كاملة. المواعيد والأسعار قيد التأكيد.",
+  "description": "رحلة منظمة إلى مصر (7 ليالٍ) من مطار قسنطينة — القاهرة التاريخية والأهرامات، ومنتجع الغردقة Collection Mirage على البحر الأحمر — طيران وإقامة وجولات ومرافقة كاملة. المواعيد والأسعار قيد التأكيد.",
   "touristType": ["عائلات", "أزواج", "سياحة ترفيهية"],
   "provider": { "@id": "https://nomaravoyages.com/#travelagency" },
   "departureLocation": { "@type": "Airport", "name": "مطار قسنطينة" },

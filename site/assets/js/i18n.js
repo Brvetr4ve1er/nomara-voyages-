@@ -161,21 +161,21 @@
 
       /* ── TURQUIE ── */
       'turquie.hero.title':'إسطنبول — تركيا',
-      'turquie.hero.sub':  'أسبوع في إسطنبول بين المعالم التاريخية والأسواق والمضائق، مع فندق ٤ نجوم وجولات منظمة. تذكرة وفندق ومرافقة في سعر واحد واضح.',
+      'turquie.hero.sub':  'أسبوع في إسطنبول بين المعالم التاريخية والأسواق والمضائق، مع فندق 4 نجوم وجولات منظمة. تذكرة وفندق ومرافقة في سعر واحد واضح.',
       'turquie.hero.chip': 'رحلة مميّزة · انطلاق من قسنطينة',
       'sec.turquie.price.title':'باقة إسطنبول',
       'turquie.book.title':'جاهز للسفر إلى تركيا؟',
 
       /* ── AZERBAIDJAN ── */
       'azerbaidjan.hero.title':'باكو — أذربيجان',
-      'azerbaidjan.hero.sub':  'اكتشف باكو، لؤلؤة بحر قزوين، بين المدينة القديمة والأبراج الحديثة، مع فندق ٤ نجوم وجولات منظمة. تذكرة وفندق ومرافقة في سعر واحد واضح.',
+      'azerbaidjan.hero.sub':  'اكتشف باكو، لؤلؤة بحر قزوين، بين المدينة القديمة والأبراج الحديثة، مع فندق 4 نجوم وجولات منظمة. تذكرة وفندق ومرافقة في سعر واحد واضح.',
       'azerbaidjan.hero.chip': 'عرض خاص · انطلاق من قسنطينة',
       'sec.azerbaidjan.price.title':'باقة باكو',
       'azerbaidjan.book.title':'جاهز للسفر إلى أذربيجان؟',
 
       /* ── MALAISIE ── */
       'malaisie.hero.title':'ماليزيا',
-      'malaisie.hero.sub':  'رحلة إلى ماليزيا بين ناطحات السحاب في كوالالمبور والجزر الاستوائية الساحرة، مع فندق ٤ نجوم وجولات منظمة. تذكرة وفندق ومرافقة في سعر واحد واضح.',
+      'malaisie.hero.sub':  'رحلة إلى ماليزيا بين ناطحات السحاب في كوالالمبور والجزر الاستوائية الساحرة، مع فندق 4 نجوم وجولات منظمة. تذكرة وفندق ومرافقة في سعر واحد واضح.',
       'malaisie.hero.chip': 'رحلة مميّزة · انطلاق من قسنطينة',
       'sec.malaisie.price.title':'باقة كوالالمبور',
       'malaisie.book.title':'جاهز للسفر إلى ماليزيا؟',
@@ -481,6 +481,307 @@
     }
   };
 
+  var STATIC_TEXT_FR = {
+    'دج': 'DZD',
+    '/ للشخص — السعر شامل': '/ personne — prix inclus',
+    'واتساب': 'WhatsApp',
+    'اعرف المزيد': 'En savoir plus',
+    'عرض على خرائط جوجل': 'Voir sur Google Maps',
+    'تخطّي إلى المحتوى': 'Passer au contenu',
+    'نومارا للسياحة و خدمات الحج و العمرة — رفيقك في كل رحلة.': 'Nomara voyages, Hajj et Omra — votre compagnon à chaque voyage.',
+    'البريد الإلكتروني: قيد التأكيد': 'E-mail : à confirmer',
+    'العنوان': 'Adresse',
+    'وكالة سياحية مرخّصة — رقم الرخصة: TODO-CLIENT ·': 'Agence de voyages agréée — licence : à confirmer ·',
+    '— نموذج مراجعة · TODO-CLIENT': '— exemple d’avis · à remplacer',
+    'السعر عند الطلب — تواصل لمعرفته': 'Prix sur demande — contactez-nous',
+    'تذكرة الطيران ذهابًا وإيابًا من مطار قسنطينة': 'Billet d’avion aller-retour depuis l’aéroport de Constantine',
+    'مرافقة فريق نومارا طوال الرحلة': 'Accompagnement de l’équipe Nomara pendant tout le voyage',
+    'تواصل معنا الآن، نرد عليك بسرعة ونؤكد حجزك خطوة بخطوة.': 'Contactez-nous maintenant : nous répondons vite et confirmons votre réservation étape par étape.',
+    'الانطلاق': 'Départ',
+    'العودة': 'Retour',
+    'الجولات': 'Excursions',
+    'الجولات السياحية المنظمة': 'Excursions touristiques organisées',
+    'الإقامة في فندق 4 نجوم مع الفطور': 'Hébergement en hôtel 4 étoiles avec petit-déjeuner',
+    '· مع الفطور': '· avec petit-déjeuner',
+    'السعر والمواعيد قيد التأكيد — تواصل معنا لمعرفة المقاعد المتاحة.': 'Prix et dates à confirmer — contactez-nous pour connaître les places disponibles.',
+    'نقل إلى المطار والعودة إلى قسنطينة برفقة فريق نومارا.': 'Transfert vers l’aéroport et retour à Constantine avec l’équipe Nomara.',
+    'السعر للشخص': 'Prix par personne',
+    'الخطوات': 'Étapes',
+    'العمرة والحج': 'Omra et Hajj',
+    'الرحلات المنظمة': 'Voyages organisés',
+    'تونس': 'Tunisie',
+    'تركيا': 'Turquie',
+    'مصر': 'Égypte',
+    'أذربيجان': 'Azerbaïdjan',
+    'ماليزيا': 'Malaisie',
+    'كل الخدمات': 'Tous les services',
+    'رحلة مميّزة': 'Voyage premium',
+    'انطلاق مباشر من قسنطينة': 'Départ direct de Constantine',
+    'انطلاق من قسنطينة': 'Départ de Constantine',
+    'إقامة كاملة · 7 ليالٍ · انطلاق من قسنطينة': 'Pension complète · 7 nuits · départ de Constantine',
+    '3 خيارات فنادق': '3 choix d’hôtels',
+    'فندق 4 نجوم · جولات · انطلاق من قسنطينة': 'Hôtel 4 étoiles · excursions · départ de Constantine',
+    'فندق 4 نجوم · عرض خاص · انطلاق من قسنطينة': 'Hôtel 4 étoiles · offre spéciale · départ de Constantine',
+    'فندق 4 نجوم · جزر وجولات · انطلاق من قسنطينة': 'Hôtel 4 étoiles · îles et excursions · départ de Constantine',
+    'الغردقة −25%': 'Hurghada −25 %',
+    'عرضان': 'Deux offres',
+    'القاهرة التاريخية + منتجع البحر الأحمر': 'Le Caire historique + resort de la mer Rouge',
+    'كل الوجهات في مكان واحد': 'Toutes les destinations au même endroit',
+    'تصفّح كل الرحلات المنظمة واختر وجهتك.': 'Parcourez tous les voyages organisés et choisissez votre destination.',
+    'استعرض كل ما تقدّمه نومارا في صفحة واحدة.': 'Découvrez tout ce que Nomara propose sur une seule page.',
+    'نرافقك في رحلة العمر': 'Nous vous accompagnons dans le voyage d’une vie',
+    'عمرة شوال وعمرة جوان، بطيران مباشر من قسنطينة وفنادق قريبة من الحرم. مرافقة كاملة تطمئن قلبك من لحظة الانطلاق إلى العودة — السعر شامل الطيران والفندق والمرافقة والتأشيرة.': 'Omra de Chawwal et de juin avec vol direct depuis Constantine, hôtels proches du Haram et accompagnement complet du départ au retour — le prix comprend vol, hôtel, accompagnement et visa.',
+    'تعرّف على باقات العمرة': 'Découvrir les forfaits Omra',
+    'استفسر عبر واتساب': 'Demander sur WhatsApp',
+    'ح ي': 'HY',
+    'حدّاد يوسف إسلام': 'Haddad Youcef Islam',
+    'مرشدكم — يرافقكم بنفسه على الأرض': 'Votre guide — présent avec vous sur le terrain',
+    'السعر الذي تراه هو ما تدفعه — يشمل الطيران والفندق والمرافقة. لا تكاليف خفية ولا أسعار «ابتداءً من» تتغيّر لاحقًا.': 'Le prix affiché est le prix payé : vol, hôtel et accompagnement inclus. Pas de frais cachés ni de prix “à partir de” qui changent ensuite.',
+    'فريق نومارا يرافقك على الأرض، يجيب عن أسئلتك ويحل ما يطرأ — لست وحدك في أي خطوة.': 'L’équipe Nomara vous accompagne sur place, répond à vos questions et gère les imprévus — vous n’êtes jamais seul.',
+    'تواصل معنا مباشرة، نرد عليك بسرعة، ونؤكد حجزك بكل بساطة — دون تعقيد ولا أوراق طويلة.': 'Contactez-nous directement : nous répondons vite et confirmons votre réservation simplement, sans démarches compliquées.',
+    '«رافقونا في العمرة من البداية للنهاية، والفندق كان قريبًا من الحرم فعلًا. شعرنا بالاطمئنان.»': '« Ils nous ont accompagnés pour l’Omra du début à la fin, et l’hôtel était vraiment proche du Haram. Nous étions rassurés. »',
+    '«رحلة جربة كانت منظمة وبسعر واضح، وكل شيء كان كما اتفقنا عليه تمامًا.»': '« Le voyage à Djerba était bien organisé, avec un prix clair. Tout était exactement comme convenu. »',
+    'نموذج — في انتظار مراجعات العملاء': 'Exemple — en attente d’avis clients',
+    'اقرأ المزيد': 'Lire la suite',
+    'تعرّف على وكالتنا ومرشدنا، واطّلع على آراء عملائنا.': 'Découvrez notre agence, notre guide et les avis de nos clients.',
+    'من نحن': 'À propos',
+    'تواصل معنا الآن عبر واتساب أو اتصل بنا مباشرة — نرد عليك بسرعة ونرتّب لك كل شيء.': 'Contactez-nous maintenant sur WhatsApp ou appelez-nous directement — nous répondons vite et organisons tout pour vous.',
+    'نومارا للسياحة و خدمات الحج و العمرة — وكالة من عين مليلة، نرافق المسافرين من شرق الجزائر في رحلاتهم ومناسكهم، انطلاقًا من مطار قسنطينة.': 'Nomara voyages, Hajj et Omra est une agence basée à Aïn M’Lila. Nous accompagnons les voyageurs de l’Est algérien dans leurs voyages et rites, au départ de l’aéroport de Constantine.',
+    'بدأنا برؤية بسيطة: أن يجد المسافر الجزائري رفيقًا يثق به — لا مجرد وكالة تبيع تذاكر. لذلك نهتم بكل تفصيل، من اختيار الفندق إلى المرافقة على الأرض، ونحرص على وضوح السعر منذ اللحظة الأولى.': 'Nous sommes partis d’une idée simple : offrir au voyageur algérien un compagnon de confiance, pas seulement une agence qui vend des billets. Nous soignons chaque détail, du choix de l’hôtel à l’accompagnement sur place, avec un prix clair dès le départ.',
+    'مرشدكم ومرافقكم على الأرض': 'Votre guide et accompagnateur sur place',
+    '«أنا حدّاد يوسف إسلام، أرافقكم بنفسي في رحلاتكم. أؤمن أن السفر — خاصة العمرة — أمانة، وأن المسافر يستحق أن يشعر بالاطمئنان من لحظة الانطلاق إلى العودة. لذلك تجدونني معكم على الأرض، أجيب عن أسئلتكم وأحل ما يطرأ، حتى تتفرّغوا لرحلتكم وعبادتكم.»': '« Je suis Haddad Youcef Islam, et je vous accompagne personnellement pendant vos voyages. Je crois que le voyage, surtout l’Omra, est une responsabilité : le voyageur mérite d’être rassuré du départ au retour. Je suis donc présent sur place pour répondre à vos questions et gérer les imprévus, afin que vous puissiez vivre votre voyage et votre adoration sereinement. »',
+    'على مدى السنوات، رافقت مجموعات من المعتمرين والمسافرين، ونقلت لحظات الرحلات مباشرة لعائلاتهم. هذه العلاقة الإنسانية هي ما يميّز نومارا.': 'Au fil des années, j’ai accompagné des groupes de pèlerins et de voyageurs, en partageant les moments du voyage avec leurs familles. Cette relation humaine est ce qui distingue Nomara.',
+    'وكالة سياحية مرخّصة — رقم الرخصة:': 'Agence de voyages agréée — licence :',
+    'مرشد معروف يرافقك بنفسه': 'Un guide reconnu vous accompagne personnellement',
+    'أسعار واضحة شاملة دون تكاليف خفية': 'Des prix clairs et inclusifs, sans frais cachés',
+    '«رافقونا في العمرة من البداية للنهاية، والفندق كان قريبًا من الحرم فعلًا. شعرنا بالاطمئنان طوال الرحلة.»': '« Ils nous ont accompagnés pour l’Omra du début à la fin, et l’hôtel était vraiment proche du Haram. Nous étions rassurés tout au long du voyage. »',
+    '«رحلة جربة كانت منظمة وبسعر واضح، وكل شيء جاء كما اتفقنا عليه تمامًا. سنكرّرها معهم.»': '« Le voyage à Djerba était bien organisé, avec un prix clair. Tout s’est passé comme convenu. Nous repartirons avec eux. »',
+    '«تعامل صادق ورد سريع على واتساب. أنصح بهم لمن يبحث عن راحة البال.»': '« Service honnête et réponse rapide sur WhatsApp. Je les recommande à ceux qui cherchent la tranquillité. »',
+    'هذه نماذج توضيحية لشكل المراجعات — لا نعرض مراجعات حقيقية إلا بعد موافقة أصحابها. (TODO-CLIENT: استبدالها بمراجعات حقيقية)': 'Ces avis sont des exemples de mise en page. Les vrais avis ne seront publiés qu’avec l’accord de leurs auteurs. À remplacer par des avis réels.',
+    'تواصل معنا عبر واتساب أو اتصل بنا — نرد عليك بسرعة.': 'Contactez-nous sur WhatsApp ou appelez-nous — nous répondons vite.',
+    'فندق 4 نجوم في إسطنبول': 'Hôtel 4 étoiles à Istanbul',
+    'فندق 4 نجوم في باكو': 'Hôtel 4 étoiles à Bakou',
+    'فندق 4 نجوم في كوالالمبور': 'Hôtel 4 étoiles à Kuala Lumpur',
+    'إقلاع مباشر من مطار قسنطينة واستقبال ونقل إلى الفندق في إسطنبول.': 'Vol direct depuis l’aéroport de Constantine, accueil et transfert vers l’hôtel à Istanbul.',
+    'إقلاع مباشر من مطار قسنطينة واستقبال ونقل إلى الفندق في باكو.': 'Vol direct depuis l’aéroport de Constantine, accueil et transfert vers l’hôtel à Bakou.',
+    'إقلاع مباشر من مطار قسنطينة واستقبال ونقل إلى الفندق في كوالالمبور.': 'Vol direct depuis l’aéroport de Constantine, accueil et transfert vers l’hôtel à Kuala Lumpur.',
+    'جولات في معالم إسطنبول: آيا صوفيا، المسجد الأزرق، البازار الكبير والمضيق.': 'Excursions à Istanbul : Sainte-Sophie, Mosquée bleue, Grand Bazar et Bosphore.',
+    'جولات في باكو وضواحيها: المدينة القديمة، الكورنيش والمعالم الحديثة.': 'Excursions à Bakou et autour : vieille ville, corniche et monuments modernes.',
+    'جولات بين كوالالمبور (أبراج بتروناس) والجزر والمناطق السياحية.': 'Excursions entre Kuala Lumpur, les tours Petronas, les îles et sites touristiques.',
+    'لمحة من تونس': 'Aperçu de la Tunisie',
+    'لمحة من تركيا': 'Aperçu de la Turquie',
+    'لمحة من أذربيجان': 'Aperçu de l’Azerbaïdjan',
+    'لمحة من ماليزيا': 'Aperçu de la Malaisie',
+    'لمحة من مصر': 'Aperçu de l’Égypte',
+    'اتصل بنا مباشرة في أي وقت خلال ساعات العمل.': 'Appelez-nous directement pendant les horaires d’ouverture.',
+    'راسلنا على واتساب، نرد عليك بسرعة.': 'Écrivez-nous sur WhatsApp, nous répondons vite.',
+    'للاستفسارات الكتابية.': 'Pour les demandes écrites.',
+    'البريد الإلكتروني قيد التأكيد': 'E-mail à confirmer',
+    'حي الغزالي، عين مليلة، أم البواقي، الجزائر —': 'Cité Ghazali, Aïn M’Lila, Oum El Bouaghi, Algérie —',
+    'من السبت إلى الخميس —': 'Du samedi au jeudi —',
+    '(TODO-CLIENT: تأكيد المواعيد)': '(horaires à confirmer)',
+    'واتساب متاح للرد على مدار اليوم تقريبًا.': 'WhatsApp est disponible presque toute la journée.',
+    'السعر شامل: الطيران من قسنطينة + الإقامة + المرافقة.': 'Prix inclus : vol depuis Constantine + hébergement + accompagnement.',
+    'السعر شامل: الطيران من قسنطينة + الإقامة + المرافقة. 7 ليالٍ.': 'Prix inclus : vol depuis Constantine + hébergement + accompagnement. 7 nuits.',
+    'السعر شامل: الطيران من قسنطينة + الإقامة + المرافقة. 8 ليالٍ.': 'Prix inclus : vol depuis Constantine + hébergement + accompagnement. 8 nuits.',
+    'القاهرة': 'Le Caire',
+    'الأهرامات وأبو الهول والقاهرة التاريخية · جولات منظمة': 'Pyramides, Sphinx et Le Caire historique · excursions organisées',
+    'السعر والمواعيد قيد التأكيد.': 'Prix et dates à confirmer.',
+    '−25%': '−25 %',
+    'الغردقة — Collection Mirage': 'Hurghada — Collection Mirage',
+    'منتجع البحر الأحمر · شواطئ صافية وإطلالات ساحرة': 'Resort de la mer Rouge · plages claires et vues charmantes',
+    'عرض خاص −25%': 'Offre spéciale −25 %',
+    'السعر بعد الخصم والمواعيد قيد التأكيد — تواصل معنا ونوضّح لك كل التفاصيل.': 'Prix remisé et dates à confirmer — contactez-nous pour tous les détails.',
+    'الإقامة في الفندق أو المنتجع المختار': 'Hébergement dans l’hôtel ou le resort choisi',
+    'النقل والجولات المنظمة': 'Transferts et excursions organisées',
+    'الفندق': 'Hôtel',
+    'التصنيف والإقامة': 'Catégorie et pension',
+    'جربة —': 'Djerba —',
+    'سوسة —': 'Sousse —',
+    'إقامة كاملة (Full Board)': 'Pension complète (Full Board)',
+    'نصف إقامة': 'Demi-pension',
+    'نصف إقامة — الباقة الاقتصادية': 'Demi-pension — forfait économique',
+    'الأسعار قيد التأكيد — تواصل معنا لمعرفة المواعيد والمقاعد المتاحة.': 'Prix à confirmer — contactez-nous pour les dates et places disponibles.',
+    'إقلاع مباشر من مطار قسنطينة، واستقبال ونقل إلى الفندق فور الوصول إلى تونس.': 'Vol direct depuis Constantine, accueil et transfert vers l’hôtel dès l’arrivée en Tunisie.',
+    'أيام الإقامة': 'Séjour',
+    'استمتاع بالشاطئ والفندق، مع إمكانية جولات اختيارية إلى المدينة العتيقة والأسواق.': 'Profitez de la plage et de l’hôtel, avec des excursions optionnelles vers la médina et les marchés.',
+    'نقل إلى المطار والعودة إلى قسنطينة، مع مرافقة فريق نومارا حتى نهاية الرحلة.': 'Transfert vers l’aéroport et retour à Constantine, avec l’équipe Nomara jusqu’à la fin du voyage.',
+    'الإقامة في الفندق المختار': 'Hébergement dans l’hôtel choisi',
+    'النقل من وإلى المطار': 'Transfert depuis et vers l’aéroport',
+    'الفندق والمسافة من الحرم': 'Hôtel et distance du Haram',
+    'المسافة': 'Distance',
+    'فندق قريب من الحرم': 'Hôtel proche du Haram',
+    '350 م': '350 m',
+    'فندق على مسافة متوسطة': 'Hôtel à distance moyenne',
+    '500 م': '500 m',
+    'فندق اقتصادي': 'Hôtel économique',
+    '700 م': '700 m',
+    'طيران مباشر من قسنطينة، وفنادق على مسافات مختلفة من الحرم — تختار ما يناسبك بسعر واضح.': 'Vol direct depuis Constantine et hôtels à différentes distances du Haram — choisissez ce qui vous convient avec un prix clair.',
+    'الأسعار والمسافات إرشادية وقيد التأكيد — تواصل معنا لتفاصيل المواعيد والمقاعد المتاحة.': 'Prix et distances indicatifs, à confirmer — contactez-nous pour les dates et places disponibles.',
+    'احجز عمرة شوّال': 'Réserver l’Omra de Chawwal',
+    'مواعيد انطلاق متعددة في شهر جوان، مع نفس مستوى المرافقة والقرب من الحرم.': 'Plusieurs dates de départ en juin, avec le même niveau d’accompagnement et de proximité du Haram.',
+    'الأسعار إرشادية وقيد التأكيد — تواصل معنا لمعرفة مواعيد الانطلاق المتاحة في جوان.': 'Prix indicatifs, à confirmer — contactez-nous pour connaître les dates disponibles en juin.',
+    'احجز عمرة جوان': 'Réserver l’Omra de juin',
+    'الطيران المباشر ذهابًا وإيابًا من مطار قسنطينة': 'Vol direct aller-retour depuis l’aéroport de Constantine',
+    'الإقامة في فندق قريب من الحرم': 'Hébergement dans un hôtel proche du Haram',
+    'المرافقة الكاملة على الأرض طوال الرحلة': 'Accompagnement complet sur place pendant tout le voyage',
+    'إجراءات التأشيرة': 'Procédures de visa',
+    '«اللّهُمّ اجعلها عمرةً مبرورةً وسعيًا مشكورًا»': '« Ô Allah, fais-en une Omra acceptée et un effort récompensé »',
+    'نرافقك من لحظة الانطلاق إلى العودة — بسكينة واطمئنان.': 'Nous vous accompagnons du départ au retour — avec sérénité et tranquillité.',
+    'نرشدك في مناسك الحج خطوة بخطوة، ونرافقك على الأرض من الانطلاق إلى العودة بسكينة واطمئنان.': 'Nous vous guidons dans les rites du Hajj pas à pas et vous accompagnons sur place du départ au retour.',
+    'إرشاد في المناسك': 'Guidance dans les rites',
+    'مرافقة ميدانية تشرح لك المناسك وتقف معك في كل خطوة، حتى تؤدي حجك بطمأنينة.': 'Un accompagnement sur place qui explique les rites et reste avec vous à chaque étape.',
+    'تنظيم ولوجستيك': 'Organisation et logistique',
+    'نتكفّل بالإقامة والتنقّل والترتيبات، لتتفرّغ أنت للعبادة وحدها.': 'Nous gérons l’hébergement, les déplacements et les arrangements pour que vous puissiez vous consacrer à l’adoration.',
+    'مرافقة موثوقة': 'Accompagnement fiable',
+    'خبرة سنوات في مرافقة الحجاج والمعتمرين، وحضور ميداني نقل لحظات الرحلة مباشرة.': 'Des années d’expérience dans l’accompagnement des pèlerins, avec une présence réelle sur le terrain.',
+    'استفسر عن الحج': 'Demander pour le Hajj',
+    'جمعنا لك أهم ما تحتاج معرفته قبل السفر — من الوثائق إلى ما تحضّره في حقيبتك.': 'Nous avons rassemblé l’essentiel à savoir avant le départ, des documents à préparer à votre valise.',
+    'دليل التحضير والأسئلة الشائعة': 'Guide de préparation et FAQ',
+    'قيد التأكيد': 'À confirmer',
+    'قيد التأكيد — TODO-CLIENT': 'À confirmer',
+    'تواصل معنا مباشرة عبر واتساب، نرد عليك بسرعة ونرتّب لك كل شيء.': 'Contactez-nous directement sur WhatsApp, nous répondons vite et organisons tout.',
+    'تختلف الوثائق حسب الوجهة، لكنها عادةً تشمل: جواز سفر ساري المفعول، صور شمسية، وملف التأشيرة إن كانت الوجهة تتطلبها. نوضّح لك القائمة الكاملة لوجهتك عند الحجز، ونساعدك في ترتيب الملف.': 'Les documents varient selon la destination, mais comprennent généralement un passeport valide, des photos d’identité et un dossier de visa si nécessaire. Nous vous donnons la liste complète à la réservation.',
+    'نعم، نساعدك في تحضير ملف التأشيرة وترتيب الوثائق المطلوبة. مع ذلك، قرار منح التأشيرة يبقى بيد القنصلية، ونحن لا نضمن الحصول عليها — نساعدك فقط في تقديم ملف سليم ومرتّب.': 'Oui, nous vous aidons à préparer le dossier de visa et les documents requis. La décision reste toutefois entre les mains du consulat : nous aidons à présenter un dossier clair et complet, sans garantir l’obtention.',
+    'تفاصيل خدمة التأشيرة': 'Détails de l’assistance visa',
+    '(TODO-CLIENT: تأكيد نطاق الخدمة)': '(périmètre du service à confirmer)',
+    'نعتمد عادةً نظام العربون لتثبيت الحجز، ثم تسديد الباقي قبل السفر. تفاصيل المبالغ والمواعيد نتفق عليها عند الحجز عبر واتساب.': 'Nous utilisons généralement un acompte pour confirmer la réservation, puis le solde avant le départ. Les montants et délais sont convenus sur WhatsApp.',
+    '(TODO-CLIENT: تأكيد نسبة العربون وآجال الدفع)': '(acompte et délais de paiement à confirmer)',
+    'نعم، نعرض الأسعار شاملةً: الطيران من قسنطينة + الإقامة + المرافقة (وللعمرة: التأشيرة أيضًا). لا نعتمد أسلوب «ابتداءً من» ولا نخفي تكاليف. أي خدمة إضافية اختيارية نوضّحها لك مسبقًا.': 'Oui, nos prix incluent le vol depuis Constantine, l’hébergement et l’accompagnement (et le visa pour l’Omra). Pas de prix “à partir de” ni de frais cachés ; toute option est expliquée à l’avance.',
+    'ننصح بتحضير: ملابس الإحرام، ملابس مريحة ومحتشمة، حذاء مريح للمشي، أدوات النظافة الشخصية، الأدوية الخاصة بك، نسخة من الوثائق، ومبلغ نقدي بسيط للمصاريف. نرسل لك قائمة تحضير مفصّلة قبل السفر، ونرافقك في كل خطوة.': 'Nous conseillons de préparer : habits d’ihram, vêtements confortables et modestes, chaussures de marche, trousse d’hygiène, médicaments personnels, copies des documents et un petit budget en espèces. Nous envoyons une liste détaillée avant le départ.',
+    'تنطلق رحلاتنا مباشرةً من مطار قسنطينة (محمد بوضياف)، وهو الأقرب لمسافري شرق الجزائر. هذا يوفّر عليك عناء التنقّل إلى مطارات بعيدة.': 'Nos voyages partent directement de l’aéroport de Constantine (Mohamed Boudiaf), pratique pour les voyageurs de l’Est algérien.',
+    'نتفهّم أن الظروف قد تتغيّر. سياسة التعديل والإلغاء تعتمد على نوع الرحلة وقربها من موعد الانطلاق وشروط شركات الطيران والفنادق. تواصل معنا في أقرب وقت ونوضّح لك الخيارات المتاحة بصدق.': 'Nous comprenons que les circonstances changent. Les modifications et annulations dépendent du type de voyage, de la proximité du départ et des conditions des compagnies et hôtels. Contactez-nous au plus tôt pour connaître les options.',
+    '(TODO-CLIENT: تأكيد سياسة الإلغاء والاسترجاع)': '(politique d’annulation et remboursement à confirmer)',
+    'ببساطة: تواصل معنا عبر واتساب على': 'Simplement : contactez-nous sur WhatsApp au',
+    'أو اتصل على': 'ou appelez le',
+    '، أخبرنا بالوجهة والتاريخ وعدد المسافرين، ونتكفّل بالباقي. الحجز يثبت بالعربون.': ', indiquez la destination, la date et le nombre de voyageurs, et nous nous occupons du reste. La réservation est confirmée par acompte.',
+    'كل الوجهات': 'Toutes les destinations',
+    '3 خيارات فنادق · 7 ليالٍ · إقامة كاملة': '3 choix d’hôtels · 7 nuits · pension complète',
+    'فندق 4 نجوم · جولات سياحية': 'Hôtel 4 étoiles · excursions touristiques',
+    'فندق 4 نجوم · عرض خاص': 'Hôtel 4 étoiles · offre spéciale',
+    'فندق 4 نجوم · جزر وجولات': 'Hôtel 4 étoiles · îles et excursions',
+    'تبحث عن العمرة؟': 'Vous cherchez l’Omra ?',
+    'تعرّف على باقات عمرة شوال وجوان من قسنطينة.': 'Découvrez les forfaits Omra de Chawwal et de juin depuis Constantine.',
+    'باقات العمرة': 'Forfaits Omra',
+    'فنادق متعددة الوجهات': 'Hôtels multi-destinations',
+    'تونس، تركيا، أذربيجان، ماليزيا، مصر، السعودية وغيرها.': 'Tunisie, Turquie, Azerbaïdjan, Malaisie, Égypte, Arabie saoudite et plus.',
+    'قرب من الحرم': 'Proximité du Haram',
+    'فنادق على مسافات مختلفة من الحرم للعمرة والحج، حسب ميزانيتك.': 'Hôtels à différentes distances du Haram pour l’Omra et le Hajj, selon votre budget.',
+    'غرف عائلية وفردية': 'Chambres familiales et individuelles',
+    'نختار لك الغرفة التي تناسب عدد المسافرين ونوع الإقامة.': 'Nous choisissons la chambre adaptée au nombre de voyageurs et au type de séjour.',
+    'أنواع إقامة': 'Types de pension',
+    'إقامة كاملة أو نصف إقامة أو مع الفطور — كما يناسبك.': 'Pension complète, demi-pension ou petit-déjeuner — selon vos besoins.',
+    'أخبرنا بالوجهة والتواريخ وعدد المسافرين عبر واتساب.': 'Envoyez-nous la destination, les dates et le nombre de voyageurs sur WhatsApp.',
+    'نقترح عليك خيارات فنادق بأسعار واضحة.': 'Nous vous proposons des hôtels avec des prix clairs.',
+    'تختار، ونؤكد الحجز ونرسل لك التفاصيل.': 'Vous choisissez, nous confirmons la réservation et envoyons les détails.',
+    'نساعدك في تحضير ملف التأشيرة وترتيب الوثائق المطلوبة لوجهتك. نرافقك في الخطوات بصدق ووضوح، دون أن نَعِدك بما لا نملكه — قرار منح التأشيرة يبقى بيد القنصلية.': 'Nous vous aidons à préparer votre dossier de visa et à organiser les documents requis. Nous vous accompagnons honnêtement, sans promettre ce qui ne dépend pas de nous : la décision revient au consulat.',
+    'ملاحظة بصدق: هذه الخدمة قيد التطوير، ولا نضمن الحصول على التأشيرة — نساعدك فقط في تحضير ملف سليم ومرتّب. (TODO-CLIENT: تأكيد نطاق الخدمة والوجهات المدعومة)': 'Note honnête : ce service est en développement. Nous ne garantissons pas l’obtention du visa ; nous aidons à préparer un dossier clair et complet. Périmètre et destinations à confirmer.',
+    'تأشيرة شنغن': 'Visa Schengen',
+    'ترتيب وثائق ملف شنغن للسفر إلى أوروبا، ومراجعتها قبل التقديم.': 'Organisation et vérification du dossier Schengen avant dépôt.',
+    'تأشيرة السعودية': 'Visa Arabie saoudite',
+    'مرافقة في إجراءات تأشيرة العمرة والزيارة إلى السعودية.': 'Accompagnement pour les démarches de visa Omra et visite en Arabie saoudite.',
+    'تأشيرة تركيا': 'Visa Turquie',
+    'المساعدة في طلب التأشيرة الإلكترونية أو الورقية لتركيا.': 'Aide à la demande de visa électronique ou papier pour la Turquie.',
+    'وجهات أخرى': 'Autres destinations',
+    'أذربيجان، ماليزيا وغيرها — تواصل معنا لنرى ما نستطيع ترتيبه لك.': 'Azerbaïdjan, Malaisie et autres — contactez-nous pour voir ce que nous pouvons organiser.',
+    'تواصل معنا عبر واتساب وأخبرنا بوجهتك وتاريخ سفرك المتوقع.': 'Contactez-nous sur WhatsApp avec votre destination et date prévue.',
+    'نوضّح لك قائمة الوثائق المطلوبة ونساعدك في تجهيزها وترتيبها.': 'Nous vous expliquons la liste des documents et aidons à les préparer.',
+    'نرافقك حتى تقديم الملف، ونبقى معك للإجابة عن أسئلتك.': 'Nous vous accompagnons jusqu’au dépôt et restons disponibles pour vos questions.',
+    'مقارنة بين الشركات': 'Comparaison des compagnies',
+    'نبحث في عدة شركات طيران لنجد أنسب سعر وأفضل توقيت.': 'Nous comparons plusieurs compagnies pour trouver le meilleur prix et horaire.',
+    'أولوية للرحلات المباشرة من مطار قسنطينة قُربًا منك.': 'Priorité aux vols directs depuis l’aéroport de Constantine.',
+    'ذهاب وإياب أو ذهاب فقط': 'Aller-retour ou aller simple',
+    'نرتّب لك التذكرة حسب حاجتك ومرونة تواريخك.': 'Nous réservons le billet selon vos besoins et la flexibilité de vos dates.',
+    'تأكيد سريع': 'Confirmation rapide',
+    'نؤكد الحجز ونرسل لك التذكرة فور إتمام الدفع.': 'Nous confirmons la réservation et envoyons le billet après paiement.',
+    'أرسل لنا الوجهة والتواريخ وعدد المسافرين عبر واتساب.': 'Envoyez-nous la destination, les dates et le nombre de voyageurs sur WhatsApp.',
+    'نعرض عليك أفضل الأسعار المتاحة من عدة شركات.': 'Nous vous présentons les meilleurs prix disponibles chez plusieurs compagnies.',
+    'تختار، وندفع ونؤكد ونرسل لك التذكرة.': 'Vous choisissez, nous validons et vous envoyons le billet.'
+  };
+
+  var textNodeSources = new WeakMap();
+  var LATIN_DIGITS = {
+    '٠': '0', '١': '1', '٢': '2', '٣': '3', '٤': '4',
+    '٥': '5', '٦': '6', '٧': '7', '٨': '8', '٩': '9',
+    '۰': '0', '۱': '1', '۲': '2', '۳': '3', '۴': '4',
+    '۵': '5', '۶': '6', '۷': '7', '۸': '8', '۹': '9'
+  };
+
+  function normalizeTextKey(value) {
+    return String(value || '').replace(/\s+/g, ' ').trim();
+  }
+
+  function replaceTextPreservingEdges(sourceValue, translatedValue) {
+    var source = String(sourceValue || '');
+    var leading = (source.match(/^\s*/) || [''])[0];
+    var trailing = (source.match(/\s*$/) || [''])[0];
+    return leading + translatedValue + trailing;
+  }
+
+  function shouldSkipTextNode(node) {
+    if (!node || !node.nodeValue || !normalizeTextKey(node.nodeValue)) return true;
+    var parent = node.parentElement;
+    if (!parent) return true;
+    if (parent.closest('[data-i18n]')) return true;
+    return /^(SCRIPT|STYLE|SVG|NOSCRIPT|TEMPLATE)$/i.test(parent.tagName);
+  }
+
+  function walkTextNodes(root, callback) {
+    if (!root || !document.createTreeWalker) return;
+    var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (node) {
+        return shouldSkipTextNode(node)
+          ? NodeFilter.FILTER_REJECT
+          : NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var node = walker.nextNode();
+    while (node) {
+      callback(node);
+      node = walker.nextNode();
+    }
+  }
+
+  function applyStaticText(lang) {
+    var root = document.body || document.documentElement;
+    walkTextNodes(root, function (node) {
+      if (!textNodeSources.has(node)) {
+        textNodeSources.set(node, node.nodeValue);
+      }
+
+      var source = textNodeSources.get(node);
+      var key = normalizeTextKey(source);
+      if (lang === 'fr' && STATIC_TEXT_FR[key] != null) {
+        node.nodeValue = replaceTextPreservingEdges(source, STATIC_TEXT_FR[key]);
+      } else {
+        node.nodeValue = source;
+      }
+    });
+  }
+
+  function toLatinDigits(value) {
+    return String(value || '').replace(/\u066A/g, '%').replace(/[٠-٩۰-۹]/g, function (ch) {
+      return LATIN_DIGITS[ch] || ch;
+    });
+  }
+
+  function normalizeNumbers(root) {
+    var target = root || document.body || document.documentElement;
+    walkTextNodes(target, function (node) {
+      var normalized = toLatinDigits(node.nodeValue);
+      if (normalized !== node.nodeValue) node.nodeValue = normalized;
+    });
+
+    target.querySelectorAll('[aria-label], [placeholder], [alt], [title]').forEach(function (el) {
+      ['aria-label', 'placeholder', 'alt', 'title'].forEach(function (attr) {
+        var value = el.getAttribute(attr);
+        if (value == null) return;
+        var normalized = toLatinDigits(value);
+        if (normalized !== value) el.setAttribute(attr, normalized);
+      });
+    });
+  }
+
   /* Expose so Agent 3 can extend without re-declaring. */
   window.NOMARA_I18N = window.NOMARA_I18N || DICT;
 
@@ -510,6 +811,9 @@
       var val = t(el.getAttribute('data-i18n-placeholder'), lang);
       if (val != null) el.setAttribute('placeholder', val);
     });
+
+    applyStaticText(lang);
+    normalizeNumbers(document.body || document.documentElement);
 
     // Keep the switcher's active state in sync.
     document.querySelectorAll('.lang-switcher [data-i18n-lang]').forEach(function (btn) {

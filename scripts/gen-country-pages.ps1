@@ -13,11 +13,16 @@ $pages = @(
     title='رحلة إسطنبول المنظمة'; cardTitle='إسطنبول — تركيا';
     price='119 000'; nights='7';
     heroTag='رحلة مميّزة · انطلاق من قسنطينة';
-    intro='أسبوع في إسطنبول بين المعالم التاريخية والأسواق والمضائق، مع فندق ٤ نجوم وجولات منظمة. تذكرة وفندق ومرافقة في سعر واحد واضح.';
-    hotelName='فندق ٤ نجوم في إسطنبول'; hotelNameFr='Hôtel 4★ Istanbul'; board='مع الفطور';
+    intro='أسبوع في إسطنبول بين المعالم التاريخية والأسواق والمضائق، مع فندق 4 نجوم وجولات منظمة. تذكرة وفندق ومرافقة في سعر واحد واضح.';
+    hotelName='فندق 4 نجوم في إسطنبول'; hotelNameFr='Hôtel 4★ Istanbul'; board='مع الفطور';
     it1='إقلاع مباشر من مطار قسنطينة واستقبال ونقل إلى الفندق في إسطنبول.';
     it2='جولات في معالم إسطنبول: آيا صوفيا، المسجد الأزرق، البازار الكبير والمضيق.';
     it3='نقل إلى المطار والعودة إلى قسنطينة برفقة فريق نومارا.';
+    gallery=@(
+      @{src='/assets/images/gallery/turquie-hagia-sophia.jpg'; alt='آيا صوفيا في إسطنبول'},
+      @{src='/assets/images/gallery/turquie-bosphorus.jpg'; alt='مضيق البوسفور ومساجد إسطنبول'},
+      @{src='/assets/images/gallery/turquie-grand-bazaar.jpg'; alt='حلويات ومتاجر البازار الكبير في إسطنبول'}
+    );
     waEnc='%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%AD%D8%AC%D8%B2%20%D9%81%D9%8A%20%D8%B1%D8%AD%D9%84%D8%A9%20%D8%A5%D8%B3%D8%B7%D9%86%D8%A8%D9%88%D9%84';
   },
   @{
@@ -25,11 +30,16 @@ $pages = @(
     title='رحلة باكو المنظمة'; cardTitle='باكو — أذربيجان';
     price='119 000'; nights='7';
     heroTag='عرض خاص · انطلاق من قسنطينة';
-    intro='اكتشف باكو، لؤلؤة بحر قزوين، بين المدينة القديمة والأبراج الحديثة، مع فندق ٤ نجوم وجولات منظمة. تذكرة وفندق ومرافقة في سعر واحد واضح.';
-    hotelName='فندق ٤ نجوم في باكو'; hotelNameFr='Hôtel 4★ Bakou'; board='مع الفطور';
+    intro='اكتشف باكو، لؤلؤة بحر قزوين، بين المدينة القديمة والأبراج الحديثة، مع فندق 4 نجوم وجولات منظمة. تذكرة وفندق ومرافقة في سعر واحد واضح.';
+    hotelName='فندق 4 نجوم في باكو'; hotelNameFr='Hôtel 4★ Bakou'; board='مع الفطور';
     it1='إقلاع مباشر من مطار قسنطينة واستقبال ونقل إلى الفندق في باكو.';
     it2='جولات في باكو وضواحيها: المدينة القديمة، الكورنيش والمعالم الحديثة.';
     it3='نقل إلى المطار والعودة إلى قسنطينة برفقة فريق نومارا.';
+    gallery=@(
+      @{src='/assets/images/gallery/azerbaidjan-flame-towers.jpg'; alt='أبراج اللهب في باكو'},
+      @{src='/assets/images/gallery/azerbaidjan-heydar-aliyev.jpg'; alt='مركز حيدر علييف في باكو'},
+      @{src='/assets/images/gallery/azerbaidjan-old-city.jpg'; alt='فناء تاريخي في المدينة القديمة بباكو'}
+    );
     waEnc='%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%AD%D8%AC%D8%B2%20%D9%81%D9%8A%20%D8%B1%D8%AD%D9%84%D8%A9%20%D8%A8%D8%A7%D9%83%D9%88';
   },
   @{
@@ -37,11 +47,16 @@ $pages = @(
     title='رحلة ماليزيا المنظمة'; cardTitle='ماليزيا';
     price='199 000'; nights='8';
     heroTag='رحلة مميّزة · انطلاق من قسنطينة';
-    intro='رحلة إلى ماليزيا بين ناطحات السحاب في كوالالمبور والجزر الاستوائية الساحرة، مع فندق ٤ نجوم وجولات منظمة. تذكرة وفندق ومرافقة في سعر واحد واضح.';
-    hotelName='فندق ٤ نجوم في كوالالمبور'; hotelNameFr='Hôtel 4★ Kuala Lumpur'; board='مع الفطور';
+    intro='رحلة إلى ماليزيا بين ناطحات السحاب في كوالالمبور والجزر الاستوائية الساحرة، مع فندق 4 نجوم وجولات منظمة. تذكرة وفندق ومرافقة في سعر واحد واضح.';
+    hotelName='فندق 4 نجوم في كوالالمبور'; hotelNameFr='Hôtel 4★ Kuala Lumpur'; board='مع الفطور';
     it1='إقلاع مباشر من مطار قسنطينة واستقبال ونقل إلى الفندق في كوالالمبور.';
     it2='جولات بين كوالالمبور (أبراج بتروناس) والجزر والمناطق السياحية.';
     it3='نقل إلى المطار والعودة إلى قسنطينة برفقة فريق نومارا.';
+    gallery=@(
+      @{src='/assets/images/gallery/malaisie-petronas.jpg'; alt='برجا بتروناس في كوالالمبور'},
+      @{src='/assets/images/gallery/malaisie-batu-caves.jpg'; alt='كهوف باتو في كوالالمبور'},
+      @{src='/assets/images/gallery/malaisie-kuala-lumpur-night.jpg'; alt='أضواء كوالالمبور ليلًا'}
+    );
     waEnc='%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%AD%D8%AC%D8%B2%20%D9%81%D9%8A%20%D8%B1%D8%AD%D9%84%D8%A9%20%D9%85%D8%A7%D9%84%D9%8A%D8%B2%D9%8A%D8%A7';
   }
 )
@@ -56,6 +71,13 @@ function NavLink($href,$key,$label,$slug,$cur){
 }
 
 foreach($p in $pages){
+  $galleryCards = @()
+  for($i = 0; $i -lt $p.gallery.Count; $i++){
+    $delay = $i * 80
+    $g = $p.gallery[$i]
+    $galleryCards += "          <div class=`"n-card`" data-reveal data-reveal-delay=`"$delay`"><div class=`"img`"><img src=`"$($g.src)`" alt=`"$($g.alt)`" loading=`"lazy`" decoding=`"async`" width=`"900`" height=`"506`"></div></div>"
+  }
+  $galleryCards = $galleryCards -join "`n"
   $tmpl = @"
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
@@ -180,25 +202,22 @@ foreach($p in $pages){
         </div>
         <ul style="display:grid;gap:var(--space-3);max-width:52ch">
           <li style="display:flex;gap:.6rem;align-items:start"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> تذكرة الطيران ذهابًا وإيابًا من مطار قسنطينة</li>
-          <li style="display:flex;gap:.6rem;align-items:start"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> الإقامة في فندق ٤ نجوم $($p.board)</li>
+          <li style="display:flex;gap:.6rem;align-items:start"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> الإقامة في فندق 4 نجوم $($p.board)</li>
           <li style="display:flex;gap:.6rem;align-items:start"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> الجولات السياحية المنظمة</li>
           <li style="display:flex;gap:.6rem;align-items:start"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> مرافقة فريق نومارا طوال الرحلة</li>
         </ul>
       </div>
     </section>
 
-    <!-- ================= GALLERY PLACEHOLDER ================= -->
+    <!-- ================= GALLERY ================= -->
     <section class="section" id="gallery" style="background:var(--surface-raised)">
       <div class="wrap">
         <div class="sec-head">
           <span class="eyebrow">صور الرحلة</span>
           <h2>لمحة من $($p.country)</h2>
-          <p><span class="n-chip" style="background:var(--color-accent-soft);color:var(--color-accent-strong)">صور قيد الإضافة — TODO-CLIENT</span></p>
         </div>
         <div class="trip-grid">
-          <div class="n-card"><div class="img"></div></div>
-          <div class="n-card"><div class="img"></div></div>
-          <div class="n-card"><div class="img"></div></div>
+$galleryCards
         </div>
       </div>
     </section>
