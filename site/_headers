@@ -1,5 +1,5 @@
 # ============================================================
-#  Nomara Voyages — Cloudflare Pages _headers
+#  Nomara Voyages — _headers (Netlify / Cloudflare Pages compatible)
 #  Place at the DEPLOY ROOT (alongside index.html, /assets/, …).
 #  No build step / no asset hashing → cache lifetimes are the
 #  ONLY way edits reach returning visitors. See SEO-PLAYBOOK §5.
