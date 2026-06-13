@@ -174,7 +174,7 @@
     <!-- ================= TWO SUB-OFFERS ================= -->
     <section class="section" id="offers">
       <div class="wrap">
-        <div class="sec-head">
+        <div class="sec-head" data-reveal>
           <span class="eyebrow" data-i18n="sec.egypte.offers.eyebrow">عرضان</span>
           <h2 data-i18n="sec.egypte.offers.title">اختر وجهتك في مصر</h2>
           <p>السعر شامل: الطيران من قسنطينة + الإقامة + المرافقة.</p>
@@ -183,7 +183,7 @@
         <div class="trip-grid">
 
           <!-- Le Caire -->
-          <article class="n-card" id="caire">
+          <article class="n-card" id="caire" data-reveal data-reveal-delay="0">
             <a class="img" href="#caire" aria-hidden="true" tabindex="-1">
               <picture>
                 <source type="image/avif" srcset="/assets/images/heroes/hero__egypte--mobile.avif">
@@ -206,7 +206,7 @@
           </article>
 
           <!-- Hurghada — Collection Mirage −25% -->
-          <article class="n-card" id="hurghada">
+          <article class="n-card" id="hurghada" data-reveal data-reveal-delay="80">
             <a class="img" href="#hurghada" aria-hidden="true" tabindex="-1">
               <picture>
                 <source type="image/avif" srcset="/assets/images/heroes/hero__egypte--mobile.avif">
@@ -239,7 +239,7 @@
     <!-- ================= INCLUDES ================= -->
     <section class="section" id="includes" style="background:var(--surface-raised)">
       <div class="wrap">
-        <div class="sec-head">
+        <div class="sec-head" data-reveal>
           <span class="eyebrow" data-i18n="sec.trip.includes.eyebrow">ما يشمله السعر</span>
           <h2 data-i18n="sec.trip.includes.title">كل شيء في باقة واحدة</h2>
         </div>
@@ -255,15 +255,15 @@
     <!-- ================= GALLERY PLACEHOLDER ================= -->
     <section class="section" id="gallery">
       <div class="wrap">
-        <div class="sec-head">
+        <div class="sec-head" data-reveal>
           <span class="eyebrow" data-i18n="sec.trip.gallery.eyebrow">صور الرحلة</span>
           <h2>لمحة من مصر</h2>
           <p><span class="n-chip" style="background:var(--color-accent-soft);color:var(--color-accent-strong)">صور قيد الإضافة — TODO-CLIENT</span></p>
         </div>
         <div class="trip-grid">
-          <div class="n-card"><div class="img"></div></div>
-          <div class="n-card"><div class="img"></div></div>
-          <div class="n-card"><div class="img"></div></div>
+          <div class="n-card" data-reveal data-reveal-delay="0"><div class="img"></div></div>
+          <div class="n-card" data-reveal data-reveal-delay="80"><div class="img"></div></div>
+          <div class="n-card" data-reveal data-reveal-delay="160"><div class="img"></div></div>
         </div>
       </div>
     </section>
@@ -278,9 +278,9 @@
           <a class="n-btn n-btn-primary" href="tel:+213661457025"><span dir="ltr">0661 45 70 25</span></a>
         </div>
         <div class="n-trust" style="justify-content:center">
-          <div class="t"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg> <span data-i18n="trust.licensedShort">وكالة مرخّصة</span></div>
-          <div class="t"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg> <span data-i18n="trust.companion">مرافقة كاملة</span></div>
-          <div class="t"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z"/></svg> <span data-i18n="trust.directConstShort">انطلاق من قسنطينة</span></div>
+          <div class="t" data-reveal data-reveal-delay="0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg> <span data-i18n="trust.licensedShort">وكالة مرخّصة</span></div>
+          <div class="t" data-reveal data-reveal-delay="80"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg> <span data-i18n="trust.companion">مرافقة كاملة</span></div>
+          <div class="t" data-reveal data-reveal-delay="160"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z"/></svg> <span data-i18n="trust.directConstShort">انطلاق من قسنطينة</span></div>
         </div>
       </div>
     </section>

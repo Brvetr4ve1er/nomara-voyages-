@@ -178,13 +178,13 @@
     <!-- ================= PRICE + HOTEL ================= -->
     <section class="section" id="hotels">
       <div class="wrap">
-        <div class="sec-head">
+        <div class="sec-head" data-reveal>
           <span class="eyebrow" data-i18n="sec.trip.price.eyebrow">السعر والإقامة</span>
           <h2 data-i18n="sec.azerbaidjan.price.title">باقة باكو</h2>
           <p>السعر شامل: الطيران من قسنطينة + الإقامة + المرافقة. 7 ليالٍ.</p>
         </div>
 
-        <div class="n-card" style="padding:var(--space-6)">
+        <div class="n-card" style="padding:var(--space-6)" data-reveal>
           <h4 style="font-size:var(--text-xl)">فندق ٤ نجوم في باكو <span class="n-stars" aria-label="أربع نجوم">★★★★</span></h4>
           <p class="hotel"><bdi>Hôtel 4★ Bakou</bdi> · مع الفطور</p>
           <div class="n-price">
@@ -203,14 +203,14 @@
     <!-- ================= ITINERARY ================= -->
     <section class="section" id="itinerary" style="background:var(--surface-raised)">
       <div class="wrap">
-        <div class="sec-head">
+        <div class="sec-head" data-reveal>
           <span class="eyebrow" data-i18n="sec.trip.itinerary.eyebrow">البرنامج</span>
           <h2 data-i18n="sec.trip.itinerary.title">كيف تمرّ رحلتك</h2>
         </div>
         <div class="card-grid">
-          <article class="service-card"><h3>الانطلاق</h3><p>إقلاع مباشر من مطار قسنطينة واستقبال ونقل إلى الفندق في باكو.</p></article>
-          <article class="service-card"><h3>الجولات</h3><p>جولات في باكو وضواحيها: المدينة القديمة، الكورنيش والمعالم الحديثة.</p></article>
-          <article class="service-card"><h3>العودة</h3><p>نقل إلى المطار والعودة إلى قسنطينة برفقة فريق نومارا.</p></article>
+          <article class="service-card" data-reveal data-reveal-delay="0"><h3>الانطلاق</h3><p>إقلاع مباشر من مطار قسنطينة واستقبال ونقل إلى الفندق في باكو.</p></article>
+          <article class="service-card" data-reveal data-reveal-delay="80"><h3>الجولات</h3><p>جولات في باكو وضواحيها: المدينة القديمة، الكورنيش والمعالم الحديثة.</p></article>
+          <article class="service-card" data-reveal data-reveal-delay="160"><h3>العودة</h3><p>نقل إلى المطار والعودة إلى قسنطينة برفقة فريق نومارا.</p></article>
         </div>
         <!-- TODO-CLIENT: confirm detailed day-by-day itinerary -->
       </div>
@@ -219,7 +219,7 @@
     <!-- ================= INCLUDES ================= -->
     <section class="section" id="includes">
       <div class="wrap">
-        <div class="sec-head">
+        <div class="sec-head" data-reveal>
           <span class="eyebrow" data-i18n="sec.trip.includes.eyebrow">ما يشمله السعر</span>
           <h2 data-i18n="sec.trip.includes.title">كل شيء في باقة واحدة</h2>
         </div>
@@ -235,15 +235,15 @@
     <!-- ================= GALLERY PLACEHOLDER ================= -->
     <section class="section" id="gallery" style="background:var(--surface-raised)">
       <div class="wrap">
-        <div class="sec-head">
+        <div class="sec-head" data-reveal>
           <span class="eyebrow" data-i18n="sec.trip.gallery.eyebrow">صور الرحلة</span>
           <h2>لمحة من أذربيجان</h2>
           <p><span class="n-chip" style="background:var(--color-accent-soft);color:var(--color-accent-strong)">صور قيد الإضافة — TODO-CLIENT</span></p>
         </div>
         <div class="trip-grid">
-          <div class="n-card"><div class="img"></div></div>
-          <div class="n-card"><div class="img"></div></div>
-          <div class="n-card"><div class="img"></div></div>
+          <div class="n-card" data-reveal data-reveal-delay="0"><div class="img"></div></div>
+          <div class="n-card" data-reveal data-reveal-delay="80"><div class="img"></div></div>
+          <div class="n-card" data-reveal data-reveal-delay="160"><div class="img"></div></div>
         </div>
       </div>
     </section>
@@ -258,9 +258,9 @@
           <a class="n-btn n-btn-primary" href="tel:+213661457025"><span dir="ltr">0661 45 70 25</span></a>
         </div>
         <div class="n-trust" style="justify-content:center">
-          <div class="t"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg> <span data-i18n="trust.licensedShort">وكالة مرخّصة</span></div>
-          <div class="t"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg> <span data-i18n="trust.companion">مرافقة كاملة</span></div>
-          <div class="t"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z"/></svg> <span data-i18n="trust.directConstShort">انطلاق من قسنطينة</span></div>
+          <div class="t" data-reveal data-reveal-delay="0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg> <span data-i18n="trust.licensedShort">وكالة مرخّصة</span></div>
+          <div class="t" data-reveal data-reveal-delay="80"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg> <span data-i18n="trust.companion">مرافقة كاملة</span></div>
+          <div class="t" data-reveal data-reveal-delay="160"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z"/></svg> <span data-i18n="trust.directConstShort">انطلاق من قسنطينة</span></div>
         </div>
       </div>
     </section>
