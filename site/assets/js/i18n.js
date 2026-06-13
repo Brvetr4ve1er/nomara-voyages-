@@ -696,8 +696,27 @@
     'نؤكد الحجز ونرسل لك التذكرة فور إتمام الدفع.': 'Nous confirmons la réservation et envoyons le billet après paiement.',
     'أرسل لنا الوجهة والتواريخ وعدد المسافرين عبر واتساب.': 'Envoyez-nous la destination, les dates et le nombre de voyageurs sur WhatsApp.',
     'نعرض عليك أفضل الأسعار المتاحة من عدة شركات.': 'Nous vous présentons les meilleurs prix disponibles chez plusieurs compagnies.',
-    'تختار، وندفع ونؤكد ونرسل لك التذكرة.': 'Vous choisissez, nous validons et vous envoyons le billet.'
-  };
+    'تختار، وندفع ونؤكد ونرسل لك التذكرة.': 'Vous choisissez, nous validons et vous envoyons le billet.',
+    'بصدق': 'En toute honnêteté',
+    'ما لا يشمله السعر': 'Ce que le prix ne comprend pas',
+    'لنكون صادقين معك من البداية.': 'Pour être honnêtes avec vous dès le départ.',
+    'النفقات الشخصية والتسوّق': 'Les dépenses personnelles et le shopping',
+    'الجولات والأنشطة الاختيارية غير المذكورة في البرنامج': 'Les excursions et activités optionnelles non mentionnées au programme',
+    'الوجبات غير المذكورة ضمن نوع الإقامة': 'Les repas non inclus dans le type de pension',
+    'تأمين السفر الاختياري': 'L’assurance voyage optionnelle',
+    'رسوم التأشيرة إن كانت مطلوبة لوجهتك': 'Les frais de visa, si requis pour votre destination',
+    'قد يعجبك أيضًا': 'Cela pourrait aussi vous plaire',
+    'تركيا — إسطنبول': 'Turquie — Istanbul',
+    'أذربيجان — باكو': 'Azerbaïdjan — Bakou',
+    'ماليزيا — كوالالمبور': 'Malaisie — Kuala Lumpur',
+    '7 ليالٍ · فندق 4 نجوم': '7 nuits · hôtel 4 étoiles',
+    '3 خيارات فنادق · 7 ليالٍ': '3 choix d’hôtels · 7 nuits',
+    'أهرامات · بحر أحمر': 'Pyramides · mer Rouge',
+    'فنادق قرب الحرم · شوال وجوان': 'Hôtels près du Haram · Chawwal & juin',
+    'تونس — جربة وسوسة': 'Tunisie — Djerba & Sousse',
+    'مصر — القاهرة والغردقة': 'Égypte — Le Caire & Hurghada',
+    'العمرة والحج من قسنطينة': 'Omra & Hajj depuis Constantine',
+};
 
   var textNodeSources = new WeakMap();
   var LATIN_DIGITS = {
