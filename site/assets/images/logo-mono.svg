@@ -1,19 +1,33 @@
-<!-- TODO-CLIENT: replace with official logo -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 88" role="img" aria-label="Nomara Voyages">
-  <title>Nomara Voyages</title>
-  <!-- Single-colour mark using currentColor so it inherits the footer text
-       colour (white on the dark inverse surface). -->
-  <g fill="currentColor">
-    <circle cx="44" cy="44" r="40" fill="none" stroke="currentColor" stroke-width="3"/>
-    <circle cx="44" cy="44" r="33" fill="none" stroke="currentColor" stroke-width="1.5" stroke-opacity="0.5"/>
-    <path d="M44 16 L49.5 38.5 L72 44 L49.5 49.5 L44 72 L38.5 49.5 L16 44 L38.5 38.5 Z"/>
-    <circle cx="44" cy="44" r="6.5" fill="none" stroke="currentColor" stroke-width="2.5"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 730 170" role="img" aria-label="Nomara للسياحة و خدمات الحج و العمرة">
+  <title>Nomara للسياحة و خدمات الحج و العمرة</title>
+  <defs>
+    <filter id="markShadowMono" x="-18%" y="-18%" width="136%" height="136%">
+      <feDropShadow dx="0" dy="4" stdDeviation="3" flood-color="#000000" flood-opacity=".26"/>
+    </filter>
+  </defs>
+
+  <g transform="translate(16 21)" filter="url(#markShadowMono)">
+    <rect width="128" height="128" rx="27" fill="none" stroke="currentColor" stroke-width="6"/>
+    <g transform="translate(18 12)">
+      <ellipse cx="38" cy="48" rx="24" ry="45" transform="rotate(18 38 48)" fill="currentColor"/>
+      <ellipse cx="67" cy="67" rx="24" ry="44" transform="rotate(-18 67 67)" fill="currentColor"/>
+      <path fill="#062E34" d="M37 70c12-8 27-13 44-13 4 0 7 2 7 5s-3 5-7 5c-8 0-15 1-22 3l18 17c2 2 2 5 0 7-2 2-5 2-7 0L49 75c-8 3-15 5-22 5-4 0-7-2-7-5 0-4 5-5 17-5Z"/>
+    </g>
   </g>
-  <g fill="currentColor" font-family="Changa, sans-serif" font-weight="700">
-    <text x="100" y="54" font-size="40" letter-spacing="0.5">Nomara</text>
+
+  <g transform="translate(187 11)">
+    <g font-family="Changa, 'Readex Pro', Arial, sans-serif" font-weight="700" font-size="78" fill="currentColor">
+      <text x="0" y="85">N</text>
+      <text x="236" y="85">mara</text>
+    </g>
+    <g transform="translate(94 6)" filter="url(#markShadowMono)">
+      <ellipse cx="48" cy="52" rx="28" ry="49" transform="rotate(18 48 52)" fill="currentColor"/>
+      <ellipse cx="86" cy="71" rx="28" ry="48" transform="rotate(-18 86 71)" fill="currentColor"/>
+      <path fill="#062E34" d="M47 76c15-9 33-15 53-15 5 0 9 3 9 6s-4 6-9 6c-9 0-18 2-26 4l22 19c3 2 3 6 1 8-3 3-6 3-9 0L62 82c-9 3-18 5-27 5-5 0-9-2-9-6 0-5 7-5 21-5Z"/>
+    </g>
+    <line x1="-12" y1="111" x2="540" y2="111" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".75"/>
+    <text x="540" y="148" direction="rtl" unicode-bidi="plaintext" text-anchor="end"
+          font-family="Changa, 'Readex Pro', Arial, sans-serif" font-weight="700" font-size="31"
+          fill="currentColor" opacity=".9">للسياحة و خدمات الحج و العمرة</text>
   </g>
-  <circle cx="118.5" cy="40" r="11" fill="none" stroke="currentColor" stroke-width="5" stroke-opacity="0.85"/>
-  <circle cx="118.5" cy="40" r="2.6" fill="currentColor"/>
-  <text x="100" y="74" font-family="'Readex Pro', sans-serif" font-weight="500"
-        font-size="13" letter-spacing="2.5" fill="currentColor" fill-opacity="0.75">VOYAGES</text>
 </svg>
