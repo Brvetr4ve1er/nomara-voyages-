@@ -394,6 +394,10 @@ button, input, select, textarea {
   inset-block-start: var(--space-3);
   color: var(--text-on-primary);
 }
+/* #9: <main tabindex="-1"> now receives focus from the skip link so AT/keyboard
+   land in content — but it's a programmatic target, not a tab stop, so suppress
+   the focus ring (visible focus styles stay on real interactive elements). */
+main:focus { outline: none; }
 
 /* Latin runs inside Arabic — phone numbers, prices, destination names */
 [dir="ltr"], bdi { unicode-bidi: isolate; }
@@ -592,6 +596,22 @@ body.nav-scroll-lock { overflow: hidden; }
 .n-meta-row { display: flex; flex-wrap: wrap; gap: .5rem; margin-block-start: var(--space-3); }
 .n-card .cta-row { display: flex; gap: .6rem; margin-block-start: var(--space-4); }
 .n-card .cta-row .n-btn { flex: 1; justify-content: center; padding: .75rem 1rem; font-size: .95rem; }
+/* UX #14: WhatsApp is the stated checkout — give it visual dominance over the
+   secondary "details" link instead of two equal-weight buttons. Demote the
+   in-card primary to an outline so the filled green WA button wins attention,
+   and let it take slightly more width. */
+.n-card .cta-row .n-btn-primary {
+  flex: 0 1 auto;
+  background: transparent;
+  color: var(--color-primary-strong);
+  border: 1.5px solid var(--card-border, var(--color-primary));
+}
+.n-card .cta-row .n-btn-primary:hover {
+  background: var(--color-primary-soft);
+  color: var(--color-primary-strong);
+  box-shadow: none;
+}
+.n-card .cta-row .n-btn-wa { flex: 1.6 1 auto; box-shadow: var(--shadow-sm); }
 
 /* ---- Price (Changa 700 in BOTH modes) ---- */
 .n-price { display: flex; align-items: baseline; gap: .45rem; margin-block-start: var(--space-3); }
@@ -840,7 +860,7 @@ body.nav-scroll-lock { overflow: hidden; }
 .nav-backdrop {
   position: fixed;
   inset: 0;
-  z-index: var(--z-overlay);
+  z-index: var(--z-backdrop);
   background: rgba(12, 58, 53, .5);
   opacity: 0;
   visibility: hidden;
@@ -1576,3 +1596,42 @@ p, li, a, h1, h2, h3, h4, h5, h6, td, th, figcaption {
     linear-gradient(165deg, var(--night-900) 0%, var(--teal-800) 60%, var(--teal-700) 130%);
   background-size: 44px 44px, cover;
 }
+
+
+/* ============================================================
+   ANTI-SLOP · Wave 2 — editorial hierarchy & card craft
+   Breaks the uniform six-equal-card rhythm without leaving the system.
+   ============================================================ */
+
+/* Bento: the flagship featured trip leads the grid, image-forward, on desktop.
+   Home featured only — the /voyages/ catalog stays an even grid by design. */
+@media (min-width: 920px) {
+  #featured-trips .trip-grid > article:first-child { grid-column: span 2; }
+  #featured-trips .trip-grid > article:first-child .img { aspect-ratio: 2 / 1; }
+}
+
+/* Service cards gain a small teal brand-tab at the top edge that extends on
+   hover — a quiet crafted detail instead of a plain box. */
+.service-card { position: relative; }
+.service-card::before {
+  content: ""; position: absolute;
+  inset-block-start: 0; inset-inline-start: var(--space-5);
+  inline-size: 34px; block-size: 3px;
+  border-end-start-radius: 3px; border-end-end-radius: 3px;
+  background: var(--color-primary);
+  transition: inline-size var(--dur-base) var(--ease-out);
+}
+.service-card:hover::before { inline-size: 60px; }
+
+
+/* The "see all / كل الوجهات" end-cap cells: a teal-tinted navigational tile,
+   visually distinct from white content cards — reads as deliberate, not filler.
+   Matched by their centered inline-style signature (no markup change). */
+#featured-trips .trip-grid > .n-card[style*="min-height"],
+.card-grid > .service-card[style*="justify-content:center"] {
+  background: var(--color-primary-soft);
+  border-color: transparent;
+  box-shadow: none;
+}
+.card-grid > .service-card[style*="justify-content:center"]::before { content: none; }
+.card-grid > .service-card[style*="justify-content:center"] h3 { color: var(--color-primary-strong); }
