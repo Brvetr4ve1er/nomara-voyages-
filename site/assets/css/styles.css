@@ -286,6 +286,7 @@
   --whatsapp: var(--dk-whatsapp);
   --sand-100: var(--dk-text-body);     /* footer copy → readable on dark */
   --sand-200: var(--dk-border);        /* disabled-btn bg lift */
+  --ink-300: var(--dk-text-muted);     /* #26: footer legal + disabled labels invert with the chrome */
 }
 
 /* SAKINA (/omra/) — gold + Amiri reverence held on the dark ground */
@@ -590,7 +591,13 @@ body.nav-scroll-lock { overflow: hidden; }
 }
 .n-card .img .n-badge-promo { position: absolute; inset-block-start: 14px; inset-inline-start: 14px; }
 .n-card .pad { padding: var(--space-5); }
-.n-card h4 { font-family: var(--heading-font); font-size: var(--text-xl); color: var(--text-strong); line-height: 1.3; }
+/* #23: card titles are now <h3> (was <h4>, which skipped a level under the
+   section <h2>). Style both so any un-migrated card keeps its look. */
+.n-card h3, .n-card h4 { font-family: var(--heading-font); font-size: var(--text-xl); color: var(--text-strong); line-height: 1.3; }
+/* #45: card titles are clickable to the destination (matches the whole-card
+   hover affordance) — keep them visually a heading, not a blue link. */
+.n-card h3 a, .n-card h4 a { color: inherit; text-decoration: none; }
+.n-card h3 a:hover, .n-card h4 a:hover { color: var(--color-primary-strong); }
 .n-card .hotel { color: var(--text-muted); font-size: var(--text-sm); margin-block-start: .3rem; }
 .n-stars { color: var(--color-accent); letter-spacing: .1em; font-size: .9rem; }
 .n-meta-row { display: flex; flex-wrap: wrap; gap: .5rem; margin-block-start: var(--space-3); }
@@ -1063,9 +1070,11 @@ body.nav-scroll-lock { overflow: hidden; }
   body:has(.n-sticky-bar) {
     padding-block-end: calc(var(--sticky-bar-h) + env(safe-area-inset-bottom));
   }
-  body:has(.n-sticky-bar) .fab-whatsapp {
-    inset-block-end: calc(var(--sticky-bar-h) + var(--space-3) + env(safe-area-inset-bottom));
-  }
+  /* #46: the sticky bar already exposes a WhatsApp button, so a lifted FAB in
+     the same corner is a redundant second WhatsApp tap-target on phones. Hide
+     it where the bar shows; the FAB still serves pages without a sticky bar
+     and all desktop widths (where the bar is hidden). */
+  body:has(.n-sticky-bar) .fab-whatsapp { display: none; }
 }
 
 /* ---------- .site-footer (full contact / trust block) ---------- */
@@ -1153,6 +1162,12 @@ body.nav-scroll-lock { overflow: hidden; }
   overflow: hidden;
   color: #fff;
   background: var(--surface-inverse);
+}
+/* #28: short viewports (any orientation) — the 420px floor can push the CTA
+   row below the fold on short PORTRAIT phones, which the landscape-only relief
+   below missed. Relax the floor whenever the viewport is genuinely short. */
+@media (max-height: 600px) {
+  .hero { min-block-size: auto; padding-block: calc(var(--nav-h) + var(--space-5)) var(--space-6); }
 }
 .hero__media {
   position: absolute;

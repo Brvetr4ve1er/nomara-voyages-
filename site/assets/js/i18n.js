@@ -487,6 +487,7 @@
     'واتساب': 'WhatsApp',
     'اعرف المزيد': 'En savoir plus',
     'عرض على خرائط جوجل': 'Voir sur Google Maps',
+    'عرض الموقع على الخريطة': 'Voir l’emplacement sur la carte',
     'تخطّي إلى المحتوى': 'Passer au contenu',
     'نومارا للسياحة و خدمات الحج و العمرة — رفيقك في كل رحلة.': 'Nomara voyages, Hajj et Omra — votre compagnon à chaque voyage.',
     'البريد الإلكتروني: قيد التأكيد': 'E-mail : à confirmer',
@@ -641,15 +642,15 @@
     'قيد التأكيد': 'À confirmer',
     'قيد التأكيد — TODO-CLIENT': 'À confirmer',
     'تواصل معنا مباشرة عبر واتساب، نرد عليك بسرعة ونرتّب لك كل شيء.': 'Contactez-nous directement sur WhatsApp, nous répondons vite et organisons tout.',
-    'تختلف الوثائق حسب الوجهة، لكنها عادةً تشمل: جواز سفر ساري المفعول، صور شمسية، وملف التأشيرة إن كانت الوجهة تتطلبها. نوضّح لك القائمة الكاملة لوجهتك عند الحجز، ونساعدك في ترتيب الملف.': 'Les documents varient selon la destination, mais comprennent généralement un passeport valide, des photos d’identité et un dossier de visa si nécessaire. Nous vous donnons la liste complète à la réservation.',
+    'تختلف الوثائق حسب الوجهة، لكنها عادةً تشمل: جواز سفر ساري المفعول، صور شمسية، وملف التأشيرة إن كانت الوجهة تتطلبها. نوضّح لك القائمة الكاملة لوجهتك عند الحجز، ونساعدك في ترتيب الملف.': 'Les documents varient selon la destination, mais comprennent généralement un passeport valide, des photos d’identité et un dossier de visa si nécessaire. Nous vous donnons la liste complète à la réservation et nous vous aidons à constituer le dossier.',
     'نعم، نساعدك في تحضير ملف التأشيرة وترتيب الوثائق المطلوبة. مع ذلك، قرار منح التأشيرة يبقى بيد القنصلية، ونحن لا نضمن الحصول عليها — نساعدك فقط في تقديم ملف سليم ومرتّب.': 'Oui, nous vous aidons à préparer le dossier de visa et les documents requis. La décision reste toutefois entre les mains du consulat : nous aidons à présenter un dossier clair et complet, sans garantir l’obtention.',
     'تفاصيل خدمة التأشيرة': 'Détails de l’assistance visa',
     '(TODO-CLIENT: تأكيد نطاق الخدمة)': '(périmètre du service à confirmer)',
     'نعتمد عادةً نظام العربون لتثبيت الحجز، ثم تسديد الباقي قبل السفر. تفاصيل المبالغ والمواعيد نتفق عليها عند الحجز عبر واتساب.': 'Nous utilisons généralement un acompte pour confirmer la réservation, puis le solde avant le départ. Les montants et délais sont convenus sur WhatsApp.',
     '(TODO-CLIENT: تأكيد نسبة العربون وآجال الدفع)': '(acompte et délais de paiement à confirmer)',
     'نعم، نعرض الأسعار شاملةً: الطيران من قسنطينة + الإقامة + المرافقة (وللعمرة: التأشيرة أيضًا). لا نعتمد أسلوب «ابتداءً من» ولا نخفي تكاليف. أي خدمة إضافية اختيارية نوضّحها لك مسبقًا.': 'Oui, nos prix incluent le vol depuis Constantine, l’hébergement et l’accompagnement (et le visa pour l’Omra). Pas de prix “à partir de” ni de frais cachés ; toute option est expliquée à l’avance.',
-    'ننصح بتحضير: ملابس الإحرام، ملابس مريحة ومحتشمة، حذاء مريح للمشي، أدوات النظافة الشخصية، الأدوية الخاصة بك، نسخة من الوثائق، ومبلغ نقدي بسيط للمصاريف. نرسل لك قائمة تحضير مفصّلة قبل السفر، ونرافقك في كل خطوة.': 'Nous conseillons de préparer : habits d’ihram, vêtements confortables et modestes, chaussures de marche, trousse d’hygiène, médicaments personnels, copies des documents et un petit budget en espèces. Nous envoyons une liste détaillée avant le départ.',
-    'تنطلق رحلاتنا مباشرةً من مطار قسنطينة (محمد بوضياف)، وهو الأقرب لمسافري شرق الجزائر. هذا يوفّر عليك عناء التنقّل إلى مطارات بعيدة.': 'Nos voyages partent directement de l’aéroport de Constantine (Mohamed Boudiaf), pratique pour les voyageurs de l’Est algérien.',
+    'ننصح بتحضير: ملابس الإحرام، ملابس مريحة ومحتشمة، حذاء مريح للمشي، أدوات النظافة الشخصية، الأدوية الخاصة بك، نسخة من الوثائق، ومبلغ نقدي بسيط للمصاريف. نرسل لك قائمة تحضير مفصّلة قبل السفر، ونرافقك في كل خطوة.': 'Nous conseillons de préparer : habits d’ihram, vêtements confortables et modestes, chaussures de marche, trousse d’hygiène, médicaments personnels, copies des documents et un petit budget en espèces. Nous envoyons une liste détaillée avant le départ et nous vous accompagnons à chaque étape.',
+    'تنطلق رحلاتنا مباشرةً من مطار قسنطينة (محمد بوضياف)، وهو الأقرب لمسافري شرق الجزائر. هذا يوفّر عليك عناء التنقّل إلى مطارات بعيدة.': 'Nos voyages partent directement de l’aéroport de Constantine (Mohamed Boudiaf), le plus proche pour les voyageurs de l’Est algérien — vous évitant le trajet vers des aéroports lointains.',
     'نتفهّم أن الظروف قد تتغيّر. سياسة التعديل والإلغاء تعتمد على نوع الرحلة وقربها من موعد الانطلاق وشروط شركات الطيران والفنادق. تواصل معنا في أقرب وقت ونوضّح لك الخيارات المتاحة بصدق.': 'Nous comprenons que les circonstances changent. Les modifications et annulations dépendent du type de voyage, de la proximité du départ et des conditions des compagnies et hôtels. Contactez-nous au plus tôt pour connaître les options.',
     '(TODO-CLIENT: تأكيد سياسة الإلغاء والاسترجاع)': '(politique d’annulation et remboursement à confirmer)',
     'ببساطة: تواصل معنا عبر واتساب على': 'Simplement : contactez-nous sur WhatsApp au',
@@ -840,12 +841,28 @@
       if (val != null) el.setAttribute('placeholder', val);
     });
 
+    // #7: localize the pre-filled WhatsApp message (?text=). i18n only swaps
+    // text/attrs, never href query params, so an FR user would otherwise open
+    // WhatsApp pre-typed in Arabic. Capture the original AR href once, then for
+    // FR replace the text param with a neutral French greeting (restore on AR).
+    document.querySelectorAll('a[href*="wa.me"]').forEach(function (a) {
+      if (!a.dataset.waHref) a.dataset.waHref = a.getAttribute('href');
+      var orig = a.dataset.waHref;
+      if (!orig || orig.indexOf('text=') === -1) return;
+      a.setAttribute('href', lang === 'fr'
+        ? orig.replace(/text=[^&]*/, 'text=' + encodeURIComponent('Bonjour, je souhaite réserver un voyage avec Nomara.'))
+        : orig);
+    });
+
     applyStaticText(lang);
     normalizeNumbers(document.body || document.documentElement);
 
-    // Keep the switcher's active state in sync.
+    // Keep the switcher's active state in sync. #33: also expose the selected
+    // state to assistive tech via aria-pressed (visual .is-active alone is mute).
     document.querySelectorAll('.lang-switcher [data-i18n-lang]').forEach(function (btn) {
-      btn.classList.toggle('is-active', btn.getAttribute('data-i18n-lang') === lang);
+      var active = btn.getAttribute('data-i18n-lang') === lang;
+      btn.classList.toggle('is-active', active);
+      btn.setAttribute('aria-pressed', active ? 'true' : 'false');
     });
 
     store.set(STORAGE_KEY, lang);

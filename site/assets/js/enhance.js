@@ -23,7 +23,9 @@
     var root = scope || document;
     var lang = document.documentElement.getAttribute('lang') || 'ar';
     root.querySelectorAll('.lang-switcher [data-i18n-lang]').forEach(function (btn) {
-      btn.classList.toggle('is-active', btn.getAttribute('data-i18n-lang') === lang);
+      var active = btn.getAttribute('data-i18n-lang') === lang;
+      btn.classList.toggle('is-active', active);
+      btn.setAttribute('aria-pressed', active ? 'true' : 'false'); // #33: keep AT state in sync after the drawer move
     });
   }
 
@@ -97,6 +99,35 @@
       document.body.appendChild(backdrop);
     }
 
+    // Drawer needs to be focusable as a last-resort target (#35) and so the
+    // role=dialog can hold focus when it has no focusable children yet.
+    if (!drawer.hasAttribute('tabindex')) drawer.setAttribute('tabindex', '-1');
+
+    /* #10: a11y — only VISIBLE focusables count (a display:none child mid-
+       transition must never be the focus target or a trap boundary). */
+    function getFocusables() {
+      var sel = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"]), input, select, textarea';
+      return Array.prototype.filter.call(drawer.querySelectorAll(sel), function (el) {
+        return el.offsetParent !== null; // rendered & not display:none
+      });
+    }
+
+    /* #10: while the modal drawer is open, hide the rest of the page from AT
+       and pointer so focus can't wander behind the backdrop. Restore on close.
+       Marker class lets us find exactly what we inerted. */
+    function setBackgroundInert(on) {
+      Array.prototype.forEach.call(document.body.children, function (el) {
+        if (el === backdrop || el.classList.contains('site-nav')) return;
+        if (on) {
+          el.setAttribute('aria-hidden', 'true');
+          el.setAttribute('data-nav-inert', '');
+        } else if (el.hasAttribute('data-nav-inert')) {
+          el.removeAttribute('aria-hidden');
+          el.removeAttribute('data-nav-inert');
+        }
+      });
+    }
+
     /* 4. Open / close */
     function setOpen(open) {
       nav.classList.toggle('nav-open', open);
@@ -105,16 +136,34 @@
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       toggle.setAttribute('aria-label', open ? 'إغلاق القائمة' : 'القائمة');
       drawer.setAttribute('aria-hidden', open ? 'false' : 'true');
+      setBackgroundInert(open);
 
       if (open) {
-        var first = drawer.querySelector('a, button, [tabindex]:not([tabindex="-1"])');
-        requestAnimationFrame(function () { if (first) first.focus({ preventScroll: true }); });
+        var f = getFocusables();
+        var first = f[0] || drawer; // #35: fall back to the drawer itself
+        requestAnimationFrame(function () { first.focus({ preventScroll: true }); });
       } else {
         toggle.focus({ preventScroll: true });
       }
     }
 
-    /* 5. Wire events */
+    /* #10: real focus trap — cycle Tab / Shift+Tab within the open drawer. */
+    function trapFocus(e) {
+      if (e.key !== 'Tab' || !nav.classList.contains('nav-open')) return;
+      var f = getFocusables();
+      if (!f.length) { e.preventDefault(); drawer.focus({ preventScroll: true }); return; }
+      var first = f[0], last = f[f.length - 1], active = document.activeElement;
+      if (e.shiftKey && (active === first || active === drawer)) {
+        e.preventDefault(); last.focus({ preventScroll: true });
+      } else if (!e.shiftKey && active === last) {
+        e.preventDefault(); first.focus({ preventScroll: true });
+      }
+    }
+
+    /* 5. Wire events — #34: guard so a second init never double-binds. */
+    if (nav.dataset.drawerWired) return;
+    nav.dataset.drawerWired = '1';
+
     toggle.addEventListener('click', function () {
       setOpen(!nav.classList.contains('nav-open'));
     });
@@ -122,6 +171,7 @@
 
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && nav.classList.contains('nav-open')) setOpen(false);
+      else trapFocus(e);
     });
 
     // Close when a nav LINK is tapped, but keep the drawer open for the
