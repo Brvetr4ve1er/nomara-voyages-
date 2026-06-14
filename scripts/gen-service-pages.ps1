@@ -2,6 +2,14 @@
 # gen-service-pages.ps1 — generates the 3 ancillary service
 # detail pages: visa, hotellerie, vols. Vanilla static, chrome inline.
 # =========================================================
+param([switch]$IUnderstandThisOverwritesLivePages)
+# SAFETY GUARD (#15/#16): one-off generator. Deployed service pages have since
+# been hand-edited (full SEO, live maps link, a11y/perf fixes). Re-running would
+# OVERWRITE those edits with older template output. Refuse unless opted in.
+if (-not $IUnderstandThisOverwritesLivePages) {
+  Write-Error "STALE GENERATOR — refusing to run. Deployed pages have diverged (live SEO, maps.app.goo.gl link, a11y/perf fixes). Re-running reverts them. If you truly want to regenerate from scratch, pass -IUnderstandThisOverwritesLivePages, then re-apply the post-generation fixes (see docs/FLEET-AUDIT.md)."
+  exit 1
+}
 $root = Split-Path -Parent $PSScriptRoot
 
 $waPath = 'M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 14.2c-.2.6-1.2 1.1-1.7 1.2-.4.1-1 .1-1.6-.1a13 13 0 0 1-5.7-5C7.6 11.5 7 10.4 7 9.3c0-1 .5-1.5.7-1.7.2-.2.5-.3.6-.3h.5c.2 0 .4 0 .5.4l.8 1.9c.1.2.1.4 0 .6l-.4.6c-.1.2-.2.3-.1.5.5.9 1.3 1.7 2.2 2.3.2.1.4.1.5 0l.7-.6c.2-.2.4-.2.6-.1l1.8.9c.3.1.4.3.4.5 0 .1 0 .6-.2 1.1Z'

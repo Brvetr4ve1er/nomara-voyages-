@@ -24,24 +24,25 @@
 
   <!-- AR | FR pill toggle. i18n.js wires the data-i18n-lang buttons. -->
   <div class="lang-switcher" role="group" aria-label="تبديل اللغة">
-    <button type="button" data-i18n-lang="ar" class="is-active">AR</button>
-    <button type="button" data-i18n-lang="fr">FR</button>
+    <button type="button" data-i18n-lang="ar" class="is-active" aria-pressed="true">AR</button>
+    <button type="button" data-i18n-lang="fr" aria-pressed="false">FR</button>
   </div>
 
   <div class="nav-cta">
-    <a class="n-btn n-btn-wa" href="https://wa.me/213661457025" target="_blank" rel="noopener"
-       data-i18n="cta.whatsapp">
+    <!-- data-i18n lives on the <span>, NOT the <a> — otherwise applyLang's
+         textContent swap would wipe the inline SVG. Matches shipped pages. -->
+    <a class="n-btn n-btn-wa" href="https://wa.me/213661457025" target="_blank" rel="noopener">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 14.2c-.2.6-1.2 1.1-1.7 1.2-.4.1-1 .1-1.6-.1a13 13 0 0 1-5.7-5C7.6 11.5 7 10.4 7 9.3c0-1 .5-1.5.7-1.7.2-.2.5-.3.6-.3h.5c.2 0 .4 0 .5.4l.8 1.9c.1.2.1.4 0 .6l-.4.6c-.1.2-.2.3-.1.5.5.9 1.3 1.7 2.2 2.3.2.1.4.1.5 0l.7-.6c.2-.2.4-.2.6-.1l1.8.9c.3.1.4.3.4.5 0 .1 0 .6-.2 1.1Z"/></svg>
-      تواصل واتساب
+      <span data-i18n="cta.waLong">تواصل واتساب</span>
     </a>
   </div>
 
-  <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false"
+  <button class="theme-toggle" type="button" data-theme-toggle data-i18n-aria="aria.themeToggle" aria-pressed="false"
           aria-label="تبديل بين الوضع الفاتح والداكن" title="الوضع الفاتح / الداكن">
     <svg class="icon-sun" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
     <svg class="icon-moon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
   </button>
-  <button class="nav-toggle" type="button" aria-label="القائمة" aria-expanded="false" aria-controls="nav-drawer">
+  <button class="nav-toggle" type="button" aria-label="القائمة" aria-expanded="false">
     <svg class="icon-menu" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     <svg class="icon-close" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
   </button>

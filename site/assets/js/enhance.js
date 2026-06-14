@@ -90,6 +90,11 @@
       syncLangSwitcher(drawer);
     }
 
+    // #24: the drawer is built at runtime, so point the toggle's aria-controls
+    // at it only now that it exists in the DOM (static markup no longer ships a
+    // dangling reference to a non-existent id before JS runs).
+    toggle.setAttribute('aria-controls', drawer.id);
+
     /* 3. Backdrop */
     var backdrop = document.querySelector('.nav-backdrop');
     if (!backdrop) {

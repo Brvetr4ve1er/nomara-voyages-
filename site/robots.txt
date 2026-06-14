@@ -6,6 +6,6 @@ User-agent: *
 Allow: /
 
 # Nothing to hide on a public static catalog. Crawl everything.
-# (Cloudflare Pages serves /404.html automatically; no need to disallow it.)
+# (Netlify serves /404.html automatically; no need to disallow it.)
 
 Sitemap: https://nomaravoyages.com/sitemap.xml

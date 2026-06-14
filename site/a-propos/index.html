@@ -7,7 +7,9 @@
   <meta name="theme-color" content="#1F8A7A">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Changa:wght@400;500;600;700;800&family=Readex+Pro:wght@300;400;500;600;700&family=Amiri:ital,wght@0,400;0,700;1,400&family=Space+Mono&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Changa:wght@400;500;600;700;800&family=Readex+Pro:wght@300;400;500;600;700&family=Amiri:ital,wght@0,400;0,700;1,400&family=Space+Mono&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Changa:wght@400;500;600;700;800&family=Readex+Pro:wght@300;400;500;600;700&family=Amiri:ital,wght@0,400;0,700;1,400&family=Space+Mono&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Changa:wght@400;500;600;700;800&family=Readex+Pro:wght@300;400;500;600;700&family=Amiri:ital,wght@0,400;0,700;1,400&family=Space+Mono&display=swap"></noscript>
   <link rel="stylesheet" href="/assets/css/styles.css">
   <link rel="icon" href="/assets/images/favicon/favicon.ico" sizes="any">
   <link rel="icon" href="/assets/images/favicon/favicon-32.png" sizes="32x32" type="image/png">
@@ -143,8 +145,8 @@
       <a href="/contact/" data-i18n="nav.contact">اتصل بنا</a>
     </div>
     <div class="lang-switcher" role="group" aria-label="تبديل اللغة">
-      <button type="button" data-i18n-lang="ar" class="is-active">AR</button>
-      <button type="button" data-i18n-lang="fr">FR</button>
+      <button type="button" data-i18n-lang="ar" class="is-active" aria-pressed="true">AR</button>
+      <button type="button" data-i18n-lang="fr" aria-pressed="false">FR</button>
     </div>
     <div class="nav-cta">
       <a class="n-btn n-btn-wa" href="https://wa.me/213661457025" target="_blank" rel="noopener">
@@ -152,12 +154,12 @@
         <span data-i18n="cta.waLong">تواصل واتساب</span>
       </a>
     </div>
-    <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false"
+    <button class="theme-toggle" type="button" data-theme-toggle data-i18n-aria="aria.themeToggle" aria-pressed="false"
             aria-label="تبديل بين الوضع الفاتح والداكن" title="الوضع الفاتح / الداكن">
       <svg class="icon-sun" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
       <svg class="icon-moon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
     </button>
-    <button class="nav-toggle" type="button" aria-label="القائمة" aria-expanded="false" aria-controls="nav-drawer">
+    <button class="nav-toggle" type="button" aria-label="القائمة" aria-expanded="false">
       <svg class="icon-menu" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       <svg class="icon-close" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
@@ -213,7 +215,7 @@
         <div class="n-trust">
           <div class="t" data-reveal data-reveal-delay="0">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg>
-            وكالة سياحية مرخّصة — رقم الرخصة: <bdi>TODO-CLIENT</bdi>
+            وكالة سياحية مرخّصة
           </div>
           <div class="t" data-reveal data-reveal-delay="80">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
@@ -224,7 +226,6 @@
             أسعار واضحة شاملة دون تكاليف خفية
           </div>
         </div>
-        <!-- TODO-CLIENT: insert real licensed-agency registration number above -->
       </div>
     </section>
 
@@ -239,18 +240,18 @@
         <div class="card-grid">
           <article class="service-card" data-reveal data-reveal-delay="0">
             <p style="color:var(--text-body)">«رافقونا في العمرة من البداية للنهاية، والفندق كان قريبًا من الحرم فعلًا. شعرنا بالاطمئنان طوال الرحلة.»</p>
-            <p class="hotel" style="margin-block-start:var(--space-3)">— نموذج مراجعة · TODO-CLIENT</p>
+            <p class="hotel" style="margin-block-start:var(--space-3)">— نموذج توضيحي</p>
           </article>
           <article class="service-card" data-reveal data-reveal-delay="80">
             <p style="color:var(--text-body)">«رحلة جربة كانت منظمة وبسعر واضح، وكل شيء جاء كما اتفقنا عليه تمامًا. سنكرّرها معهم.»</p>
-            <p class="hotel" style="margin-block-start:var(--space-3)">— نموذج مراجعة · TODO-CLIENT</p>
+            <p class="hotel" style="margin-block-start:var(--space-3)">— نموذج توضيحي</p>
           </article>
           <article class="service-card" data-reveal data-reveal-delay="160">
             <p style="color:var(--text-body)">«تعامل صادق ورد سريع على واتساب. أنصح بهم لمن يبحث عن راحة البال.»</p>
-            <p class="hotel" style="margin-block-start:var(--space-3)">— نموذج مراجعة · TODO-CLIENT</p>
+            <p class="hotel" style="margin-block-start:var(--space-3)">— نموذج توضيحي</p>
           </article>
         </div>
-        <p class="hotel" style="margin-block-start:var(--space-4);color:var(--text-muted);max-width:60ch">هذه نماذج توضيحية لشكل المراجعات — لا نعرض مراجعات حقيقية إلا بعد موافقة أصحابها. (TODO-CLIENT: استبدالها بمراجعات حقيقية)</p>
+        <p class="hotel" style="margin-block-start:var(--space-4);color:var(--text-muted);max-width:60ch">هذه نماذج توضيحية لشكل المراجعات — لا نعرض مراجعات حقيقية إلا بعد موافقة أصحابها.</p>
       </div>
     </section>
 
@@ -275,8 +276,7 @@
           <div style="color:#fff"><img src="/assets/images/logo-mono.svg" alt="Nomara Voyages" width="200" height="48"></div>
           <p class="site-footer__contact">نومارا للسياحة و خدمات الحج و العمرة — رفيقك في كل رحلة.</p>
           <div class="site-footer__contact" style="margin-block-start:1rem">
-            <a class="tel" href="tel:+213661457025" dir="ltr">0661 45 70 25</a><br>
-            <!-- TODO-CLIENT: real Gmail address (unconfirmed) --><span style="opacity:.85">البريد الإلكتروني: قيد التأكيد</span>
+            <a class="tel" href="tel:+213661457025" dir="ltr">0661 45 70 25</a>
           </div>
           <div class="site-footer__socials" aria-label="شبكات التواصل">
             <a href="https://instagram.com/nomara.voyages" target="_blank" rel="noopener" aria-label="Instagram"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
@@ -307,13 +307,13 @@
             <li><a href="/faq/" data-i18n="nav.faq">الأسئلة الشائعة</a></li>
             <li><a href="/contact/" data-i18n="nav.contact">اتصل بنا</a></li>
           </ul>
-          <h4 style="margin-block-start:1.5rem">العنوان</h4>
+          <h4 style="margin-block-start:1.5rem" data-i18n="footer.addressTitle">العنوان</h4>
           <p class="site-footer__contact" data-i18n="footer.address">حي الغزالي، عين مليلة، أم البواقي</p>
-          <p style="margin-block-start:.6rem"><a class="map-link" href="https://maps.app.goo.gl/bLige8KBr6xYFqxx5" target="_blank" rel="noopener" aria-label="عرض موقع نومارا على خرائط جوجل"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>عرض الموقع على الخريطة</a></p>
+          <p style="margin-block-start:.6rem"><a class="map-link" href="https://maps.app.goo.gl/bLige8KBr6xYFqxx5" target="_blank" rel="noopener" data-i18n-aria="aria.viewMap" aria-label="عرض موقع نومارا على خرائط جوجل"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>عرض الموقع على الخريطة</a></p>
         </div>
       </div>
       <div class="site-footer__legal">
-        وكالة سياحية مرخّصة — رقم الرخصة: TODO-CLIENT ·
+        وكالة سياحية مرخّصة ·
         <span data-i18n="footer.rights">كل الحقوق محفوظة</span> © <span dir="ltr">2026</span> Nomara Voyages.
       </div>
     </div>

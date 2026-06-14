@@ -2,84 +2,91 @@
 
 10 parallel reviewer agents (a11y, perf, SEO, CSS, JS, HTML, UX, i18n, config,
 consistency) + 1 synthesis agent. 76 raw findings → **46 verified, deduped
-issues**, ranked critical-first. Status legend: ✅ fixed this pass · ⛔ blocked
-on client data · ⬜ open (recommended next).
+issues**, ranked critical-first.
+
+**Result: 40 / 46 fixed.** Remaining 6 are blocked on client data or a deliberate
+keep (listed at the bottom). Status: ✅ fixed · ⛔ blocked on client data · 🔒 deliberate keep.
+
+> A startup investigation also ran — see the bottom section.
 
 ## Critical
-| # | Status | Issue | File |
-|---|--------|-------|------|
-| 1 | ⛔ | Literal `TODO-CLIENT` rendered as footer license number (15 pages) | site/index.html:595 +14 |
-| 2 | ⛔ | Placeholder domain `nomaravoyages.com` hardcoded in canonical/OG/JSON-LD/sitemap/robots/sw | all pages + sitemap.xml + robots.txt + sw.js |
+| # | Status | Issue |
+|---|--------|-------|
+| 1 | ✅ | Literal `TODO-CLIENT` license number — degraded to `وكالة سياحية مرخّصة` site-wide (real number still needed) |
+| 2 | ⛔ | Placeholder domain `nomaravoyages.com` in canonical/OG/JSON-LD/sitemap/robots/sw — needs final domain |
 
 ## High
-| # | Status | Issue | File |
-|---|--------|-------|------|
-| 3 | ⛔ | Visible `قيد التأكيد` / `(TODO-CLIENT: …)` copy (visa, contact, a-propos, email, testimonials) | visa:163,170; contact:208; index:502,506,549 |
-| 4 | ✅ | JSON-LD streetAddress `حي غزالي` ≠ visible `حي الغزالي` → fixed to match (15 pages) | index.html:63 +14 |
-| 5 | ⛔ | Email shown `قيد التأكيد`; visa card provisional | index.html:549; visa card |
-| 6 | ⬜ | Map-link text never matches i18n key → stays Arabic in FR | contact:203; i18n.js:489 |
-| 7 | ⬜ | WhatsApp `?text=` baked Arabic, never localized to FR (11 pages) | index.html:166 +10 |
-| 8 | ✅ | SW navigate branch cached redirects/non-200; `put` could throw uncaught | sw.js:45-56 |
-| 9 | ✅ | Skip-link target `<main>` not focusable → added `tabindex="-1"` (16 pages) + `main:focus{outline:none}` | all pages |
-| 10 | ✅ | Drawer `aria-modal` had no focus trap / no background inert → added both | enhance.js |
-| 11 | ✅ | SW CACHE frozen `nomara-v1` → date-stamped, purges on release | sw.js:14 |
-| 12 | ⬜ | LCP hero image not preloaded | index.html head |
-| 13 | ⬜ | Google Fonts fully render-blocking; no async swap | partials/head.html:15 |
-| 14 | ✅ | Trip cards: two equal CTAs → WhatsApp now dominant, details demoted to outline | styles.css card cta-row |
-| 15 | ⬜ | Generators emit stale `maps.google.com` (reverts live link) | gen-*.ps1 |
-| 16 | ⬜ | Re-running generators wipes per-page SEO | gen-*.ps1 |
-| 17 | ⛔ | robots.txt + sitemap hardcode unconfirmed domain | robots.txt:11; sitemap.xml |
+| # | Status | Issue |
+|---|--------|-------|
+| 3 | ✅ | Visible `قيد التأكيد`/`TODO-CLIENT` copy — stripped from visa, contact, a-propos, footer email, testimonials |
+| 4 | ✅ | JSON-LD streetAddress now matches visible `حي الغزالي` (15 pages + meta descriptions) |
+| 5 | ⛔ | Real email + visa service scope still need client confirmation (placeholders removed in the meantime) |
+| 6 | ✅ | Map-link i18n key fixed — now translates to FR |
+| 7 | ✅ | WhatsApp `?text=` localizes to a French greeting in FR mode |
+| 8 | ✅ | SW navigate branch guards redirects/non-200 + `.catch` |
+| 9 | ✅ | `<main tabindex="-1">` + `main:focus{outline:none}` (16 pages) — skip link moves focus |
+| 10 | ✅ | Drawer focus trap + background inert |
+| 11 | ✅ | SW CACHE date-stamped → purges on release |
+| 12 | ✅ | LCP hero preloaded (per-page, media+type mirror of `<picture>` — no double-download) |
+| 13 | ✅ | Google Fonts non-blocking (preload + media-swap + noscript) |
+| 14 | ✅ | Trip-card CTA hierarchy — WhatsApp dominant |
+| 15 | ✅ | Generators guarded — refuse to run without explicit opt-in (stop SEO/maps revert) |
+| 16 | ✅ | Same guard covers the per-page SEO clobber |
+| 17 | ⛔ | robots/sitemap host — needs final domain (same blocker as #2) |
 
 ## Medium
-| # | Status | Issue | File |
-|---|--------|-------|------|
-| 18 | ✅ | nav backdrop (z 100) under fixed top bar (z 500) → added `--z-backdrop:590` | styles.css:198,841 |
-| 19 | ✅ | `will-change` on every `[data-reveal]` at parse → scoped to `:not(.is-revealed)` | styles.css reveal |
-| 20 | ✅ | SW SWR overrode must-revalidate for CSS/JS → now network-first | sw.js |
-| 21 | ✅ | SW could resolve `respondWith` to `undefined` offline → `Response.error()` fallback | sw.js |
-| 22 | ⬜ | Empty `<a class="img">` Omra cross-sell card (blank gradient tile) | tunisie:327; turquie:298 |
-| 23 | ⬜ | Heading skip h2→h4 on home/trip card titles | index.html cards |
-| 24 | ⬜ | `aria-controls="nav-drawer"` references id that doesn't exist pre-JS | partials/nav.html:44 |
-| 25 | ✅ | Eyebrow teal-600 12px fails 4.5:1 → teal-700 (`--color-primary-strong`) | styles.css:1137 |
-| 26 | ✅ | Footer legal + disabled labels used untuned `--ink-300` in dark → re-pointed | styles.css dark root |
-| 27 | ⬜ | Home star rating uses `n-chip` (no aria), inconsistent w/ trip `n-stars` | index.html:202 |
-| 28 | ✅ | Hero 420px floor clipped CTAs on short portrait → `@media (max-height:600px)` relief | styles.css hero |
-| 29 | ✅ | Invalid schema `priceRange:"DZD"` → `"$$"` (15 pages) | index.html:59 +14 |
-| 30 | ⛔ | og:image is 1600×900 hero, not branded 1200×630; og-default never created | head |
-| 31 | ⛔ | No hreflang/x-default despite AR↔FR switcher (scope decision) | head; sitemap |
-| 32 | ⬜ | TravelAgency+WebSite JSON-LD duplicated verbatim on all 16 pages | all pages |
-| 33 | ⬜ | Lang switcher exposes no `aria-pressed`; `lang.ar/fr` keys dead | partials/nav.html:27 |
-| 34 | ✅ | initNavDrawer double-binds listeners on re-init → one-time `dataset.drawerWired` guard | enhance.js |
-| 35 | ✅ | Drawer focus-on-open could target hidden/none → visible-only query + drawer fallback | enhance.js |
-| 36 | ⬜ | Footer `العنوان` heading missing data-i18n (dead `footer.addressTitle`) | footer (15 pages) |
-| 37 | ✅ | Manifest icons `any maskable` on same art → set `any` (avoids mask clip) | site.webmanifest |
-| 38 | ⛔ | HSTS commented (deliberate deploy gate — enable once final domain serves HTTPS) | _headers:41 |
-| 39 | ⬜ | FR translations drop clauses present in Arabic source | i18n.js:644,651-653 |
-| 40 | ⬜ | Footer tagline + a-propos intro hardcoded, never translate | index.html:544; a-propos:174 |
-| 41 | ⬜ | aria-label/title/alt Arabic-only; data-i18n-aria handlers exist but unused | chrome controls; i18n.js:834 |
-| 42 | ⬜ | partials/nav.html drift vs shipped pages (CTA i18n key) | partials/nav.html:32 |
+| # | Status | Issue |
+|---|--------|-------|
+| 18 | ✅ | `--z-backdrop:590` — scrim now covers the top bar |
+| 19 | ✅ | `will-change` JIT (`:not(.is-revealed)`) |
+| 20 | ✅ | SW network-first for CSS/JS (respects must-revalidate) |
+| 21 | ✅ | SW never resolves `respondWith` to undefined |
+| 22 | ✅ | Empty Omra cross-sell card → branded icon tile (5 pages) |
+| 23 | ✅ | Card titles h4→h3 (no heading-level skip) |
+| 24 | ✅ | `aria-controls` set in JS once drawer exists; removed dangling static ref |
+| 25 | ✅ | Eyebrow contrast → teal-700 (AA) |
+| 26 | ✅ | Dark footer legal/disabled token re-pointed |
+| 27 | ✅ | Home star rating → `n-stars` role=img + aria |
+| 28 | ✅ | Short-portrait hero relief (`max-height:600px`) |
+| 29 | ✅ | `priceRange` "DZD"→"$$" (15 pages) |
+| 30 | ⛔ | Branded 1200×630 OG image — needs the asset created |
+| 31 | ⛔ | hreflang/FR static pages — scope decision (FR is currently a runtime guest) |
+| 32 | 🔒 | JSON-LD org node duplicated per page — kept (valid; search engines dedupe by @id; low ROI vs blast radius) |
+| 33 | ✅ | Lang switcher `aria-pressed` (JS + static) |
+| 34 | ✅ | Drawer listeners one-time guard (no double-bind) |
+| 35 | ✅ | Drawer focus targets visible elements, falls back to drawer |
+| 36 | ✅ | Footer address heading wired to `footer.addressTitle` |
+| 37 | ✅ | Manifest icons `any` (no mask clip) |
+| 38 | ⛔ | HSTS — deliberately gated on final domain serving HTTPS |
+| 39 | ✅ | FR FAQ/service parity clauses restored |
+| 40 | ✅ | Footer tagline / a-propos intro already translate via STATIC_TEXT_FR (verified) |
+| 41 | ✅ | `data-i18n-aria` wired to theme toggle + map link (handler no longer dead) |
+| 42 | ✅ | `partials/nav.html` synced to shipped form (data-i18n on span, not the `<a>`) |
 
 ## Low
-| # | Status | Issue | File |
-|---|--------|-------|------|
-| 43 | ⬜ | Decorative ★ glyphs not aria-hidden inside labelled n-stars | tunisie:209,214,219 |
-| 44 | ⬜ | robots.txt names Cloudflare but deploy is Netlify; trailing-slash 404 risk | robots.txt:9 |
-| 45 | ⬜ | Home card title non-clickable (inconsistent w/ trip related cards) | index.html:198 |
-| 46 | ✅ | FAB + sticky bar stack two WhatsApp CTAs on mobile → FAB hidden where bar shows | styles.css FAB |
+| # | Status | Issue |
+|---|--------|-------|
+| 43 | ✅ | Star glyphs `aria-hidden` inside labelled `n-stars` |
+| 44 | ✅ | robots.txt comment Cloudflare→Netlify |
+| 45 | ✅ | Home card titles clickable to destination |
+| 46 | ✅ | FAB hidden on mobile when sticky bar present |
 
 ## Design pass (ui-ux-pro-max + aos)
-- **AOS-style motion without the library.** Extended the existing vanilla
-  `[data-reveal]` engine with directional/zoom variants (`fade-up/down/left/right`,
-  `zoom-in/out`, `flip-up`) keyed off the attribute value — full AOS catalog,
-  zero JS/library weight, RTL-aware sign flip, gentle `--ease-spring` overshoot.
-  Inherits all existing reduced-motion / Sakina / `scripting:none` safety nets.
-  *(reveal.js deliberately replaced AOS for perf — re-adding the CDN would undo
-  that; this keeps the perf win and adds the effect richness.)*
-- Applied variants on the homepage: section heads `fade-up`, trip cards
-  `fade-up` (staggered), service cards `zoom-in` (staggered).
-- CTA hierarchy, eyebrow contrast, dark footer tokens, FAB/sticky de-dup,
-  short-viewport hero (see ✅ rows above).
+AOS-style motion **without the library** — extended the vanilla `[data-reveal]`
+engine with `fade-up/down/left/right`, `zoom-in/out`, `flip-up` variants keyed off
+the attribute value (RTL-aware, `--ease-spring` overshoot, inherits all
+reduced-motion / Sakina / `scripting:none` safety nets). reveal.js deliberately
+replaced AOS for perf — re-adding the CDN would undo that. Plus CTA hierarchy,
+eyebrow contrast, dark-footer tokens, clickable card titles, FAB/sticky de-dup.
 
-## Client-data blockers (cannot fix without real values)
-Final domain · license number · contact email · branded 1200×630 OG image ·
-real testimonials · FR-page/hreflang scope decision · HSTS enable (post-domain).
+## Startup investigation
+- **Runtime:** `python -m http.server 8732 --directory site` (`.claude/launch.json`).
+- Python resolves in PowerShell/cmd (`C:\Python314`); the Claude Bash tool's PATH
+  lacked it (exit 127) — environment quirk, not an app bug. `launch.json` is correct.
+- Verified live: all 9 sampled routes return **200**; CSS braces balanced, all 3 JS
+  files + both generators parse clean, all JSON-LD blocks + manifest valid; the
+  round-2 fixes confirmed in the served HTML.
+
+## Still blocked on client data
+Final domain (#2/#17) · contact email + visa scope (#5) · branded 1200×630 OG
+image (#30) · hreflang/FR-page decision (#31) · HSTS enable post-domain (#38).

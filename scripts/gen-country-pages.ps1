@@ -4,6 +4,16 @@
 # Produces vanilla static HTML; chrome pasted inline. Run once.
 # Tunisie + Egypte are hand-authored separately (multi-offer).
 # =========================================================
+param([switch]$IUnderstandThisOverwritesLivePages)
+# SAFETY GUARD (#15/#16): this is a ONE-OFF generator. Since it last ran, the
+# deployed pages were hand-edited with full per-page SEO (canonical/OG/JSON-LD),
+# the verified live Google Maps link (maps.app.goo.gl/...), and a batch of
+# a11y/perf fixes. Re-running would OVERWRITE all of that with older template
+# output. Refuse unless the operator explicitly opts in.
+if (-not $IUnderstandThisOverwritesLivePages) {
+  Write-Error "STALE GENERATOR — refusing to run. Deployed pages have diverged (live SEO, maps.app.goo.gl link, a11y/perf fixes). Re-running reverts them. If you truly want to regenerate from scratch, pass -IUnderstandThisOverwritesLivePages, then re-apply the post-generation fixes (see docs/FLEET-AUDIT.md)."
+  exit 1
+}
 $root = Split-Path -Parent $PSScriptRoot
 
 # Pre-encoded WhatsApp prefilled messages (URL-encoded Arabic)
