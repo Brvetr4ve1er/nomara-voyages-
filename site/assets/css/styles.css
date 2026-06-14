@@ -110,6 +110,7 @@
   --shadow-lg: 0 18px 44px rgba(12,58,53,.16);
 
   --ease-out: cubic-bezier(.22,.8,.36,1);
+  --ease-spring: cubic-bezier(.34,1.4,.5,1);  /* gentle overshoot for scroll-reveal entrances */
   --dur-fast: 160ms; --dur-base: 240ms;
 }
 
@@ -195,9 +196,10 @@
   /* Z-index ladder — 10 named layers */
   --z-base:    0;
   --z-raised:  10;
-  --z-overlay: 100;
-  --z-nav:     500;
-  --z-drawer:  600;
+  --z-overlay:  100;
+  --z-nav:      500;
+  --z-backdrop: 590;  /* #18: above the fixed top bar (500) so the scrim dims it, below the drawer */
+  --z-drawer:   600;
   --z-sticky:  640;
   --z-fab:     650;
   --z-toast:   700;
@@ -1110,7 +1112,8 @@ body.nav-scroll-lock { overflow: hidden; }
   font-size: .75rem;
   letter-spacing: .18em;
   text-transform: uppercase;
-  color: var(--color-primary);
+  /* A11y #25: teal-600 at .75rem failed 4.5:1 on sand; teal-700 clears AA. */
+  color: var(--color-primary-strong);
   display: block;
   margin-block-end: var(--space-3);
 }
@@ -1364,9 +1367,37 @@ body.nav-scroll-lock { overflow: hidden; }
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 420ms var(--ease-out), transform 600ms var(--ease-out);
-  will-change: opacity, transform;
 }
+/* P-perf: promote ONLY while still hidden (JIT layer); the .is-revealed
+   end-state drops the hint so we never leave dozens of permanent compositor
+   layers alive on reduced-motion / Sakina pages where nothing reveals. */
+[data-reveal]:not(.is-revealed) { will-change: opacity, transform; }
 [data-reveal].is-revealed { opacity: 1; transform: none; }
+
+/* ── AOS-style directional / zoom variants ───────────────────────────
+   The engine (reveal.js) just toggles .is-revealed; the *direction* lives
+   here, keyed off the data-reveal value — so we get AOS's effect catalog
+   (fade-up/down/left/right, zoom-in, flip) with zero extra JS or library
+   weight, and every variant inherits the reduced-motion / Sakina /
+   scripting:none safety nets below that target [data-reveal] generically.
+   A softer spring easing gives the entrances more life than plain ease-out. */
+[data-reveal="fade-up"]    { transform: translateY(28px); }
+[data-reveal="fade-down"]  { transform: translateY(-28px); }
+/* RTL-aware: "left/right" follow the writing direction via logical sign. */
+[data-reveal="fade-left"]  { transform: translateX(32px); }
+[data-reveal="fade-right"] { transform: translateX(-32px); }
+[dir="rtl"] [data-reveal="fade-left"]  { transform: translateX(-32px); }
+[dir="rtl"] [data-reveal="fade-right"] { transform: translateX(32px); }
+[data-reveal="zoom-in"]    { transform: scale(.92); }
+[data-reveal="zoom-out"]   { transform: scale(1.06); }
+[data-reveal="flip-up"]    { transform: perspective(900px) rotateX(12deg) translateY(20px); transform-origin: bottom; }
+[data-reveal^="fade-"],
+[data-reveal="zoom-in"],
+[data-reveal="zoom-out"],
+[data-reveal="flip-up"] {
+  transition: opacity 480ms var(--ease-out), transform 700ms var(--ease-spring);
+}
+[data-reveal].is-revealed { transform: none; }
 
 /* ============================================================
    PROGRESSIVE-ENHANCEMENT SAFETY NET
@@ -1515,3 +1546,33 @@ p, li, a, h1, h2, h3, h4, h5, h6, td, th, figcaption {
 .site-footer .map-link{color:#fff;background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.24)}
 .site-footer .map-link:hover{background:rgba(255,255,255,.2)}
 .site-footer .map-link svg{color:var(--color-accent)}
+
+
+/* ============================================================
+   SIGNATURE BRAND LAYER  (anti-slop pass · Wave 1)
+   North-African geometric soul. Faint girih texture lives ONLY on the quiet
+   dark bands (footer + Sakina hero); light sections stay clean. A khatam
+   (8-point star) marks every section eyebrow, tinted by the mode via
+   currentColor (teal Rihla / deeper Sakina). The Arch stays Sakina-only (§05).
+   ============================================================ */
+:root {
+  --khatam: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='%23000'%3E%3Crect x='4' y='4' width='16' height='16'/%3E%3Crect x='4' y='4' width='16' height='16' transform='rotate(45,12,12)'/%3E%3C/g%3E%3C/svg%3E");
+  --girih-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 44 44'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='1' opacity='0.05'%3E%3Crect x='8' y='8' width='28' height='28'/%3E%3Crect x='8' y='8' width='28' height='28' transform='rotate(45,22,22)'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Khatam star before every section eyebrow (masked → inherits eyebrow color) */
+.eyebrow { display: flex; align-items: center; gap: .5rem; inline-size: max-content; max-inline-size: 100%; }
+.eyebrow::before {
+  content: ""; flex: none; inline-size: 13px; block-size: 13px;
+  background: currentColor;
+  -webkit-mask: var(--khatam) center / contain no-repeat;
+          mask: var(--khatam) center / contain no-repeat;
+}
+
+/* Faint girih texture on the quiet dark bands */
+.site-footer { background-image: var(--girih-dark); background-size: 44px 44px; }
+.hero--sakina {
+  background-image: var(--girih-dark),
+    linear-gradient(165deg, var(--night-900) 0%, var(--teal-800) 60%, var(--teal-700) 130%);
+  background-size: 44px 44px, cover;
+}
