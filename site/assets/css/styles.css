@@ -590,6 +590,10 @@ body.nav-scroll-lock { overflow: hidden; }
   transform: none !important;
 }
 .n-card .img .n-badge-promo { position: absolute; inset-block-start: 14px; inset-inline-start: 14px; }
+/* #22: the Omra cross-sell card has no photo asset; instead of a blank gradient
+   tile next to real photos, render a deliberate branded icon on the gradient. */
+.n-card .img--icon { display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.92); }
+.n-card .img--icon svg { inline-size: 56px; block-size: 56px; }
 .n-card .pad { padding: var(--space-5); }
 /* #23: card titles are now <h3> (was <h4>, which skipped a level under the
    section <h2>). Style both so any un-migrated card keeps its look. */
@@ -1650,3 +1654,18 @@ p, li, a, h1, h2, h3, h4, h5, h6, td, th, figcaption {
 }
 .card-grid > .service-card[style*="justify-content:center"]::before { content: none; }
 .card-grid > .service-card[style*="justify-content:center"] h3 { color: var(--color-primary-strong); }
+
+
+/* ============================================================
+   FRONTEND SANITY — balanced short grids (no lonely/empty cells)
+   Caps 3-col grids to 2-col on desktop for short card sets:
+   4 cards -> 2x2, 2 cards -> 1x2. Centered + width-capped so cards
+   don't over-stretch. Below 920px the base grid already reflows.
+   ============================================================ */
+@media (min-width: 920px) {
+  .card-grid.grid-2, .trip-grid.grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+    max-inline-size: 880px;
+    margin-inline: auto;
+  }
+}

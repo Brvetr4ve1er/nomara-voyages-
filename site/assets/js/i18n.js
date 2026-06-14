@@ -64,6 +64,10 @@
       'lang.ar':         'العربية',
       'lang.fr':         'الفرنسية',
 
+      /* #41: aria-labels for static chrome controls (translated via data-i18n-aria) */
+      'aria.themeToggle':'تبديل بين الوضع الفاتح والداكن',
+      'aria.viewMap':    'عرض موقع نومارا على خرائط جوجل',
+
       /* ── Extended CTAs ── */
       'cta.waLong':      'تواصل واتساب',
       'cta.wa':          'واتساب',
@@ -288,6 +292,8 @@
 
       'lang.ar':         'Arabe',
       'lang.fr':         'Français',
+      'aria.themeToggle':'Basculer entre le mode clair et sombre',
+      'aria.viewMap':    'Voir l’emplacement de Nomara sur la carte',
 
       /* ── Extended CTAs ── */
       'cta.waLong':      'Contact WhatsApp',
@@ -641,6 +647,8 @@
     'دليل التحضير والأسئلة الشائعة': 'Guide de préparation et FAQ',
     'قيد التأكيد': 'À confirmer',
     'قيد التأكيد — TODO-CLIENT': 'À confirmer',
+    'حسب الوجهة': 'Selon la destination',
+    'وكالة سياحية مرخّصة ·': 'Agence de voyages agréée ·',
     'تواصل معنا مباشرة عبر واتساب، نرد عليك بسرعة ونرتّب لك كل شيء.': 'Contactez-nous directement sur WhatsApp, nous répondons vite et organisons tout.',
     'تختلف الوثائق حسب الوجهة، لكنها عادةً تشمل: جواز سفر ساري المفعول، صور شمسية، وملف التأشيرة إن كانت الوجهة تتطلبها. نوضّح لك القائمة الكاملة لوجهتك عند الحجز، ونساعدك في ترتيب الملف.': 'Les documents varient selon la destination, mais comprennent généralement un passeport valide, des photos d’identité et un dossier de visa si nécessaire. Nous vous donnons la liste complète à la réservation et nous vous aidons à constituer le dossier.',
     'نعم، نساعدك في تحضير ملف التأشيرة وترتيب الوثائق المطلوبة. مع ذلك، قرار منح التأشيرة يبقى بيد القنصلية، ونحن لا نضمن الحصول عليها — نساعدك فقط في تقديم ملف سليم ومرتّب.': 'Oui, nous vous aidons à préparer le dossier de visa et les documents requis. La décision reste toutefois entre les mains du consulat : nous aidons à présenter un dossier clair et complet, sans garantir l’obtention.',
@@ -664,6 +672,8 @@
     'تبحث عن العمرة؟': 'Vous cherchez l’Omra ?',
     'تعرّف على باقات عمرة شوال وجوان من قسنطينة.': 'Découvrez les forfaits Omra de Chawwal et de juin depuis Constantine.',
     'باقات العمرة': 'Forfaits Omra',
+    'باقات شوال وجوان · فنادق قرب الحرم · انطلاق من قسنطينة': 'Forfaits Chawwal & juin · hôtels près du Haram · départ de Constantine',
+    'باقات متعددة — السعر شامل التأشيرة': 'Plusieurs forfaits — visa inclus dans le prix',
     'فنادق متعددة الوجهات': 'Hôtels multi-destinations',
     'تونس، تركيا، أذربيجان، ماليزيا، مصر، السعودية وغيرها.': 'Tunisie, Turquie, Azerbaïdjan, Malaisie, Égypte, Arabie saoudite et plus.',
     'قرب من الحرم': 'Proximité du Haram',
