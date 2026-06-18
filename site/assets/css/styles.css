@@ -538,6 +538,8 @@ body.nav-scroll-lock { overflow: hidden; }
   border-radius: var(--card-radius);
   box-shadow: var(--card-shadow);
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
   transition: box-shadow var(--dur-base) var(--ease-out),
               transform var(--dur-base) var(--ease-out);
 }
@@ -548,6 +550,7 @@ body.nav-scroll-lock { overflow: hidden; }
      their intrinsic aspect-ratio, pushing price/CTA off-card. Force block
      + aspect-ratio so the frame scales with card width and clips. */
   display: block;
+  flex: none;
   aspect-ratio: 16 / 10;
   background: linear-gradient(160deg, var(--color-primary), var(--surface-inverse));
   position: relative;
@@ -594,7 +597,7 @@ body.nav-scroll-lock { overflow: hidden; }
    tile next to real photos, render a deliberate branded icon on the gradient. */
 .n-card .img--icon { display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.92); }
 .n-card .img--icon svg { inline-size: 56px; block-size: 56px; }
-.n-card .pad { padding: var(--space-5); }
+.n-card .pad { padding: var(--space-5); display: flex; flex-direction: column; flex: 1 1 auto; }
 /* #23: card titles are now <h3> (was <h4>, which skipped a level under the
    section <h2>). Style both so any un-migrated card keeps its look. */
 .n-card h3, .n-card h4 { font-family: var(--heading-font); font-size: var(--text-xl); color: var(--text-strong); line-height: 1.3; }
@@ -605,7 +608,7 @@ body.nav-scroll-lock { overflow: hidden; }
 .n-card .hotel { color: var(--text-muted); font-size: var(--text-sm); margin-block-start: .3rem; }
 .n-stars { color: var(--color-accent); letter-spacing: .1em; font-size: .9rem; }
 .n-meta-row { display: flex; flex-wrap: wrap; gap: .5rem; margin-block-start: var(--space-3); }
-.n-card .cta-row { display: flex; gap: .6rem; margin-block-start: var(--space-4); }
+.n-card .cta-row { display: flex; flex-wrap: wrap; gap: .6rem; margin-block-start: var(--space-4); }
 .n-card .cta-row .n-btn { flex: 1; justify-content: center; padding: .75rem 1rem; font-size: .95rem; }
 /* UX #14: WhatsApp is the stated checkout — give it visual dominance over the
    secondary "details" link instead of two equal-weight buttons. Demote the
@@ -625,10 +628,15 @@ body.nav-scroll-lock { overflow: hidden; }
 .n-card .cta-row .n-btn-wa { flex: 1.6 1 auto; box-shadow: var(--shadow-sm); }
 
 /* ---- Price (Changa 700 in BOTH modes) ---- */
-.n-price { display: flex; align-items: baseline; gap: .45rem; margin-block-start: var(--space-3); }
-.n-price .amount { font-family: var(--font-display); font-weight: 700; font-size: var(--text-2xl); color: var(--price-color); }
+/* Price block — a clean vertical unit: the Changa amount + دج never break
+   (#price-split fix: the long caption used to squeeze the amount until it
+   wrapped at its thousands-space → "119" / "000"). The caption drops to its
+   own line; the whole block is pushed to the card's bottom (margin-auto) so
+   prices align across cards and the eye flows down them while comparing. */
+.n-price { display: flex; flex-wrap: wrap; align-items: baseline; gap: .1rem .45rem; margin-block-start: auto; padding-block-start: var(--space-4); }
+.n-price .amount { font-family: var(--font-display); font-weight: 700; font-size: var(--text-2xl); color: var(--price-color); line-height: 1.05; white-space: nowrap; }
 .n-price .cur { font-weight: 600; color: var(--text-muted); font-size: var(--text-sm); align-self: baseline; }
-.n-price .per { color: var(--text-muted); font-size: var(--text-xs); }
+.n-price .per { flex-basis: 100%; color: var(--text-muted); font-size: var(--text-xs); margin-block-start: .15rem; }
 
 /* P0-6: price-on-request — a DELIBERATE teal chip (not body-weight error
    text) sized at the price baseline, for cards whose price is genuinely
@@ -879,7 +887,11 @@ body.nav-scroll-lock { overflow: hidden; }
 }
 .nav-backdrop.is-visible { opacity: 1; visibility: visible; }
 
-@media (max-width: 900px) {
+/* Hamburger drawer up to 1024px (was 900px): 7 long Arabic links + WhatsApp
+   CTA + lang pill + theme toggle do not fit inline on tablet widths, so the
+   drawer now also covers iPad-class portrait/landscape. Inline nav only ≥1025px,
+   matching the sticky-bar handoff at 1024/1025 — no cramped middle zone. */
+@media (max-width: 1024px) {
   .nav-toggle { display: inline-flex; }
 
   /* TOP-BAR DECLUTTER (contract §B) — at ≤900px only [logo] +
@@ -1161,6 +1173,9 @@ body.nav-scroll-lock { overflow: hidden; }
   display: grid;
   align-items: center;
   min-block-size: clamp(420px, 70vh, 620px);
+  /* dvh = dynamic viewport height: avoids the hero resize-jump when mobile
+     browser toolbars collapse/expand. Falls back to vh on older engines. */
+  min-block-size: clamp(420px, 70dvh, 620px);
   padding-block: calc(var(--nav-h) + var(--space-7)) var(--space-8);
   padding-inline: var(--container-x);
   overflow: hidden;
