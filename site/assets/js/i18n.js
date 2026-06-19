@@ -676,6 +676,8 @@
     'تبحث عن العمرة؟': 'Vous cherchez l’Omra ?',
     'تعرّف على باقات عمرة شوال وجوان من قسنطينة.': 'Découvrez les forfaits Omra de Chawwal et de juin depuis Constantine.',
     'باقات العمرة': 'Forfaits Omra',
+    'نومارا، رفيقك في كل رحلة': 'Nomara, votre compagnon à chaque voyage',
+    'من العمرة إلى أبعد وجهة — نرافقك خطوة بخطوة': 'De l’Omra à la destination la plus lointaine — nous vous accompagnons pas à pas',
     'باقات شوال وجوان · فنادق قرب الحرم · انطلاق من قسنطينة': 'Forfaits Chawwal & juin · hôtels près du Haram · départ de Constantine',
     'باقات متعددة — السعر شامل التأشيرة': 'Plusieurs forfaits — visa inclus dans le prix',
     'فنادق متعددة الوجهات': 'Hôtels multi-destinations',

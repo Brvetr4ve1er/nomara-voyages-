@@ -1700,3 +1700,11 @@ p, li, a, h1, h2, h3, h4, h5, h6, td, th, figcaption {
     margin-inline: auto;
   }
 }
+
+
+/* ---- Brand quote band (Amiri reverent beat; Rihla — no arch, girih texture) ---- */
+.quote-band { background: var(--surface-inverse); background-image: var(--girih-dark); background-size: 44px 44px; color: #fff; text-align: center; }
+.brand-quote { max-inline-size: 32ch; margin-inline: auto; }
+.brand-quote__mark { display: inline-block; inline-size: 26px; block-size: 26px; margin-block-end: var(--space-4); background: var(--gold-300); -webkit-mask: var(--khatam) center/contain no-repeat; mask: var(--khatam) center/contain no-repeat; }
+.brand-quote p { font-family: var(--font-reverent); font-weight: 700; font-size: var(--text-3xl); line-height: 1.5; color: #fff; }
+.brand-quote cite { display: block; margin-block-start: var(--space-4); font-style: normal; color: var(--gold-300); font-size: var(--text-lg); }
