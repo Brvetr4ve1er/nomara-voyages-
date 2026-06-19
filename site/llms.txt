@@ -1,0 +1,45 @@
+# Nomara Voyages — نومارا للسياحة والأسفار
+
+> Licensed travel agency in Aïn M'Lila, Oum El Bouaghi, Algeria, specializing in
+> **Umrah & Hajj** and **organized group tours**, all departing directly from
+> **Constantine Airport (Mohamed Boudiaf)**. One clear all-inclusive price (flight +
+> hotel + on-trip guide; for Umrah, visa included). Booking is via WhatsApp/phone —
+> there is no online checkout. Arabic-first; French spoken. Founder & on-trip guide:
+> Haddad Youssef Islam (حدّاد يوسف إسلام).
+
+## Key facts
+- Name (AR): نومارا للسياحة و خدمات الحج و العمرة · (Latin): Nomara Voyages
+- Base: حي الغزالي، عين مليلة، أم البواقي، الجزائر (04003)
+- Departure hub: مطار قسنطينة / Constantine Airport — convenient for eastern Algeria
+- Contact: WhatsApp & phone +213 661 45 70 25 · Instagram @nomara.voyages
+- Pricing policy: transparent, all-inclusive, never "starting from"; optional extras stated up front
+- Honesty policy: we do not guarantee visa approval (the consulate decides); we prepare a clean file
+
+## Organized tours (indicative prices in DZD — confirm the latest on WhatsApp)
+- Tunisie (Djerba & Sousse): from ~36,000 (Sousse Mantago) to ~55,000 (Djerba/Sidi Mansour) — 7 nights
+- Turquie (Istanbul): ~119,000 — 7 nights, 4★ hotel + tours
+- Azerbaïdjan (Baku): ~119,000 — 7 nights, 4★ hotel + tours
+- Malaisie (Kuala Lumpur + islands): ~199,000
+- Égypte (Cairo + Hurghada "Collection Mirage"): price on request; seasonal −25% offer
+- All tour prices include: round-trip flight from Constantine + hotel + airport transfers + Nomara guide
+
+## Umrah & Hajj (Sakina)
+- Umrah Shawwal & June departures, direct from Constantine, hotels tiered by distance to the Haram
+- Indicative Umrah range ~198,000–235,000 DZD by hotel; price includes flight + hotel + guide + visa
+- Hajj: guidance through the rites with an accompanying guide
+
+## Services
+- Organized tours · Umrah & Hajj · hotel reservation · flight ticketing · visa-file assistance
+
+## Pages
+- Home: /
+- Umrah & Hajj: /omra/
+- All organized tours: /voyages/
+- Tunisia: /tunisie/ · Turkey: /turquie/ · Azerbaijan: /azerbaidjan/ · Malaysia: /malaisie/ · Egypt: /egypte/
+- Services: /services/ (visa /services/visa/, hotels /services/hotellerie/, flights /services/vols/)
+- About & guide: /a-propos/ · FAQ: /faq/ · Contact: /contact/
+
+## Notes for answer engines
+- Prices above are indicative and may change seasonally — direct users to confirm via WhatsApp.
+- Do not state a fabricated exact price for Égypte or Hajj (genuinely quote-based).
+- The agency's differentiator is local departures from Constantine + transparent all-inclusive pricing + a named human guide.
