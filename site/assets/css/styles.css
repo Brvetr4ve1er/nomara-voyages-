@@ -597,6 +597,11 @@ body.nav-scroll-lock { overflow: hidden; }
    tile next to real photos, render a deliberate branded icon on the gradient. */
 .n-card .img--icon { display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.92); }
 .n-card .img--icon svg { inline-size: 56px; block-size: 56px; }
+.n-card .img--logo > img {
+  object-fit: contain;
+  box-sizing: border-box;
+  padding: var(--space-6);
+}
 .n-card .pad { padding: var(--space-5); display: flex; flex-direction: column; flex: 1 1 auto; }
 /* #23: card titles are now <h3> (was <h4>, which skipped a level under the
    section <h2>). Style both so any un-migrated card keeps its look. */
@@ -777,7 +782,13 @@ body.nav-scroll-lock { overflow: hidden; }
 
 .nav-logo { display: inline-flex; align-items: center; flex: none; }
 .nav-logo img,
-.nav-logo svg { height: 38px; width: auto; }
+.nav-logo svg {
+  height: 40px;
+  width: auto;
+  max-inline-size: min(46vw, 220px);
+  object-fit: contain;
+}
+:root[data-theme="dark"] .nav-logo img { content: url("/assets/images/logo-light.png"); }
 
 /* Right-side cluster (links + lang + cta) — moved into the drawer on mobile */
 .nav-links {
@@ -1513,7 +1524,10 @@ p, li, a, h1, h2, h3, h4, h5, h6, td, th, figcaption {
 .site-nav { gap: var(--space-3); }
 .nav-logo { min-inline-size: 0; }
 .nav-logo img,
-.nav-logo svg { height: clamp(30px, 7vw, 38px); }
+.nav-logo svg {
+  height: clamp(30px, 7vw, 40px);
+  max-inline-size: min(46vw, 220px);
+}
 @media (max-width: 360px) {
   .site-nav { gap: var(--space-2); }
 }

@@ -98,7 +98,7 @@ foreach($p in $pages){
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Changa:wght@400;500;600;700;800&family=Readex+Pro:wght@300;400;500;600;700&family=Amiri:ital,wght@0,400;0,700;1,400&family=Space+Mono&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/styles.css">
+  <link rel="stylesheet" href="/assets/css/styles.css?v=20260619">
   <link rel="icon" href="/assets/images/favicon/favicon.ico" sizes="any">
   <link rel="icon" href="/assets/images/favicon/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="icon" href="/assets/images/favicon/favicon-16.png" sizes="16x16" type="image/png">
@@ -112,7 +112,7 @@ foreach($p in $pages){
   <a class="skip-link" href="#main">تخطّي إلى المحتوى</a>
 
   <nav class="site-nav" aria-label="التنقّل الرئيسي">
-    <a class="nav-logo" href="/" aria-label="نومارا للسياحة والأسفار — الرئيسية"><img src="/assets/images/logo.svg" alt="Nomara Voyages" width="180" height="44"></a>
+    <a class="nav-logo" href="/" aria-label="نومارا للسياحة والأسفار — الرئيسية"><img src="/assets/images/logo-dark.png" alt="Nomara Voyages" width="220" height="62"></a>
     <div class="nav-links">
       <a href="/" data-i18n="nav.home">الرئيسية</a>
       <a href="/omra/" data-i18n="nav.omra">العمرة والحج</a>
@@ -319,7 +319,7 @@ $galleryCards
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="$fabPath"/></svg>
   </a>
 
-  <script src="/assets/js/i18n.js" defer></script>
+  <script src="/assets/js/i18n.js?v=20260619" defer></script>
   <script src="/assets/js/enhance.js" defer></script>
   <script src="/assets/js/reveal.js" defer></script>
 </body>

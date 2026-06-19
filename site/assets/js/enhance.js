@@ -193,7 +193,7 @@
     window.addEventListener('resize', function () {
       cancelAnimationFrame(resizeRaf);
       resizeRaf = requestAnimationFrame(function () {
-        if (window.innerWidth > 900 && nav.classList.contains('nav-open')) setOpen(false);
+        if (window.innerWidth > 1024 && nav.classList.contains('nav-open')) setOpen(false);
       });
     });
   }
