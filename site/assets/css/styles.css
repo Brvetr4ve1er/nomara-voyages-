@@ -430,6 +430,7 @@ body.nav-scroll-lock { overflow: hidden; }
   a.n-btn,
   button,
   .nav-toggle,
+  .filter-chips a,
   .lang-switcher button {
     min-height: var(--touch-min);
   }
@@ -1123,6 +1124,7 @@ body.nav-scroll-lock { overflow: hidden; }
 }
 .site-footer__brand img,
 .site-footer__brand svg { height: 44px; width: auto; margin-block-end: var(--space-3); }
+.site-footer h3,
 .site-footer h4 {
   font-family: var(--font-display);
   font-weight: 700;
