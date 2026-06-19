@@ -344,6 +344,44 @@
     }
   }
 
+  /* ── Catalog price sort (voyages) — reorder trip cards by price. No-op when
+     there is no .sort-bar. Cards without a numeric price (Omra, on-request)
+     sort to the end. Reorders the DOM, so screen-reader order updates too. */
+  function initPriceSort() {
+    var bar = document.querySelector('.sort-bar');
+    var grid = document.querySelector('.trip-grid');
+    if (!bar || !grid) return;
+    var original = Array.prototype.slice.call(grid.children);
+    function priceOf(card) {
+      var el = card.querySelector('.n-price .amount');
+      if (!el) return null;
+      var n = parseInt((el.textContent || '').replace(/[^0-9]/g, ''), 10);
+      return isNaN(n) ? null : n;
+    }
+    function apply(dir) {
+      var list = dir === 'default'
+        ? original
+        : Array.prototype.slice.call(grid.children).sort(function (a, b) {
+            var pa = priceOf(a), pb = priceOf(b);
+            if (pa === null && pb === null) return 0;
+            if (pa === null) return 1;
+            if (pb === null) return -1;
+            return dir === 'asc' ? pa - pb : pb - pa;
+          });
+      list.forEach(function (c) { grid.appendChild(c); });
+    }
+    bar.addEventListener('click', function (e) {
+      var btn = e.target.closest('[data-sort]');
+      if (!btn) return;
+      bar.querySelectorAll('[data-sort]').forEach(function (b) {
+        var on = b === btn;
+        b.classList.toggle('is-active', on);
+        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+      apply(btn.getAttribute('data-sort'));
+    });
+  }
+
   function boot() {
     initServiceWorker();
     initThemeToggle();
@@ -351,6 +389,7 @@
     initNavDrawer();
     initStickyAwareness();
     initEntrances();
+    initPriceSort();
   }
 
   if (document.readyState === 'loading') {
