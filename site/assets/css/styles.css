@@ -1708,3 +1708,12 @@ p, li, a, h1, h2, h3, h4, h5, h6, td, th, figcaption {
 .brand-quote__mark { display: inline-block; inline-size: 26px; block-size: 26px; margin-block-end: var(--space-4); background: var(--gold-300); -webkit-mask: var(--khatam) center/contain no-repeat; mask: var(--khatam) center/contain no-repeat; }
 .brand-quote p { font-family: var(--font-reverent); font-weight: 700; font-size: var(--text-3xl); line-height: 1.5; color: #fff; }
 .brand-quote cite { display: block; margin-block-start: var(--space-4); font-style: normal; color: var(--gold-300); font-size: var(--text-lg); }
+
+
+/* ---- Itinerary timeline (RTL-aware connected vertical steps) ---- */
+.timeline { counter-reset: t; position: relative; display: grid; gap: var(--space-5); max-inline-size: 56ch; margin-inline: auto; }
+.timeline::before { content: ""; position: absolute; inset-block: 16px 16px; inset-inline-start: 11px; inline-size: 2px; background: var(--border-soft); border-radius: 2px; }
+.timeline__item { position: relative; padding-inline-start: var(--space-6); }
+.timeline__item::before { counter-increment: t; content: counter(t); position: absolute; inset-inline-start: 0; inset-block-start: 0; inline-size: 24px; block-size: 24px; border-radius: 50%; background: var(--color-primary); color: var(--text-on-primary); font-family: var(--font-display); font-weight: 700; font-size: .85rem; display: grid; place-items: center; box-shadow: 0 0 0 4px var(--surface-raised); }
+.timeline__item h3 { font-size: var(--text-lg); color: var(--text-strong); line-height: 1.3; }
+.timeline__item p { color: var(--text-muted); margin-block-start: var(--space-2); }
